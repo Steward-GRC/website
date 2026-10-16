@@ -1,5 +1,5 @@
 import "~/components/marketing.css";
-import { acknowledgement, footer, hero, openSource } from "~/content/steward";
+import { footer, hero, openSource } from "~/content/steward";
 
 export const Footer = () => {
   return (
@@ -28,10 +28,6 @@ export const Footer = () => {
             <sup>&trade;</sup>
           </span>
           {hero.headlineLine2Stop} and their logos are trademarks of {footer.holder}.
-        </p>
-        <p className="footer__legal">
-          {acknowledgement.credit}
-          <a href={acknowledgement.creditLink.href}>{acknowledgement.creditLink.label}</a>.
         </p>
       </div>
     </footer>

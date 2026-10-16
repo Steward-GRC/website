@@ -91,13 +91,6 @@ export const howItRuns = {
   ],
 };
 
-// The footer's acknowledgements line, not its own section: every steward-*
-// README's Acknowledgements and License sections, word for word.
-export const acknowledgement = {
-  credit: "Steward was originally written by ",
-  creditLink: { label: "@Bugs5382", href: "https://github.com/Bugs5382" },
-};
-
 export const comingLater = {
   // docs/reference.md (feat/1-guide), "Coming later" heading, word for word.
   eyebrow: "Coming later",
@@ -125,7 +118,7 @@ export const comingLater = {
 // The same wording as the docs site (Steward-GRC/docs home and footer).
 export const openSource = {
   eyebrow: "Open source",
-  heading: "Steward is open source under the Apache License 2.0.",
+  heading: "Steward-GRC™ is open source under the Apache License 2.0.",
   license: { label: "Apache License 2.0", href: "https://github.com/Steward-GRC/.github/blob/main/LICENSE" },
   org: { label: "View on GitHub", href: "https://github.com/Steward-GRC" },
   trademarkTail:
