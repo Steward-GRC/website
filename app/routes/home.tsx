@@ -13,7 +13,6 @@ import {
   howItRuns,
   meta as pageMeta,
   nav,
-  openSource,
   whatItIs,
 } from "~/content/steward";
 
@@ -53,15 +52,6 @@ export default function Home() {
               {paragraph}
             </p>
           ))}
-        </Section>
-
-        <Section id="open-source" eyebrow={openSource.eyebrow} heading={openSource.heading}>
-          <p className="prose">{openSource.body}</p>
-          <p className="prose">
-            {openSource.license.credit}
-            <a href={openSource.license.creditLink.href}>{openSource.license.creditLink.label}</a>.{" "}
-            {openSource.license.note}
-          </p>
         </Section>
 
         <Section id="coming-later" eyebrow={comingLater.eyebrow} heading={comingLater.heading} lede={comingLater.lede} tone="card">

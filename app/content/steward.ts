@@ -91,20 +91,12 @@ export const howItRuns = {
   ],
 };
 
-export const openSource = {
-  eyebrow: "Open source",
-  // Steward-GRC/.github profile/README.md tagline line, word for word.
-  heading: "Open-source policy, procedure and compliance management, built as a set of small services.",
-  // Steward-GRC/.github profile/README.md, word for word (two non-adjacent
-  // sentences from the same paragraph, joined).
-  body: "Steward-GRC is an open-source, Apache-2.0 licensed policy and compliance management system. It's built as a set of small services rather than one monolith, with per-category access rules, single sign-on and second factors, and runs on any Kubernetes cluster.",
-  license: {
-    // Every steward-* README's Acknowledgements section, word for word.
-    credit: "Steward was originally written by ",
-    creditLink: { label: "@Bugs5382", href: "https://github.com/Bugs5382" },
-    // Every steward-* README's License section, word for word.
-    note: "Apache-2.0.",
-  },
+// The footer's acknowledgements line, not its own section: every steward-*
+// README's Acknowledgements and License sections, word for word.
+export const acknowledgement = {
+  credit: "Steward was originally written by ",
+  creditLink: { label: "@Bugs5382", href: "https://github.com/Bugs5382" },
+  note: "Apache-2.0.",
 };
 
 export const comingLater = {
@@ -146,7 +138,6 @@ export const nav = {
   links: [
     { label: "What it is", href: "#what-it-is" },
     { label: "How it runs", href: "#how-it-runs" },
-    { label: "Open source", href: "#open-source" },
     { label: "GitHub", href: "https://github.com/Steward-GRC" },
   ],
 };

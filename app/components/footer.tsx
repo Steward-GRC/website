@@ -1,5 +1,5 @@
 import "~/components/marketing.css";
-import { footer, hero } from "~/content/steward";
+import { acknowledgement, footer, hero } from "~/content/steward";
 
 export const Footer = () => {
   const year = new Date().getFullYear();
@@ -26,6 +26,11 @@ export const Footer = () => {
           </span>
           {hero.headlineLine2Stop} and their logos are trademarks of {footer.holder}. &copy; {year}{" "}
           {footer.holder}. All rights reserved.
+        </p>
+        <p className="footer__legal">
+          {acknowledgement.credit}
+          <a href={acknowledgement.creditLink.href}>{acknowledgement.creditLink.label}</a>.{" "}
+          {acknowledgement.note}
         </p>
       </div>
     </footer>
