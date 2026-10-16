@@ -10,3 +10,10 @@ export const hero = {
   tagline: "Steward keeps your organisation's rules in one place and gives everyone a safe way to speak up.",
   status: "Coming soon",
 };
+
+// The holder wording is copied from Steward-GRC/.github's TRADEMARKS.md and
+// profile/README.md (merged to main 2026-10-15): "...are trademarks of the
+// rabbit hole tech, llc."
+export const footer = {
+  holder: "the rabbit hole tech, llc",
+};
