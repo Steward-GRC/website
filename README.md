@@ -21,7 +21,8 @@ npm run build      # prerendered static site in build/
 
 Release Drafter keeps a draft release up to date from merged pull requests. Publishing that draft
 creates the tag, and `.github/workflows/deploy.yml` puts that exact build live on Cloudflare Pages
-(project `steward-grc-www`) with `wrangler pages deploy`, using the org's `CLOUDFLARE_API_TOKEN`
+(project `steward-grc-www`) with `wrangler pages deploy --branch=main`, so it lands as the
+production deployment rather than a preview of the detached tag, using the org's `CLOUDFLARE_API_TOKEN`
 and `CLOUDFLARE_ACCOUNT_ID` secrets. It only runs on a published release — no push, pull request or
 manual trigger — and nothing is live until then. The workflow creates the `steward-grc-www` Pages
 project itself the first time it doesn't find one; the custom domains are still added by hand to
