@@ -1,9 +1,8 @@
 import "~/components/marketing.css";
-import { footer, hero, splitLastWord } from "~/content/steward";
+import { footer, hero } from "~/content/steward";
 
 export const Footer = () => {
   const year = new Date().getFullYear();
-  const [taglineLead, taglineLast] = splitLastWord(hero.tagline);
   return (
     <footer className="footer">
       <div className="footer__row">
@@ -20,13 +19,13 @@ export const Footer = () => {
           <span className="tm-bind">
             Steward-GRC<sup>&trade;</sup>
           </span>
-          , {taglineLead}{" "}
+          , {hero.headlineLine1} {hero.headlineLine2}{" "}
           <span className="tm-bind">
-            {taglineLast}
+            {hero.headlineLine2TmWord}
             <sup>&trade;</sup>
-          </span>{" "}
-          and their logos are trademarks of {footer.holder}. &copy; {year} {footer.holder}. All rights
-          reserved.
+          </span>
+          {hero.headlineLine2Stop} and their logos are trademarks of {footer.holder}. &copy; {year}{" "}
+          {footer.holder}. All rights reserved.
         </p>
       </div>
     </footer>

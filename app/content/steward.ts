@@ -9,11 +9,12 @@ export const meta = {
   description: "Open-source policy, procedure and compliance management, built as a set of small services.",
 };
 
-// The tagline is Steward-GRC's own line (owner, 2026-10-15). The footer binds
-// its trademark the same way it always has, via splitLastWord below; the
-// hero below writes the same two sentences as two headline lines instead.
+// The tagline is Steward-GRC's own line, exactly "Rules kept. Voices
+// heard.(tm)" with the mark bound to "heard" and the period after it. Both
+// the hero headline and the footer trademark notice build it from the same
+// headlineLine2TmWord/headlineLine2Stop fields, so the mark never drifts to
+// the wrong side of the period.
 export const hero = {
-  tagline: "Rules kept. Voices heard.",
   eyebrow: "Steward-GRC",
   headlineLine1: "Rules kept.",
   headlineLine2: "Voices",
@@ -143,11 +144,4 @@ export const nav = {
     { label: "Open source", href: "#open-source" },
     { label: "GitHub", href: "https://github.com/Steward-GRC" },
   ],
-};
-
-// Splits off the last word of a phrase so a trademark mark can be bound to it
-// with a non-breaking span: the mark never wraps onto its own line.
-export const splitLastWord = (phrase: string): [string, string] => {
-  const i = phrase.lastIndexOf(" ");
-  return i === -1 ? ["", phrase] : [phrase.slice(0, i), phrase.slice(i + 1)];
 };
