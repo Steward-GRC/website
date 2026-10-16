@@ -25,6 +25,10 @@ creates the tag, and `.github/workflows/deploy.yml` puts that exact build live o
 secrets. Both custom domains are added to the Pages project in the Cloudflare dashboard, not by
 this workflow.
 
+On GitHub's free plan, org secrets aren't visible to a private repo, so this workflow can't read
+`CLOUDFLARE_API_TOKEN` or `CLOUDFLARE_ACCOUNT_ID` until the org upgrades its plan or this repo goes
+public.
+
 ## 🤝 Contributing
 
 Read the org's [CONTRIBUTING](https://github.com/Steward-GRC/.github/blob/main/CONTRIBUTING.md) and
