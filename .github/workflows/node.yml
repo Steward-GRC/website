@@ -1,0 +1,38 @@
+# Node build and test for website. checks.yml calls it from its one `checks`
+# job, so its status check is `checks / Build & Test`.
+#
+# Steps, in order: install with the lockfile frozen and scripts off, then
+# `npm run check` (typecheck and the prerendered build). It takes no secrets.
+name: node
+
+on:
+  workflow_call:
+    inputs:
+      timeout-minutes:
+        description: Job timeout.
+        type: number
+        default: 25
+
+jobs:
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-24.04
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Check
+        run: npm run check
