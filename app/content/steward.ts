@@ -123,6 +123,16 @@ export const comingLater = {
   ],
 };
 
+// The same wording as the docs site (Steward-GRC/docs home and footer).
+export const openSource = {
+  eyebrow: "Open source",
+  heading: "Steward is open source under the Apache License 2.0.",
+  license: { label: "Apache License 2.0", href: "https://github.com/Steward-GRC/.github/blob/main/LICENSE" },
+  org: { label: "View on GitHub", href: "https://github.com/Steward-GRC" },
+  trademarkTail:
+    " are trademarks of the rabbit hole tech, llc; the licence does not grant rights to the name, the logo or the tagline.",
+};
+
 // The holder wording is copied from Steward-GRC/.github's TRADEMARKS.md and
 // profile/README.md (merged to main 2026-10-15): "...are trademarks of the
 // rabbit hole tech, llc."
@@ -138,6 +148,7 @@ export const nav = {
   links: [
     { label: "What it is", href: "#what-it-is" },
     { label: "How it runs", href: "#how-it-runs" },
+    { label: "Open source", href: "#open-source" },
     { label: "GitHub", href: "https://github.com/Steward-GRC" },
   ],
 };
