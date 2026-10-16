@@ -33,4 +33,6 @@ jobs:
             npx wrangler pages project list --json | jq -e
             '.[] | select(.["Project Name"] == "steward-grc-www")' > /dev/null ||
             npx wrangler pages project create steward-grc-www --production-branch=main
-          command: pages deploy build/client --project-name=steward-grc-www --branch=main
+          # The release checks out a detached tag, so the branch is named explicitly:
+          # a pre-release (rc) lands on the dev branch alias, anything else on production.
+          command: pages deploy build/client --project-name=steward-grc-www --branch=${{ github.event.release.prerelease && 'dev' || 'main' }}
