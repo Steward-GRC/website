@@ -368,12 +368,30 @@
   font-size: 1.0625rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
+  max-width: none;
 }
 
 .feature-card__body {
   color: var(--muted);
   font-size: 0.875rem;
   margin: 0;
+  max-width: none;
+}
+
+/* The "what it is" grid: three even columns, with the fourth card spanning
+   the full row instead of wrapping alone next to empty space. */
+.feature-grid--quad {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.feature-grid--quad > :last-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .feature-grid--quad {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Footer */

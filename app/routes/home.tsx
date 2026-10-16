@@ -44,7 +44,7 @@ export default function Home() {
         </SplitHero>
 
         <Section id="what-it-is" eyebrow={whatItIs.eyebrow} heading={whatItIs.heading} lede={whatItIs.lede}>
-          <FeatureGrid items={whatItIs.features} />
+          <FeatureGrid items={whatItIs.features} className="feature-grid--quad" />
         </Section>
 
         <Section id="how-it-runs" eyebrow={howItRuns.eyebrow} heading={howItRuns.heading} tone="card">
