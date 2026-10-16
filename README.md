@@ -6,15 +6,21 @@ This is the public marketing site for Steward: steward-grc.com and www.steward-g
 separate from [steward-web](https://github.com/Steward-GRC/steward-web), which holds the product's
 own staff and admin apps and its docs guide.
 
-This repo starts private, and its first content lands as a pull request that stays open for
-review before anything merges. It becomes public only once the owner approves the site.
+The site is a single static page for now, built with Vite and React and prerendered to plain
+HTML. It's deployed to Cloudflare Pages only when a release is published; nothing goes live from a
+push or a pull request. Every change lands through a pull request that the checks gate.
 
 ## 🛠️ Develop
 
 ```bash
 npm install --ignore-scripts
-npm run build
+npm run build      # prerendered static site in build/
 ```
+
+## 🚀 Releases
+
+Release Drafter keeps a draft release up to date from merged pull requests. Publishing that draft
+creates the tag, and the deploy workflow puts that exact build live.
 
 ## 🤝 Contributing
 
