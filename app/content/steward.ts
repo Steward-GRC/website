@@ -78,9 +78,14 @@ export const howItRuns = {
   // at the clause and word for word up to there.
   heading: "Steward is a self-hosted platform: one umbrella Helm chart composing every service, each with its own high-availability Postgres instance.",
   paragraphs: [
-    // docs/install.md, word for word (the link text "steward-release" kept
-    // plain; the original links to the repo).
-    "The chart lives in steward-release, alongside the appliance (a separate, single-node closed-shell OS image for anyone who doesn't already run Kubernetes).",
+    // steward-release docs/install.md, "the first-class install path... use
+    // this chart when you already run Kubernetes and want to bring your
+    // own" (second person swapped to third so it stands next to the next
+    // sentence).
+    "The chart lives in steward-release, the first-class install path for anyone who already runs Kubernetes and wants to bring their own.",
+    // Steward-GRC/docs docs/install.md (feat/1-guide), the appliance
+    // parenthetical, word for word, as its own sentence.
+    "The appliance is the other path: a separate, single-node closed-shell OS image for anyone who doesn't.",
     // steward-release README.md, "Shared clusters" bullet, word for word.
     "Default values install no cluster-scoped object: no CRDs, ClusterRoles, webhooks or ClusterIssuers.",
   ],
