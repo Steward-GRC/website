@@ -1,5 +1,5 @@
 export const meta = {
-  title: "Steward",
+  title: "Steward-GRC",
   description: "Open-source policy, procedure and compliance management, coming soon.",
 };
 
