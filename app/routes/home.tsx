@@ -22,6 +22,7 @@ export default function Home() {
             <span className="hero__tagline-tm">&trade;</span>
           </p>
           <p className="hero__status">{hero.status}</p>
+          <span className="hero__bar" aria-hidden="true" />
         </div>
       </main>
       <Footer />

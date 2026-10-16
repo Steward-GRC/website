@@ -43,7 +43,7 @@
 }
 
 .hero__inner {
-  max-width: 32rem;
+  max-width: 46rem;
 }
 
 .wordmark {
@@ -86,12 +86,23 @@
 }
 
 .hero__status {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 7vw + 1rem, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--primary);
   margin: 0;
+}
+
+.hero__bar {
+  display: block;
+  width: 4.5rem;
+  height: 6px;
+  margin: 1.25rem auto 0;
+  border-radius: 999px;
+  background: var(--accent);
 }
 
 .footer {
