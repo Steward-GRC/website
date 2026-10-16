@@ -20,7 +20,10 @@ npm run build      # prerendered static site in build/
 ## 🚀 Releases
 
 Release Drafter keeps a draft release up to date from merged pull requests. Publishing that draft
-creates the tag, and the deploy workflow puts that exact build live.
+creates the tag, and `.github/workflows/deploy.yml` puts that exact build live on Cloudflare Pages
+(project `steward-grc-www`), using the org's `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`
+secrets. Both custom domains are added to the Pages project in the Cloudflare dashboard, not by
+this workflow.
 
 ## 🤝 Contributing
 
