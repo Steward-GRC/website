@@ -11,7 +11,9 @@ export const Wordmark = () => (
       <path fill="#e2a336" d="M27 4h9v21l-4.5-4.2L27 25z" />
     </svg>
     <span className="wordmark__name">
-      Steward-GRC<span className="wordmark__tm">&trade;</span>
+      <span className="tm-bind">
+        Steward-GRC<sup>&trade;</sup>
+      </span>
     </span>
   </span>
 );

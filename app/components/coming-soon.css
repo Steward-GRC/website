@@ -65,10 +65,16 @@
   color: var(--ink);
 }
 
-.wordmark__tm {
-  margin-inline-start: 0.1em;
+/* Binds a trademark mark to the word before it so it never wraps onto its
+   own line: wrap "<last word><sup>&trade;</sup>" in this class. */
+.tm-bind {
+  white-space: nowrap;
+}
+
+.tm-bind sup {
   font-size: 0.6em;
   vertical-align: super;
+  margin-inline-start: 0.05em;
 }
 
 .hero__tagline {
@@ -76,13 +82,6 @@
   font-weight: 700;
   color: var(--ink);
   margin: 0 0 2rem;
-}
-
-.hero__tagline-tm {
-  margin-inline-start: 0.1em;
-  font-size: 0.55em;
-  font-weight: 600;
-  vertical-align: super;
 }
 
 .hero__status {
@@ -117,8 +116,3 @@
   margin: 0;
 }
 
-.footer__tm {
-  margin-inline-start: 0.1em;
-  font-size: 0.7em;
-  vertical-align: super;
-}

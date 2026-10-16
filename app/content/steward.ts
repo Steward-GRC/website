@@ -3,11 +3,9 @@ export const meta = {
   description: "Open-source policy, procedure and compliance management, coming soon.",
 };
 
-// The tagline is Steward's own line, from steward-web/README.md (it echoes the
-// brand brief's "Steward keeps your organisation's policies in one place" in
-// plan/program/design/steward/BRIEF.md section 7).
+// The tagline is Steward-GRC's own line (owner, 2026-10-15).
 export const hero = {
-  tagline: "Steward keeps your organisation's rules in one place and gives everyone a safe way to speak up.",
+  tagline: "Rules kept. Voices heard.",
   status: "Coming soon",
 };
 
@@ -16,4 +14,11 @@ export const hero = {
 // rabbit hole tech, llc."
 export const footer = {
   holder: "the rabbit hole tech, llc",
+};
+
+// Splits off the last word of a phrase so a trademark mark can be bound to it
+// with a non-breaking span: the mark never wraps onto its own line.
+export const splitLastWord = (phrase: string): [string, string] => {
+  const i = phrase.lastIndexOf(" ");
+  return i === -1 ? ["", phrase] : [phrase.slice(0, i), phrase.slice(i + 1)];
 };
