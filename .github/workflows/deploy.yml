@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -23,4 +23,14 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # preCommands runs in a real shell (unlike `command`, which runs each
+          # wrangler subcommand on its own), so the exists-check and the
+          # conditional create can live in one line. The exact-name match on
+          # `--json` output (the "Project Name" field) avoids a loose substring
+          # match picking up a similarly named project; a second run finds the
+          # project and skips creation, so this is safe to run on every deploy.
+          preCommands: >-
+            npx wrangler pages project list --json | jq -e
+            '.[] | select(.["Project Name"] == "steward-grc-www")' > /dev/null ||
+            npx wrangler pages project create steward-grc-www --production-branch=main
           command: pages deploy build/client --project-name=steward-grc-www
