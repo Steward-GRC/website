@@ -96,7 +96,6 @@ export const howItRuns = {
 export const acknowledgement = {
   credit: "Steward was originally written by ",
   creditLink: { label: "@Bugs5382", href: "https://github.com/Bugs5382" },
-  note: "Apache-2.0.",
 };
 
 export const comingLater = {

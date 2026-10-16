@@ -1,8 +1,7 @@
 import "~/components/marketing.css";
-import { acknowledgement, footer, hero } from "~/content/steward";
+import { acknowledgement, footer, hero, openSource } from "~/content/steward";
 
 export const Footer = () => {
-  const year = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="footer__row">
@@ -16,6 +15,10 @@ export const Footer = () => {
           </ul>
         </nav>
         <p className="footer__legal">
+          Copyright &copy; The Steward Authors. Licensed under the{" "}
+          <a href={openSource.license.href}>{openSource.license.label}</a>.
+        </p>
+        <p className="footer__legal">
           <span className="tm-bind">
             Steward-GRC<sup>&trade;</sup>
           </span>
@@ -24,13 +27,11 @@ export const Footer = () => {
             {hero.headlineLine2TmWord}
             <sup>&trade;</sup>
           </span>
-          {hero.headlineLine2Stop} and their logos are trademarks of {footer.holder}. &copy; {year}{" "}
-          {footer.holder}. All rights reserved.
+          {hero.headlineLine2Stop} and their logos are trademarks of {footer.holder}.
         </p>
         <p className="footer__legal">
           {acknowledgement.credit}
-          <a href={acknowledgement.creditLink.href}>{acknowledgement.creditLink.label}</a>.{" "}
-          {acknowledgement.note}
+          <a href={acknowledgement.creditLink.href}>{acknowledgement.creditLink.label}</a>.
         </p>
       </div>
     </footer>
