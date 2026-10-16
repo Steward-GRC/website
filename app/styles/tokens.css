@@ -1,0 +1,27 @@
+/* Steward brand tokens for the marketing site: the same palette and type
+   scale as steward-web's packages/ui/src/styles/steward.css and
+   apps/docs/src/css/custom.css (light mode only; this site doesn't need the
+   dark/high-contrast variants those apps carry). Values copied, not
+   imported: this repo has its own build and doesn't share a workspace with
+   steward-web. */
+@import "@fontsource-variable/public-sans";
+@import "@fontsource-variable/source-serif-4";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+:root {
+  --font-sans: "Public Sans Variable", "Public Sans", system-ui, sans-serif;
+  --font-serif: "Source Serif 4 Variable", "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --background: #ece4d8;
+  --surface: #ffffff;
+  --ink: #261b25;
+  --muted: #665967;
+  --border: #dcd0c1;
+  --primary: #5d2a5b;
+  --primary-hover: #4d2149;
+  --accent: #e2a336;
+  --focus: #7b3f78;
+
+  --radius-lg: 10px;
+}

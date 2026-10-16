@@ -1,0 +1,99 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* The grid backdrop and corner glow, carried over from the hero recipe. */
+.page__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--border) 65%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 65%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+}
+
+.page__backdrop::after {
+  content: "";
+  position: absolute;
+  top: -12rem;
+  right: -10rem;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 45%, transparent) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.hero__inner {
+  max-width: 32rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.wordmark__mark {
+  height: 2.25rem;
+  width: auto;
+}
+
+.wordmark__name {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hero__tagline {
+  font-size: 1.125rem;
+  color: var(--muted);
+  margin: 0 0 2rem;
+}
+
+.hero__status {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.footer__legal {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.footer__tm {
+  margin-inline-start: 0.1em;
+  font-size: 0.7em;
+  vertical-align: super;
+}
