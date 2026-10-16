@@ -33,4 +33,4 @@ jobs:
             npx wrangler pages project list --json | jq -e
             '.[] | select(.["Project Name"] == "steward-grc-www")' > /dev/null ||
             npx wrangler pages project create steward-grc-www --production-branch=main
-          command: pages deploy build/client --project-name=steward-grc-www
+          command: pages deploy build/client --project-name=steward-grc-www --branch=main
