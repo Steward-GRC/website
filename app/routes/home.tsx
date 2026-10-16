@@ -13,6 +13,7 @@ import {
   howItRuns,
   meta as pageMeta,
   nav,
+  openSource,
   whatItIs,
 } from "~/content/steward";
 
@@ -52,6 +53,26 @@ export default function Home() {
               {paragraph}
             </p>
           ))}
+        </Section>
+
+        <Section id="open-source" eyebrow={openSource.eyebrow} heading={openSource.heading}>
+          <p className="prose">
+            Steward-GRC is open source, licensed under the{" "}
+            <a href={openSource.license.href}>{openSource.license.label}</a>.{" "}
+            <a href={openSource.org.href}>{openSource.org.label}</a>
+          </p>
+          <p className="prose">
+            <span className="tm-bind">
+              Steward-GRC<sup>&trade;</sup>
+            </span>
+            , its logo and the tagline {hero.headlineLine1} {hero.headlineLine2}{" "}
+            <span className="tm-bind">
+              {hero.headlineLine2TmWord}
+              <sup>&trade;</sup>
+            </span>
+            {hero.headlineLine2Stop}
+            {openSource.trademarkTail}
+          </p>
         </Section>
 
         <Section id="coming-later" eyebrow={comingLater.eyebrow} heading={comingLater.heading} lede={comingLater.lede} tone="card">
