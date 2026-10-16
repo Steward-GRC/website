@@ -23,8 +23,9 @@ Release Drafter keeps a draft release up to date from merged pull requests. Publ
 creates the tag, and `.github/workflows/deploy.yml` puts that exact build live on Cloudflare Pages
 (project `steward-grc-www`) with `wrangler pages deploy`, using the org's `CLOUDFLARE_API_TOKEN`
 and `CLOUDFLARE_ACCOUNT_ID` secrets. It only runs on a published release — no push, pull request or
-manual trigger — and nothing is live until then. Both custom domains are added to the Pages
-project in the Cloudflare dashboard, not by this workflow.
+manual trigger — and nothing is live until then. The workflow creates the `steward-grc-www` Pages
+project itself the first time it doesn't find one; the custom domains are still added by hand to
+the Pages project in the Cloudflare dashboard, not by this workflow.
 
 ## 🤝 Contributing
 
