@@ -72,9 +72,17 @@
 }
 
 .hero__tagline {
-  font-size: 1.125rem;
-  color: var(--muted);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--ink);
   margin: 0 0 2rem;
+}
+
+.hero__tagline-tm {
+  margin-inline-start: 0.1em;
+  font-size: 0.55em;
+  font-weight: 600;
+  vertical-align: super;
 }
 
 .hero__status {

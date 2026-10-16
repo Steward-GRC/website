@@ -17,7 +17,10 @@ export default function Home() {
       <main className="hero">
         <div className="hero__inner">
           <Wordmark />
-          <p className="hero__tagline">{hero.tagline}</p>
+          <p className="hero__tagline">
+            {hero.tagline}
+            <span className="hero__tagline-tm">&trade;</span>
+          </p>
           <p className="hero__status">{hero.status}</p>
         </div>
       </main>
