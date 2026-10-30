@@ -2,6 +2,9 @@ import "~/components/marketing.css";
 import { Wordmark } from "~/components/wordmark";
 import { footer } from "~/content/steward";
 
+// The footer mark's size in px, the same as the Sneakers-PAM footer's mark.
+const FOOTER_MARK_PX = 24;
+
 // Renders a mark with its (tm) bound to the last word, so a line break can
 // never land between the word and its mark.
 const MarkedTerm = ({ mark }: { mark: string }) => {
@@ -26,7 +29,7 @@ export const Footer = () => {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <Wordmark />
+            <Wordmark size={FOOTER_MARK_PX} />
             <p className="footer__tagline">{footer.tagline}</p>
           </div>
           {footer.groups.map((group) => (

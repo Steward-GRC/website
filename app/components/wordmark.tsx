@@ -1,8 +1,15 @@
 // The Steward mark, copied from steward-web's apps/docs/static/img/mark.svg
 // (same brand asset, inlined here so this repo doesn't depend on that one).
-export const Wordmark = () => (
+export const Wordmark = ({ size }: { size?: number }) => (
   <span className="wordmark">
-    <svg className="wordmark__mark" viewBox="0 0 48 48" role="img" aria-label="The Steward mark">
+    <svg
+      className="wordmark__mark"
+      viewBox="0 0 48 48"
+      width={size}
+      height={size}
+      role="img"
+      aria-label="The Steward mark"
+    >
       <path
         fill="#5d2a5b"
         fillRule="evenodd"

@@ -407,6 +407,13 @@
   margin-bottom: 2rem;
 }
 
+.footer__brand .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
 .footer__tagline {
   margin: 0.5rem 0 0;
   font-size: 0.875rem;
