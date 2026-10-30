@@ -1,33 +1,59 @@
 import "~/components/marketing.css";
-import { footer, hero, openSource } from "~/content/steward";
+import { Wordmark } from "~/components/wordmark";
+import { footer } from "~/content/steward";
+
+// The footer mark's size in px, the same as the Sneakers-PAM footer's mark.
+const FOOTER_MARK_PX = 24;
+
+// Renders a mark with its (tm) bound to the last word, so a line break can
+// never land between the word and its mark.
+const MarkedTerm = ({ mark }: { mark: string }) => {
+  const lastSpace = mark.lastIndexOf(" ");
+  const rest = lastSpace === -1 ? "" : mark.slice(0, lastSpace + 1);
+  const lastWord = mark.slice(lastSpace + 1);
+  return (
+    <>
+      {rest}
+      <span className="tm-bind">
+        {lastWord}
+        <sup>&trade;</sup>
+      </span>
+    </>
+  );
+};
 
 export const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <footer className="footer">
-      <div className="footer__row">
-        <nav aria-label="Footer">
-          <ul className="footer__links">
-            {footer.links.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <div className="container">
+        <div className="footer__grid">
+          <div className="footer__brand">
+            <Wordmark size={FOOTER_MARK_PX} />
+            <p className="footer__tagline">{footer.tagline}</p>
+          </div>
+          {footer.groups.map((group) => (
+            <nav key={group.title} aria-label={group.title} className="footer__group">
+              <h2 className="footer__heading">{group.title}</h2>
+              <ul className="footer__links">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
         <p className="footer__legal">
-          Copyright &copy; The Steward Authors. Licensed under the{" "}
-          <a href={openSource.license.href}>{openSource.license.label}</a>.
-        </p>
-        <p className="footer__legal">
-          <span className="tm-bind">
-            Steward-GRC<sup>&trade;</sup>
-          </span>
-          , {hero.headlineLine1} {hero.headlineLine2}{" "}
-          <span className="tm-bind">
-            {hero.headlineLine2TmWord}
-            <sup>&trade;</sup>
-          </span>
-          {hero.headlineLine2Stop} and their logos are trademarks of {footer.holder}.
+          {footer.marks.map((mark, index) => (
+            <span key={mark}>
+              {index > 0 && " and "}
+              <MarkedTerm mark={mark} />
+            </span>
+          ))}{" "}
+          are trademarks of the {footer.holder} project. &copy; {year} The {footer.holder} Authors. Licensed under
+          Apache-2.0.
         </p>
       </div>
     </footer>
