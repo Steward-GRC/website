@@ -12,10 +12,11 @@ export const meta = {
 };
 
 // The tagline is Steward-GRC's own line, exactly "Rules kept. Voices
-// heard.(tm)" with the mark bound to "heard" and the period after it. Both
-// the hero headline and the footer trademark notice build it from the same
-// headlineLine2TmWord/headlineLine2Stop fields, so the mark never drifts to
-// the wrong side of the period.
+// heard.(tm)" with the mark bound to "heard" and the period after it. The
+// hero headline builds it from the headlineLine2TmWord/headlineLine2Stop
+// fields, so the mark never drifts to the wrong side of the period. The
+// footer's legal line names it mid-sentence, so it uses the words without
+// the period.
 export const hero = {
   eyebrow: "Steward-GRC",
   headlineLine1: "Rules kept.",
@@ -124,17 +125,46 @@ export const openSource = {
   license: { label: "Apache License 2.0", href: "https://github.com/Steward-GRC/.github/blob/main/LICENSE" },
   org: { label: "View on GitHub", href: "https://github.com/Steward-GRC" },
   trademarkTail:
-    " are trademarks of the rabbit hole tech, llc; the licence does not grant rights to the name, the logo or the tagline.",
+    " are trademarks of the Steward-GRC project; the licence does not grant rights to the name, the logo or the tagline.",
 };
 
-// The holder wording is copied from Steward-GRC/.github's TRADEMARKS.md and
-// profile/README.md (merged to main 2026-10-15): "...are trademarks of the
-// rabbit hole tech, llc."
+// The footer every product site shares: the brand and tagline, the Product,
+// Resources and Trust columns, then the legal line. The marks are named in
+// the order the legal line reads them; the slogan is built from the hero
+// fields so it can't drift from the headline.
 export const footer = {
-  holder: "the rabbit hole tech, llc",
-  links: [
-    { label: "GitHub", href: "https://github.com/Steward-GRC" },
-    { label: "Docs", href: "https://github.com/Steward-GRC/docs" },
+  // The org profile README's own tagline line, the same as meta.description.
+  tagline: meta.description,
+  marks: [
+    "Steward-GRC",
+    `${hero.headlineLine1} ${hero.headlineLine2} ${hero.headlineLine2TmWord}`,
+  ],
+  holder: "Steward-GRC",
+  groups: [
+    {
+      title: "Product",
+      links: [
+        { label: "What it is", href: "#what-it-is" },
+        { label: "How it runs", href: "#how-it-runs" },
+        { label: "Coming later", href: "#coming-later" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Docs", href: "https://github.com/Steward-GRC/docs" },
+        { label: "Install", href: "https://github.com/Steward-GRC/steward-release#-install" },
+        { label: "GitHub", href: "https://github.com/Steward-GRC" },
+      ],
+    },
+    {
+      title: "Trust",
+      links: [
+        { label: "Security policy", href: "https://github.com/Steward-GRC/.github/blob/main/.github/SECURITY.md" },
+        { label: "Trademarks", href: "https://github.com/Steward-GRC/.github/blob/main/TRADEMARKS.md" },
+        { label: "License", href: "https://github.com/Steward-GRC/.github/blob/main/LICENSE" },
+      ],
+    },
   ],
 };
 
