@@ -7,6 +7,8 @@ export const meta = {
   title: "Steward-GRC",
   // The org profile README's own tagline line, word for word.
   description: "Open-source policy, procedure and compliance management, built as a set of small services.",
+  siteName: "Steward-GRC",
+  url: "https://www.steward-grc.com/",
 };
 
 // The tagline is Steward-GRC's own line, exactly "Rules kept. Voices
