@@ -7,7 +7,7 @@
 // built, named on every vNext docs page.
 export const release = {
   kind: "release" as "prerelease" | "release",
-  publishedOn: "2026-01-01",
-  upcoming: "v0.2.0",
+  publishedOn: "2026-11-10",
+  upcoming: "v1.0.0",
   version: "v0.1.0",
 };

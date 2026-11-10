@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { product } from "@product/frame/product";
+import { release } from "@product/frame/release";
 import Layout from "@theme/Layout";
 
 import styles from "./index.module.css";
@@ -61,6 +62,7 @@ const Home = (): ReactNode => {
         <header className={styles.intro}>
           <h1 className={styles.title}>{product.name} docs</h1>
           <p className={styles.tagline}>{product.tagline}</p>
+          <p className={styles.tagline}>Docs {release.version}</p>
         </header>
         <section aria-labelledby="docs-sections" className={styles.entryPoints}>
           <h2 className={styles.entryGroupTitle} id="docs-sections">

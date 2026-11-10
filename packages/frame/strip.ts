@@ -5,6 +5,8 @@
 // pass it to Docusaurus's announcement bar, so the two are the same bytes
 // and site-frame.css draws them the same way.
 
+import { release } from "./release.ts";
+
 export interface FrameLinks {
   docs: string;
   releases: string;
@@ -52,12 +54,13 @@ export const isPreOne = (version: string) => version.startsWith("v0.");
 
 export const releaseStrip = (links: FrameLinks): ReleaseStrip => {
   return {
-    // Steward has no release yet: this site is the guide for the demo, so
-    // the strip says so instead of naming a release (release.ts stays for
-    // the day the docs are versioned).
-    badge: "Demo",
-    body: "It describes a test install with made-up data.",
-    heading: "This is the guide for the Steward demo.",
+    // Steward has no download page yet, so the strip names the docs version
+    // (release.ts) and links the guide's limits instead of a release.
+    badge: release.kind === "prerelease" ? "Pre-release" : "Release",
+    body: isPreOne(release.version)
+      ? "Until v1.0.0, any release may change fundamentally."
+      : "",
+    heading: `Docs for ${release.version}.`,
     links: [{ href: links.status, label: "Things to know" }],
   };
 };
