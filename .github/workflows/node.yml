@@ -2,7 +2,7 @@
 # job, so its status check is `checks / Build & Test`.
 #
 # Steps, in order: install with the lockfile frozen and scripts off, then
-# `npm run check` (typecheck and the prerendered build). It takes no secrets.
+# `npm run check` (typecheck and the prerendered build of the product page) and `npm run check:docs` (the docs workspace). It takes no secrets.
 name: node
 
 on:
@@ -34,5 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
-      - name: Check
+      - name: Check the product page
         run: npm run check
+
+      # Lint, the tests, the docs typecheck and build, then the checks on the
+      # built docs: no browser storage before consent, every image present, and
+      # the site unlisted (robots.txt, noindex, no sitemap).
+      - name: Check the docs
+        run: npm run check:docs

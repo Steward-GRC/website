@@ -1,0 +1,534 @@
+/* The shared site frame for the product site and the docs: the strip,
+   header, page column and footer measurements, the frame colours, and the
+   theme switch, full-width switch, header menu and cookie bar both sites
+   use, so moving between the two never shifts, resizes or recolours
+   anything in the frame.
+
+   This is the one copy, in packages/frame. The site (apps/site) and the docs
+   (apps/docs) both import it, so a change here changes both sites together.
+   Each site lays out its own header and footer markup from these tokens (the
+   site in app/components/marketing.css, the docs in src/css/custom.css on
+   Docusaurus's navbar and footer classes); only the values live here. The
+   strip and the switches are the same markup on both sites, so their rules
+   are here too.
+
+   The colours are a neutral grey set, light on :root and dark under
+   [data-theme="dark"], which both sites set on <html>. A product replaces
+   them with its own brand (TEMPLATE.md); frame.test.ts checks body links
+   still meet WCAG AA on the page and card in both themes.
+
+   The type is the system font stack, so nothing loads before the first
+   paint. A product that self-hosts its fonts lists them in fonts.ts, which
+   writes the font-face rules with each site's base path (a url() here can't
+   know it), and points the two font tokens at them. */
+
+:root {
+  --frame-font-sans:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --frame-font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+
+  /* The page column every part of both sites lines up on. */
+  --frame-max: 72rem;
+  --frame-gutter: clamp(1.25rem, 4vw, 2rem);
+
+  /* Header: a 28px row with 1rem above and below, then a 1px rule. */
+  --frame-header-pad: 1rem;
+  --frame-header-height: 61px;
+  --frame-header-blur: blur(6px);
+  --frame-logo: 1.75rem;
+  --frame-brand-gap: 0.625rem;
+  --frame-wordmark-size: 1.0625rem;
+  --frame-wordmark-line: 1.59375rem;
+  --frame-wordmark-weight: 700;
+  --frame-wordmark-spacing: -0.025em;
+  --frame-nav-size: 0.875rem;
+  --frame-nav-line: 1.3125rem;
+  --frame-nav-gap: 2rem;
+  --frame-nav-gap-menu: 0.5rem;
+  --frame-toggle: 2rem;
+  --frame-toggle-icon: 1rem;
+  --frame-radius: 0.5rem;
+
+  /* The strip above the header. */
+  --frame-strip-pad: 0.75rem;
+  --frame-strip-gap: 0.5rem 1rem;
+  --frame-strip-rule: 4px;
+  --frame-strip-size: 0.875rem;
+  --frame-strip-line: 1.3125rem;
+  --frame-strip-badge-size: 0.75rem;
+  --frame-strip-badge-line: 1.125rem;
+  --frame-strip-badge-spacing: 0.08em;
+  --frame-strip-dot: 0.5rem;
+
+  /* Footer. */
+  --frame-footer-pad-top: 2.5rem;
+  --frame-footer-pad-bottom: 2rem;
+  --frame-footer-cols: 2fr repeat(3, 1fr);
+  --frame-footer-cols-narrow: 1fr 1fr;
+  --frame-footer-gap: 2rem;
+  --frame-footer-mark: 1.5rem;
+  --frame-footer-wordmark-size: 1.0625rem;
+  --frame-footer-size: 0.875rem;
+  --frame-footer-line: 1.3125rem;
+  --frame-footer-link-gap: 0.5rem;
+  --frame-footer-heading-size: 0.75rem;
+  --frame-footer-heading-line: 1.125rem;
+  --frame-footer-heading-gap: 0.75rem;
+  --frame-footer-heading-spacing: 0.08em;
+  --frame-footer-tagline-gap: 0.5rem;
+  --frame-footer-tagline-max: 20rem;
+  --frame-legal-size: 0.75rem;
+  --frame-legal-line: 1.125rem;
+  --frame-legal-pad: 1.25rem;
+
+  /* Frame colours, light. */
+  --frame-bg: #ece4d8;
+  --frame-surface: #ffffff;
+  --frame-ink: #261b25;
+  --frame-muted: #665967;
+  --frame-border: #dcd0c1;
+  --frame-primary: #5d2a5b;
+  /* Body-text links: the Steward plum; frame.test.ts checks the contrast. */
+  --frame-link: #5d2a5b;
+  --frame-warning: #8a5a00;
+  --frame-header-bg: color-mix(in srgb, var(--frame-bg) 92%, transparent);
+  --frame-strip-bg: color-mix(
+    in srgb,
+    var(--frame-warning) 10%,
+    var(--frame-surface)
+  );
+}
+
+/* Breakpoints, the same on both sites. Under 1050px the header folds its
+   links into the menu button (header-menu-config.ts; the rule is below), so
+   it stays one row and never wraps or overlaps; at 720px and under, the
+   footer drops to two columns under the brand. */
+
+/* Dark. Screens only, so print stays on paper colours. */
+@media screen {
+  :root[data-theme="dark"] {
+    --frame-bg: #1a121a;
+    --frame-surface: #261b25;
+    --frame-ink: #f1e9f0;
+    --frame-muted: #bcaebb;
+    --frame-border: #3d2f3c;
+    --frame-primary: #d9b3d6;
+    /* Light plum on the dark page; frame.test.ts checks the contrast. */
+    --frame-link: #d9b3d6;
+    --frame-warning: #e2a336;
+  }
+}
+
+/* The scrollbar's space is always kept, so a long page and a short one put
+   the frame at the same spot; and text is drawn the same way on both. */
+html {
+  scrollbar-gutter: stable;
+  background-color: var(--frame-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* The marks: each site renders the light and the dark file, and the theme on
+   <html> shows one. */
+.mark--dark,
+:root[data-theme="dark"] .mark--light {
+  display: none;
+}
+
+:root[data-theme="dark"] .mark--dark {
+  display: inline-block;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Every property set, since the browser's defaults and the docs' (Infima)
+   style <sup> differently. */
+.tm {
+  position: relative;
+  top: -0.5em;
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* Links in body text, on both sites: the site marks its page content with
+   .frame-prose, the docs' pages are Docusaurus's .markdown. Only links with
+   no class of their own, so buttons, cards, calls to action,
+   heading anchors and the header and footer keep their own look; Docusaurus
+   writes a markdown link with an empty class attribute, so that counts as
+   none. Links in the docs' callouts take one more class, to outrank the docs
+   theme's admonition link rule, which loads after this file. The colour
+   alone sits too close to the muted body text, so prose links are always
+   underlined. */
+.frame-prose a:is(:not([class]), [class=""]),
+.markdown a:is(:not([class]), [class=""]),
+.markdown .theme-admonition a:is(:not([class]), [class=""]) {
+  color: var(--frame-link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--frame-link) 60%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.frame-prose a:is(:not([class]), [class=""]):is(:hover, :focus-visible),
+.markdown a:is(:not([class]), [class=""]):is(:hover, :focus-visible),
+.markdown
+  .theme-admonition
+  a:is(:not([class]), [class=""]):is(:hover, :focus-visible) {
+  color: var(--frame-link);
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+/* The footer's legal text (content.ts legalHtml): the trademarks, then the
+   copyright and licence, each on its own line. */
+.footer__legal-line {
+  display: block;
+}
+
+/* The header menu (header-menu.tsx): under 1050px each site's header links
+   (.frame-nav__link) hide and this button shows at the right end, after the
+   theme switch, opening a panel of the same links under the header. The one
+   media rule for both sites; !important because the docs' own navbar rules
+   are more specific than one class. HEADER_MENU_BREAKPOINT in
+   header-menu-config.ts is the same width. */
+.frame-menu {
+  display: none;
+  align-items: center;
+  height: var(--frame-nav-line);
+}
+
+@media (max-width: 1049px) {
+  .frame-nav__link {
+    display: none !important;
+  }
+
+  /* Closer to the switch than the links' gap. */
+  .frame-menu {
+    display: flex;
+    margin-inline-start: calc(var(--frame-nav-gap-menu) - var(--frame-nav-gap));
+  }
+}
+
+/* A ghost icon button, the same as the theme switch. */
+.frame-menu__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--frame-toggle);
+  height: var(--frame-toggle);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--frame-border);
+  border-radius: calc(var(--frame-radius) - 2px);
+  background: transparent;
+  color: var(--frame-ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.frame-menu__button:hover,
+.frame-menu__button[aria-expanded="true"] {
+  background: var(--frame-border);
+}
+
+.frame-menu__button:focus-visible {
+  outline: 2px solid var(--frame-primary);
+  outline-offset: 2px;
+}
+
+.frame-menu__icon {
+  display: block;
+  width: var(--frame-toggle-icon);
+  height: var(--frame-toggle-icon);
+  flex-shrink: 0;
+}
+
+/* The panel hangs from the header's bottom edge, across the full width, with
+   the links in the page column. */
+.frame-menu__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid var(--frame-border);
+  background: var(--frame-bg);
+  box-shadow: 0 16px 32px -24px rgb(0 0 0 / 0.5);
+  font-family: var(--frame-font-sans);
+}
+
+.frame-menu__panel[hidden] {
+  display: none;
+}
+
+.frame-menu__links {
+  box-sizing: border-box;
+  max-width: var(--frame-max);
+  margin: 0 auto;
+  padding: 0.5rem var(--frame-gutter);
+  list-style: none;
+}
+
+.frame-menu__panel .frame-menu__links li {
+  margin: 0;
+  border-bottom: 1px solid var(--frame-border);
+}
+
+.frame-menu__panel .frame-menu__links li:last-child {
+  border-bottom: 0;
+}
+
+/* Two classes deep, so the sites' own header link rules don't reach in. */
+.frame-menu__panel .frame-menu__links a {
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+.frame-menu__panel .frame-menu__links a:hover,
+.frame-menu__panel .frame-menu__links a:focus-visible {
+  color: var(--frame-primary);
+  text-decoration: none;
+}
+
+/* The strip above the header (strip.ts): the release badge, the release and
+   pre-1.0 note, and two links, on a warning-tinted band with a warning rule
+   at the column's left edge. Text stays in the ink and muted pair, which
+   meets WCAG AA on the band in both themes; the warning colour is only the
+   rule and the dot. */
+.strip__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--frame-strip-gap);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--frame-max);
+  margin-inline: auto;
+  padding: var(--frame-strip-pad) var(--frame-gutter);
+  border-inline-start: var(--frame-strip-rule) solid var(--frame-warning);
+  text-align: start;
+}
+
+.strip__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--frame-font-mono);
+  font-size: var(--frame-strip-badge-size);
+  line-height: var(--frame-strip-badge-line);
+  font-weight: 700;
+  letter-spacing: var(--frame-strip-badge-spacing);
+  text-transform: uppercase;
+  color: var(--frame-ink);
+  white-space: nowrap;
+}
+
+.strip__dot {
+  width: var(--frame-strip-dot);
+  height: var(--frame-strip-dot);
+  border-radius: 50%;
+  background: var(--frame-warning);
+  flex-shrink: 0;
+}
+
+.strip__text {
+  margin: 0;
+  font-family: var(--frame-font-sans);
+  font-size: var(--frame-strip-size);
+  line-height: var(--frame-strip-line);
+  font-weight: 400;
+  color: var(--frame-muted);
+}
+
+.strip__text strong {
+  font-weight: 700;
+  color: var(--frame-ink);
+}
+
+/* Two classes deep, so it outranks the docs' announcement bar link rule. */
+.strip__text .strip__link,
+.strip__text .strip__link:hover {
+  color: var(--frame-primary);
+  text-decoration: underline;
+}
+
+/* The theme switch (theme-toggle.tsx): a 2rem square ghost button with a 1px border and a 1rem icon. The sun shows in dark
+   (switch to light), the moon in light. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--frame-toggle);
+  height: var(--frame-toggle);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--frame-border);
+  border-radius: calc(var(--frame-radius) - 2px);
+  background: transparent;
+  color: var(--frame-ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--frame-border);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--frame-primary);
+  outline-offset: 2px;
+}
+
+.theme-toggle__icon {
+  width: var(--frame-toggle-icon);
+  height: var(--frame-toggle-icon);
+  flex-shrink: 0;
+}
+
+.theme-toggle__icon--sun,
+:root[data-theme="dark"] .theme-toggle__icon--moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle__icon--sun {
+  display: block;
+}
+
+/* The full-width content switch (full-width-toggle.tsx): the nav links'
+   type and line in the mono face, so it sits beside the docs version picker
+   without changing the header's height. While on, it takes the ink colour. */
+.width-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--frame-muted);
+  font-family: var(--frame-font-mono);
+  font-size: var(--frame-nav-size);
+  line-height: var(--frame-nav-line);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.width-toggle:hover,
+.width-toggle[data-full="true"] {
+  color: var(--frame-ink);
+}
+
+.width-toggle:focus-visible {
+  outline: 2px solid var(--frame-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Both labels share one cell and only the current one shows, so the button
+   is as wide as the longer label either way and the toolbar doesn't move. */
+.width-toggle__label {
+  display: inline-grid;
+  justify-items: start;
+}
+
+.width-toggle__label > span {
+  grid-area: 1 / 1;
+}
+
+.width-toggle__spacer {
+  visibility: hidden;
+}
+
+.width-toggle__icon {
+  width: var(--frame-toggle-icon);
+  height: var(--frame-toggle-icon);
+  flex-shrink: 0;
+}
+
+/* The cookie choice (consent-banner.tsx): a bar on the frame's surface at
+   the bottom of the window, in the page column, over the content and never
+   moving it. */
+.frame-consent {
+  position: fixed;
+  z-index: 300;
+  left: 50%;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  width: min(var(--frame-max), calc(100% - 2 * var(--frame-gutter)));
+  padding: 0.875rem 1rem;
+  transform: translateX(-50%);
+  border: 1px solid var(--frame-border);
+  border-radius: var(--frame-radius);
+  background: var(--frame-surface);
+  box-shadow: 0 12px 32px -16px rgb(0 0 0 / 0.45);
+  color: var(--frame-ink);
+  font-family: var(--frame-font-sans);
+  font-size: var(--frame-nav-size);
+  line-height: var(--frame-nav-line);
+}
+
+.frame-consent__text {
+  flex: 1 1 20rem;
+  margin: 0;
+  color: var(--frame-muted);
+}
+
+.frame-consent__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.frame-consent__button {
+  box-sizing: border-box;
+  height: var(--frame-toggle);
+  margin: 0;
+  padding: 0 0.875rem;
+  border: 1px solid var(--frame-border);
+  border-radius: calc(var(--frame-radius) - 2px);
+  background: transparent;
+  color: var(--frame-ink);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.frame-consent__button:hover {
+  background: var(--frame-border);
+}
+
+.frame-consent__button--primary {
+  border-color: var(--frame-primary);
+  background: var(--frame-primary);
+  /* The page colour on primary meets WCAG AA in both themes. */
+  color: var(--frame-bg);
+}
+
+.frame-consent__button--primary:hover {
+  background: color-mix(in srgb, var(--frame-primary) 88%, var(--frame-ink));
+}
+
+.frame-consent__button:focus-visible {
+  outline: 2px solid var(--frame-primary);
+  outline-offset: 2px;
+}

@@ -1,0 +1,84 @@
+/* The docs home (index.tsx), on the --docs-* tokens from src/css/theme.css. */
+
+.intro,
+.entryPoints {
+  box-sizing: border-box;
+  max-width: var(--frame-max);
+  margin: 0 auto;
+  padding: 3.5rem var(--frame-gutter) 0;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--docs-foreground);
+}
+
+.tagline {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 1.125rem;
+  color: var(--docs-muted-foreground);
+}
+
+.entryGroupTitle {
+  margin: 0 0 1.25rem;
+  font-size: 1.35rem;
+  color: var(--docs-foreground);
+}
+
+.entryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+
+.entryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--docs-border);
+  border-radius: var(--docs-radius);
+  background: var(--docs-card);
+  color: var(--docs-foreground);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.entryCard:hover,
+.entryCard:focus-visible {
+  border-color: var(--docs-primary);
+  color: var(--docs-foreground);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entryCard {
+    transition: none;
+  }
+
+  .entryCard:hover,
+  .entryCard:focus-visible {
+    transform: none;
+  }
+}
+
+.entryLabel {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.entryDescription {
+  font-size: 0.9rem;
+  color: var(--docs-muted-foreground);
+}
+
+.productLink {
+  padding: 3.5rem var(--frame-gutter);
+  text-align: center;
+  color: var(--docs-muted-foreground);
+}

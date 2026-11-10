@@ -9,3 +9,6 @@ build/
 
 # Local design notes (non-tracked).
 .local/
+
+# The docs workspace.
+.docusaurus/

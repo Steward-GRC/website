@@ -17,6 +17,21 @@ npm install --ignore-scripts
 npm run build      # prerendered static site in build/
 ```
 
+## 📚 Docs
+
+`apps/docs` is the Steward demo guide (Docusaurus 3, built on the rabbit hole's website and docs
+template), meant for docs.steward-grc.com. It is unlisted: no sitemap, noindex on every page,
+robots.txt disallowing everything. It shares `packages/frame` and `packages/brand` with the
+template; the product page above stays at the repo root until it moves to `apps/site`.
+
+```bash
+npm install --ignore-scripts
+npm run dev:docs        # http://localhost:3000
+npm run check:docs      # lint, tests, build and the checks on the built docs
+```
+
+The static output is `apps/docs/build`. Nothing deploys it from here.
+
 ## 🚀 Releases
 
 Release Drafter keeps a draft release up to date from merged pull requests. Publishing that draft

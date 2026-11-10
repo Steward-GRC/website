@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+  The source for a product's link-preview card, public/img/brand/og-card.png,
+  which both sites point og:image at. The template ships a neutral
+  placeholder PNG (the mark on a dark card, no words). To make the product's
+  own card, put its mark in public/img/brand, edit this page, render it
+  headless at a 1200x630 viewport with a device scale of 1, screenshot the
+  full viewport to public/img/brand/og-card.png, and check the file carries
+  no C2PA or caBX metadata. brand.test.ts checks the size.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Steward link-preview card</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #1a121a;
+      }
+      .card {
+        box-sizing: border-box;
+        width: 1200px;
+        height: 630px;
+        padding: 96px 104px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        color: #f1e9f0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .brand img {
+        width: 128px;
+        height: 128px;
+      }
+      .name {
+        font-weight: 700;
+        font-size: 104px;
+        letter-spacing: -0.025em;
+      }
+      .tagline {
+        margin: 0;
+        max-width: 900px;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 1.25;
+      }
+      .site {
+        margin: 0;
+        font-family: ui-monospace, Menlo, monospace;
+        font-size: 26px;
+        color: #bcaebb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="brand">
+        <img src="public/img/brand/mark-dark.svg" alt="" />
+        <div class="name">Steward</div>
+      </div>
+      <p class="tagline">
+        Open-source policy, procedure and compliance management, built as a set
+        of small services.
+      </p>
+      <p class="site">www.steward-grc.com</p>
+    </div>
+  </body>
+</html>

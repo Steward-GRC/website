@@ -1,0 +1,10 @@
+# The product page at the repo root keeps its own style until it moves to
+# apps/site; the docs workspace formatting must not touch it.
+/app/
+/public/
+/*.ts
+/*.md
+/.claude/
+/.github/
+/package-lock.json
+/tsconfig.json

@@ -9,7 +9,21 @@
     "build:preview": "BASE_PATH=/steward/site-preview/ react-router build",
     "preview": "npx serve build/client",
     "typecheck": "tsc -p tsconfig.json",
-    "check": "npm run typecheck && npm run build"
+    "check": "npm run typecheck && npm run build",
+    "dev:docs": "npm run start -w @product/docs",
+    "build:docs": "npm run build -w @product/docs",
+    "typecheck:docs": "npm run typecheck -w @product/docs",
+    "test": "npm test --workspaces --if-present && node --test scripts/*.test.mjs",
+    "lint": "oxlint && oxfmt --check",
+    "lint:fix": "oxlint --fix && oxfmt",
+    "format": "oxfmt",
+    "check:storage:docs": "node scripts/check-no-storage.mjs --app=docs --prefix=steward-docs apps/docs/build --base=${PREVIEW_BASE_PATH:-/}",
+    "check:images:docs": "node scripts/check-images.mjs apps/docs/build --base=${PREVIEW_BASE_PATH:-/} --site-url=https://docs.steward-grc.com",
+    "check:fonts": "node scripts/check-fonts.mjs",
+    "check:docs-version": "node scripts/check-docs-version.mjs",
+    "docs:version": "node scripts/cut-docs-version.mjs",
+    "check:unlisted:docs": "node scripts/check-unlisted.mjs apps/docs/build",
+    "check:docs": "npm run lint && npm test && npm run typecheck:docs && npm run build:docs && npm run check:storage:docs && npm run check:images:docs && npm run check:unlisted:docs"
   },
   "dependencies": {
     "@fontsource-variable/public-sans": "^5.3.0",
@@ -28,6 +42,19 @@
     "@types/react-dom": "^19.0.2",
     "typescript": "^5.7.2",
     "vite": "^6.0.7",
-    "vite-tsconfig-paths": "^5.1.4"
-  }
+    "vite-tsconfig-paths": "^5.1.4",
+    "@bugs5382/node-oxlint-config": "1.0.1",
+    "ajv": "^8.20.0",
+    "jsdom": "25.0.1",
+    "oxfmt": "^0.76.0",
+    "oxlint": "^1.91.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/frame",
+    "packages/brand",
+    "apps/docs"
+  ]
 }

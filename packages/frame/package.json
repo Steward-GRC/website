@@ -1,0 +1,33 @@
+{
+  "name": "@product/frame",
+  "private": true,
+  "type": "module",
+  "description": "What the product site and the docs share: the product's name and addresses, site-frame.css, the current release and the consent-first preferences.",
+  "license": "Apache-2.0",
+  "exports": {
+    "./site-frame.css": "./site-frame.css",
+    "./product": "./product.ts",
+    "./fonts": "./fonts.ts",
+    "./release": "./release.ts",
+    "./content": "./content.ts",
+    "./strip": "./strip.ts",
+    "./theme-toggle": "./theme-toggle.tsx",
+    "./header-menu": "./header-menu.tsx",
+    "./header-menu-config": "./header-menu-config.ts",
+    "./public": "./public/",
+    "./package.json": "./package.json",
+    "./emoji": "./emoji.ts",
+    "./consent": "./consent.ts",
+    "./full-width": "./full-width.ts",
+    "./consent-banner": "./consent-banner.tsx",
+    "./full-width-toggle": "./full-width-toggle.tsx",
+    "./use-consent": "./use-consent.ts",
+    "./theme-pref": "./theme-pref.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test *.test.ts"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}
