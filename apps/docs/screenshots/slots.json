@@ -403,5 +403,100 @@
       "a person to open",
       "Act as"
     ]
+  },
+  "editor-1": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft; select a phrase in a paragraph; the toolbar appears.",
+    "clicks": "Editor Tour draft; select a phrase in a paragraph; the toolbar appears.",
+    "callouts": [
+      "Bold, Italic, Underline, Subscript, Superscript",
+      "Highlight",
+      "Clear formatting",
+      "Heading 1 to Heading 5",
+      "Bulleted list and Numbered list",
+      "Align left, center and right",
+      "Link",
+      "Rework selected text with AI"
+    ]
+  },
+  "editor-2": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft; click the empty last line, press the plus button area and type / so the menu is open.",
+    "clicks": "Editor Tour draft; click the empty last line, press the plus button area and type / so the menu is open.",
+    "callouts": [
+      "the + button on an empty line",
+      "the menu of blocks",
+      "a block's name and its typed word"
+    ]
+  },
+  "editor-3": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft with a callout, an open toggle, a button and a divider in view.",
+    "clicks": "Editor Tour draft with a callout, an open toggle, a button and a divider in view.",
+    "callouts": ["Callout", "Toggle (open)", "Button", "Divider"]
+  },
+  "editor-4": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft with a table; the cursor in a cell so the table toolbar shows and a range of cells selected.",
+    "clicks": "Editor Tour draft with a table; the cursor in a cell so the table toolbar shows and a range of cells selected.",
+    "callouts": [
+      "the table",
+      "the table toolbar",
+      "the header row",
+      "the selected range of cells"
+    ]
+  },
+  "editor-5": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft with an image (alt text and caption) selected so its settings show, and a file block.",
+    "clicks": "Editor Tour draft with an image (alt text and caption) selected so its settings show, and a file block.",
+    "callouts": [
+      "Image with caption and alt text",
+      "the image's settings",
+      "File with title, description, name and size"
+    ]
+  },
+  "editor-6": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft; Cmd+F open with a search that has several matches and the replace box showing.",
+    "clicks": "Editor Tour draft; Cmd+F open with a search that has several matches and the replace box showing.",
+    "callouts": [
+      "find box with the match count",
+      "Previous and Next",
+      "Match case",
+      "replace box with Replace and Replace all"
+    ]
+  },
+  "editor-7": {
+    "app": "staff",
+    "address": "/drafts/{tour}",
+    "signInAs": "Bob",
+    "state": "Editor Tour draft; Cmd+/ open.",
+    "clicks": "Editor Tour draft; Cmd+/ open.",
+    "callouts": ["the groups of shortcuts", "the keys for this computer"]
+  },
+  "editor-8": {
+    "app": "staff",
+    "address": "/approvals/{inReview}",
+    "signInAs": "Charlie",
+    "state": "Document in review; some text selected; the toolbar shows only Comment.",
+    "clicks": "Document in review; some text selected; the toolbar shows only Comment.",
+    "callouts": [
+      "the document, read only",
+      "selected text",
+      "the toolbar with only Comment"
+    ]
   }
 }

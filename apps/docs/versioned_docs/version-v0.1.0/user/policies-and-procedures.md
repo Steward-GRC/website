@@ -6,8 +6,6 @@ description: Create a policy or procedure, write in the editor, save, run the si
 
 # Policies and procedures
 
-Sign in as **Bob Author** for this page.
-
 A policy is a rule people must follow and can require acknowledgement. A procedure is a set of steps and never needs acknowledgement.
 
 ## Create one
@@ -16,7 +14,7 @@ A policy is a rule people must follow and can require acknowledgement. A procedu
 
 1. The **Library** item in the left navigation.
 2. The **New policy** and **New procedure** buttons.
-3. The list of documents. It is empty on a fresh demo.
+3. The list of documents. It is empty when nothing is in that category.
 
 **Steps:**
 
@@ -37,7 +35,7 @@ A title and a category are required.
 
 ### Locked templates
 
-An admin can lock a category's template. Then the **Template** box shows the locked one and you cannot choose another. A fresh demo has no locked templates. To see one, an admin turns on **Authors must use this template** for a category. See [Admin](./admin.md).
+An admin can lock a category's template. Then the **Template** box shows the locked one and you cannot choose another. To lock one, an admin turns on **Authors must use this template** for a category. See [Admin](../admin/index.md).
 
 ### A path that works
 
@@ -62,7 +60,7 @@ What you can do in the editor:
 - A **+** button on an empty line and a `/` menu for blocks such as image, callout, toggle, divider and table.
 - A floating toolbar on selected text (bold, italic, headings, quote, link, **Comment**).
 - Files: the **File** block in the `/` menu. PDF, Word, Excel, PowerPoint, CSV, text, Markdown, RTF, image and video files, up to 10 MB.
-- Images: upload one, or paste an image link with `/image`. Uploads work in the demo.
+- Images: upload one, or paste an image link with `/image`.
 - Comments and suggestions: select text and choose **Comment**. See [Approvals](./approvals.md).
 
 A new draft from a template opens with each template section as a heading, in order. If you delete one, it is added back when the draft opens again.
@@ -84,7 +82,7 @@ The **Required sections** panel shows, for example, "2 of 3", and marks empty re
 3. **Jump to** links that take you to the section.
 4. **Re-run review**.
 
-Choose **AI**, then **Review draft**. The sheet is a gap check before you submit. Findings are advice and change nothing. If nothing is found it says "No gaps found". The results are made up by the demo. **Generate a draft…** fills only sections that are still empty. **Rewrite a section…** shows a suggestion with **Apply to draft** and **Discard**.
+Choose **AI**, then **Review draft**. The sheet is a gap check before you submit. Findings are advice and change nothing. If nothing is found it says "No gaps found". In the demo the results are made up; see [Things to know](../demo/things-to-know.md). **Generate a draft…** fills only sections that are still empty. **Rewrite a section…** shows a suggestion with **Apply to draft** and **Discard**.
 
 ## Submit for approval
 

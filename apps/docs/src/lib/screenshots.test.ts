@@ -18,16 +18,18 @@ const directories = [
     (name) => new URL(`../../versioned_docs/${name}/`, import.meta.url),
   ),
 ];
+const markdownFiles = (directory: string): string[] =>
+  readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const full = `${directory}/${entry.name}`;
+    if (entry.isDirectory()) return markdownFiles(full);
+    return entry.name.endsWith(".md") ? [full] : [];
+  });
 const usedIn = (docs: URL) =>
-  readdirSync(docs)
-    .filter((name) => name.endsWith(".md"))
-    .flatMap((name) =>
-      [
-        ...readFileSync(new URL(name, docs), "utf8").matchAll(
-          /<Screenshot slot="([^"]+)"/g,
-        ),
-      ].map((match) => match[1]),
-    );
+  markdownFiles(docs.pathname).flatMap((file) =>
+    [...readFileSync(file, "utf8").matchAll(/<Screenshot slot="([^"]+)"/g)].map(
+      (match) => match[1],
+    ),
+  );
 
 test("the capture list and the manifest name the same slots", () => {
   assert.deepEqual(

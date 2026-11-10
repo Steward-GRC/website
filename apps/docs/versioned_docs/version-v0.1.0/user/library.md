@@ -9,12 +9,12 @@ description: Attach reusable definitions, related documents, references and cont
 A document can link to reusable items. Admins make the items once. Authors attach them to a document. The links belong to that version of the document and are approved with it.
 
 :::note
-A fresh demo has no library items. An admin creates them first.
+An admin creates the items first.
 :::
 
 ## 1. Create items (admin)
 
-Sign in as **Alice Admin** and open the admin app.
+An admin opens the admin app.
 
 <Screenshot slot="library-1" alt="The Definitions page in the admin app" />
 
@@ -31,7 +31,7 @@ Items can be archived and restored. An item in use cannot be deleted, only archi
 
 ## 2. Attach them to a document (author)
 
-Sign in as **Bob Author** and open a draft.
+An author opens a draft.
 
 <Screenshot slot="library-2" alt="The links section on a draft" />
 

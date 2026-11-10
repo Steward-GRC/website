@@ -1,7 +1,7 @@
 ---
 title: Signing in
 sidebar_position: 2
-description: How to open the demo, the staff and admin apps, and the eight test people.
+description: How to open the demo, sign in with the Dev quick login, and the eight test people.
 ---
 
 # Signing in
@@ -13,14 +13,7 @@ description: How to open the demo, the staff and admin apps, and the eight test 
 
 If you open a private window or a second browser (you will need this for two people editing together), you may need the link again.
 
-## Two apps
-
-| App       | Address                               | Who it is for                                                   |
-| --------- | ------------------------------------- | --------------------------------------------------------------- |
-| Staff app | the demo address root                 | Everyone: library, drafting, approvals, reading                 |
-| Admin app | the same address followed by `/admin` | Admins only: categories, templates, workflows, users, libraries |
-
-The apps are linked. The staff app has an **Admin** link in its header for people who may use it. Someone without admin rights who opens `/admin` sees "Admins only".
+The staff app and the admin app are described in the [user guide](../user/index.md#two-apps). In the demo the staff app is at the demo address and the admin app is the same address followed by `/admin`.
 
 ## Signing in as a test person
 

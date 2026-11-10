@@ -8,7 +8,7 @@ description: Add, rename, reorder, retire and restore appendices, and edit them 
 
 An appendix is supporting material, not policy. Readers cannot comment on it. It has its own life cycle: you edit and publish an appendix without starting a draft of the policy, and an appendix takes no part in an approval.
 
-Sign in as **Bob Author** and open a draft.
+Open a draft.
 
 ## Add, rename, reorder
 

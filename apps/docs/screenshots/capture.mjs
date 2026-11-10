@@ -464,6 +464,143 @@ const slots = {
       { n: 3, loc: text(p, /Published/).first() },
     ]);
   },
+  "editor-1": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    await p.locator("[contenteditable=true] p").first().selectText();
+    await p.locator("[data-kg-selection-toolbar]").waitFor();
+    const button = (id) => p.locator(`[data-kg-toolbar-button="${id}"]`);
+    await snap(p, "editor-1", [
+      { n: 1, loc: button("bold") },
+      { n: 2, loc: button("highlight") },
+      { n: 3, loc: button("clearFormatting") },
+      { n: 4, loc: button("heading1") },
+      { n: 5, loc: button("bulletList") },
+      { n: 6, loc: button("alignLeft") },
+      { n: 7, loc: button("link") },
+      { n: 8, loc: button("ai") },
+    ]);
+  },
+  "editor-2": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    const last = p.locator("[contenteditable=true] p").last();
+    await last.click();
+    await p.keyboard.press("End");
+    await p.keyboard.type("/");
+    await p.locator("[data-kg-slash-menu]").waitFor();
+    await snap(p, "editor-2", [
+      {
+        n: 1,
+        loc: p.locator("[data-kg-plus-button], [aria-label*='Add a card']"),
+      },
+      { n: 2, loc: p.locator("[data-kg-slash-menu]") },
+      { n: 3, loc: p.locator("[data-kg-slash-menu]").getByText("/callout") },
+    ]);
+    await p.keyboard.press("Backspace");
+  },
+  "editor-3": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    const card = (name) =>
+      p.locator("[data-kg-card]").filter({ hasText: name }).first();
+    await p.locator("[data-kg-card]").first().scrollIntoViewIfNeeded();
+    await snap(
+      p,
+      "editor-3",
+      [
+        {
+          n: 1,
+          loc: p.locator("[data-kg-card='callout'], .kg-callout-card").first(),
+        },
+        {
+          n: 2,
+          loc: p.locator("[data-kg-card='toggle'], .kg-toggle-card").first(),
+        },
+        {
+          n: 3,
+          loc: p.locator("[data-kg-card='button'], .kg-button-card").first(),
+        },
+        { n: 4, loc: p.locator("hr").first() },
+      ],
+      { height: 1100 },
+    );
+    void card;
+  },
+  "editor-4": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    const cell = p.locator("table td").first();
+    await cell.scrollIntoViewIfNeeded();
+    await cell.click();
+    await p.locator("[data-kg-table-toolbar]").waitFor();
+    await snap(
+      p,
+      "editor-4",
+      [
+        { n: 1, loc: p.locator("table").first() },
+        { n: 2, loc: p.locator("[data-kg-table-toolbar]") },
+        { n: 3, loc: p.locator("table th, table tr").first() },
+        { n: 4, loc: cell },
+      ],
+      { height: 1000 },
+    );
+  },
+  "editor-5": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    const image = p.locator("[data-kg-card='image'], .kg-image-card").first();
+    await image.scrollIntoViewIfNeeded();
+    await image.click();
+    await snap(
+      p,
+      "editor-5",
+      [
+        { n: 1, loc: image },
+        { n: 2, loc: p.locator("[data-kg-settings-panel]") },
+        { n: 3, loc: p.locator("[data-kg-file-card]").first() },
+      ],
+      { height: 1200 },
+    );
+  },
+  "editor-6": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    await p.locator("[contenteditable=true] p").first().click();
+    await p.keyboard.press("Control+f");
+    const bar = p.getByRole("search").or(p.getByPlaceholder(/Find/i)).first();
+    await bar.waitFor();
+    await p.keyboard.type("the");
+    await snap(p, "editor-6", [
+      { n: 1, loc: p.getByPlaceholder(/Find/i) },
+      { n: 2, loc: p.getByRole("button", { name: /Next/ }) },
+      { n: 3, loc: p.getByText("Match case") },
+      { n: 4, loc: p.getByRole("button", { name: "Replace all" }) },
+    ]);
+  },
+  "editor-7": async () => {
+    const p = await as("Bob");
+    await go(p, "/drafts/{tour}");
+    await p.locator("[contenteditable=true] p").first().click();
+    await p.keyboard.press("Control+/");
+    await p.getByRole("dialog").waitFor();
+    await snap(p, "editor-7", [
+      { n: 1, loc: p.getByRole("dialog").getByRole("heading").first() },
+      { n: 2, loc: p.getByRole("dialog") },
+    ]);
+  },
+  "editor-8": async () => {
+    const p = await as("Charlie");
+    await go(p, "/approvals/{inReview}");
+    const target = p.locator("article p, main p").first();
+    await target.selectText();
+    await p.locator("[data-kg-selection-toolbar]").waitFor();
+    await snap(p, "editor-8", [
+      { n: 1, loc: p.locator("article, main").first(), outline: false },
+      { n: 2, loc: target },
+      { n: 3, loc: p.locator("[data-kg-selection-toolbar]") },
+    ]);
+  },
   "admin-1": async () => {
     const p = await as("Alice", { admin: true });
     await go(p, "/admin/categories");

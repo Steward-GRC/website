@@ -6,7 +6,7 @@ description: Categories, templates, workflows and who can do what in the admin a
 
 # Admin
 
-Sign in as **Alice Admin** and open the admin app (the demo address followed by `/admin`). Admin pages are for site, template and compliance admins. Others see "Admins only".
+Open the admin app (the Steward address followed by `/admin`). Admin pages are for site, template and compliance admins. Others see "Admins only".
 
 The admin menu groups: **Overview**, **Categories**, **Structure**, **Policies**, **Assurance**, **People**, **System**. Some pages may say "Coming soon". That is expected.
 
@@ -87,12 +87,7 @@ A published version is used for new documents. Existing documents keep the struc
 
 ## Who can do what
 
-| Person                    | Can reach                                                                                                                                                        |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Alice (site admin)        | The whole admin app                                                                                                                                              |
-| Grace (template admin)    | Template work. [to check in the demo] which admin pages                                                                                                          |
-| Dave (compliance admin)   | Compliance and assurance pages. [to check in the demo] which admin pages                                                                                         |
-| Bob, Charlie, Erin, Heidi | Bob, Charlie and Erin: staff app only. Heidi manages a group, so she can open the admin app and see **My groups**. [to check in the demo] what else she reaches. |
+What a person can reach in the admin app depends on their role: a site admin reaches all of it, and template, compliance and group-manager roles reach the parts that match their work. Others see "Admins only". The **Access** simulator, below, shows what a chosen person can do in a category before you save.
 
 <Screenshot slot="admin-5" alt="Users and roles" />
 

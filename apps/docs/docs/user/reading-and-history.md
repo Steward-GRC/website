@@ -6,7 +6,7 @@ description: The reader page, history, comparing versions, print preview and ack
 
 # Reading and history
 
-Publish a document first (see [Approvals](./approvals.md)). Then sign in as **Erin Reader**.
+Publish a document first (see [Approvals](./approvals.md)). Then read it as a reader.
 
 ## The reader page
 
@@ -25,7 +25,7 @@ Publish a document first (see [Approvals](./approvals.md)). Then sign in as **Er
 2. Read the text. Use **On this page** to move around.
 3. Scroll to **Appendices**. Each appendix shows a "Not policy" label: it is supporting material.
 
-Notices at the top tell you if a newer draft or a version in review exists, or if this version was superseded or withdrawn. A word count and read time show near the title. An **AI summary** toggle exists. It is simulated, and appears only on a published document. In the demo it may only say "Summary will appear after the next publish."
+Notices at the top tell you if a newer draft or a version in review exists, or if this version was superseded or withdrawn. A word count and read time show near the title. An **AI summary** toggle exists. It appears only on a published document.
 
 ## History and approvals
 
@@ -76,7 +76,7 @@ You need at least two published versions. Publish once, then start editing the p
 2. Tick **Include version history page** if you want who approved it and when.
 3. Choose **Print** to open the print preview.
 
-The printout has the document number, version and status in the header, "Printed" with the time and your name, and a reminder to check Steward for the current version. Sensitive documents are watermarked. Admins also have **Export PDF** under **Admin actions**. In the demo it hands back one small sample PDF, not your document.
+The printout has the document number, version and status in the header, "Printed" with the time and your name, and a reminder to check Steward for the current version. Sensitive documents are watermarked. Admins also have **Export PDF** under **Admin actions**.
 
 ## Acknowledgement (policies only)
 
@@ -94,4 +94,4 @@ Policies can ask people to confirm they have read them. Procedures never do.
 2. Choose **Acknowledge**, then confirm.
 3. The card changes to "Acknowledged" with the date.
 
-Whether a policy asks for acknowledgement depends on the category's acknowledgement trigger (**None**, **On publish** or **On change**) and audience. A category uses its own setting, or the nearest parent's. In the fresh demo, Finance, Expenses and Purchasing are **On publish**; People, Leave and Conduct are **On change**; every other category is **None**. There are no documents to acknowledge until someone publishes one.
+Whether a policy asks for acknowledgement depends on the category's acknowledgement trigger (**None**, **On publish** or **On change**) and audience. A category uses its own setting, or the nearest parent's.

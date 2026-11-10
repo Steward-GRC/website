@@ -6,7 +6,7 @@ description: Approve, reject or send comments as an approver, and what the autho
 
 # Approvals
 
-Sign in as **Charlie Approver**. First have Bob [submit a document](./policies-and-procedures.md).
+You are an approver. First an author must [submit a document](./policies-and-procedures.md).
 
 ## The Approvals screen
 
@@ -71,7 +71,7 @@ Comments on this version go to the author along with your decision.
 
 Each workflow stage has a rule for how many approvers must approve: **One** (the first approval moves it on), **Quorum** (a majority) or **All**. Inside a quorum stage your rejection is recorded against your name, but the version stays in review until the quorum decides.
 
-A **veto approver** is different. Their single rejection ends the version as rejected, even inside a quorum. Veto is off by default. Turn on **Allow veto approvers** in the workflow. See [Admin](./admin.md).
+A **veto approver** is different. Their single rejection ends the version as rejected, even inside a quorum. Veto is off by default. Turn on **Allow veto approvers** in the workflow. See [Admin](../admin/index.md).
 
 ## What the author sees
 
@@ -82,7 +82,7 @@ A **veto approver** is different. Their single rejection ends the version as rej
 3. **History & approvals** in the **Actions** menu.
 4. **Submit for approval**, for the next round.
 
-Sign in as Bob. He sees the document's status (In review, Rejected, or Changes requested), your comments, and the history under **History & approvals**. A rejected or commented draft shows "Changes requested" with a note to address the feedback and resubmit.
+The author sees the document's status (In review, Rejected, or Changes requested), your comments, and the history under **History & approvals**. A rejected or commented draft shows "Changes requested" with a note to address the feedback and resubmit.
 
 ## Changes since you last reviewed
 
