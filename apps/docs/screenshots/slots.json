@@ -3,175 +3,405 @@
     "app": "staff",
     "address": "/",
     "signInAs": "Bob",
+    "state": "Bob is signed in; a few documents exist so My work is not empty.",
     "clicks": "Sign in.",
-    "callouts": "1 left navigation; 2 My work page"
+    "callouts": ["left navigation", "My work page"]
   },
   "signing-in-1": {
     "app": "staff",
     "address": "/sign-in",
     "signInAs": "not signed in",
+    "state": "Nobody signed in. The Dev quick login lists only the eight test people.",
     "clicks": "Sign out first.",
-    "callouts": "1 Dev quick login box; 2 \"Sign in as a test user\" dropdown; 3 username and password form"
+    "callouts": [
+      "Dev quick login box (only in the mock, development and testing builds, never in production)",
+      "\"Sign in as a test user\" dropdown",
+      "username and password form"
+    ]
   },
   "signing-in-2": {
     "app": "admin",
     "address": "/admin/sign-in",
     "signInAs": "not signed in",
+    "state": "Nobody signed in to the admin app.",
     "clicks": "Sign out first.",
-    "callouts": "1 Admin tag; 2 Dev quick login dropdown"
+    "callouts": [
+      "Admin tag",
+      "Dev quick login dropdown (same note: never in production)"
+    ]
   },
   "policies-and-procedures-1": {
     "app": "staff",
     "address": "/policies",
     "signInAs": "Bob",
+    "state": "The Library has documents in several categories.",
     "clicks": "Click Library.",
-    "callouts": "1 Library in navigation; 2 New policy and New procedure; 3 empty list"
+    "callouts": [
+      "Library in navigation",
+      "New policy and New procedure",
+      "empty list"
+    ]
   },
   "policies-and-procedures-2": {
     "app": "staff",
     "address": "/drafts/new/policy",
     "signInAs": "Bob",
+    "state": "A category with a default, unlocked template (Standard Policy) is chosen. The form is open, nothing created.",
     "clicks": "Library, New policy, choose a category.",
-    "callouts": "1 Title; 2 Category; 3 Subcategory; 4 Template; 5 locked-template text (needs a locked category from admin-1)"
+    "callouts": [
+      "Title",
+      "Category",
+      "Subcategory",
+      "Template",
+      "locked-template text (needs a locked category from admin-1)"
+    ]
   },
   "policies-and-procedures-3": {
     "app": "staff",
-    "address": "/drafts/<n>",
+    "address": "/drafts/{draft}",
     "signInAs": "Bob",
+    "state": "{draft}: a Standard Policy draft of Bob's with two sections written and one required section empty; AI simulation on.",
     "clicks": "Create a policy from Standard Policy, type a few lines.",
-    "callouts": "1 document area; 2 AI menu; 3 Submit for approval; 4 Actions menu; 5 save status and Save draft; 6 Required sections; 7 Appendices; 8 Next version"
+    "callouts": [
+      "document area",
+      "AI menu",
+      "Submit for approval",
+      "Actions menu",
+      "save status and Save draft",
+      "Required sections",
+      "Appendices",
+      "Next version"
+    ]
   },
   "policies-and-procedures-4": {
     "app": "staff",
-    "address": "/drafts/<n>",
+    "address": "/drafts/{draft}",
     "signInAs": "Bob",
+    "state": "{draft} with AI simulation on; the AI menu is open and the review sheet shows a Blocker, a Warning and a Note.",
     "clicks": "Open the draft, click AI, Review draft.",
-    "callouts": "1 AI menu items; 2 AI review sheet and finding labels; 3 Jump to links; 4 Re-run review"
+    "callouts": [
+      "AI menu items",
+      "AI review sheet and finding labels",
+      "Jump to links",
+      "Re-run review"
+    ]
   },
   "policies-and-procedures-5": {
     "app": "staff",
-    "address": "/drafts/<n>",
+    "address": "/drafts/{ready}",
     "signInAs": "Bob",
+    "state": "{ready}: a draft of Bob's with every required section filled, in a category that has a workflow. Submit dialog open, not confirmed.",
     "clicks": "Fill every required section, click Submit for approval (do not confirm).",
-    "callouts": "1 document and workflow names; 2 version block with Major, Minor, Fix (only for a revision of a published document); 3 Keep editing; 4 Submit for approval"
+    "callouts": [
+      "document and workflow names",
+      "version block with Major, Minor, Fix (only for a revision of a published document)",
+      "Keep editing",
+      "Submit for approval"
+    ]
   },
   "policies-and-procedures-6": {
     "app": "staff",
-    "address": "/drafts/<n>",
+    "address": "/drafts/{inReview}",
     "signInAs": "Bob",
+    "state": "{inReview}: Bob's document in review at stage 1 of 2. Actions menu open, Withdraw dialog open, not confirmed.",
     "clicks": "Submit it, then click Actions.",
-    "callouts": "1 Actions menu; 2 Withdraw from review; 3 the Withdraw dialog with Withdraw and Keep in review (click Withdraw from review first)"
+    "callouts": [
+      "Actions menu",
+      "Withdraw from review",
+      "the Withdraw dialog with Withdraw and Keep in review (click Withdraw from review first)"
+    ]
+  },
+  "policies-and-procedures-7": {
+    "app": "staff",
+    "address": "/drafts",
+    "signInAs": "Bob",
+    "state": "Bob has several drafts: one in draft, one in review, one a revision of a published document.",
+    "clicks": "Click My drafts.",
+    "callouts": [
+      "My drafts in navigation or header",
+      "the New button",
+      "the list with number, title and updated"
+    ]
   },
   "approvals-1": {
     "app": "staff",
     "address": "/approvals",
     "signInAs": "Charlie",
+    "state": "Charlie has pending, in-progress and coming-to-you items.",
     "clicks": "After Bob submitted, click Approvals.",
-    "callouts": "1 Approvals navigation with count; 2 Pending list; 3 In progress; 4 Coming to you; 5 Review button"
+    "callouts": [
+      "Approvals navigation with count",
+      "Pending list",
+      "In progress",
+      "Coming to you",
+      "Review button"
+    ]
   },
   "approvals-2": {
     "app": "staff",
-    "address": "/approvals/<n>",
+    "address": "/approvals/{inReview}",
     "signInAs": "Charlie",
+    "state": "{inReview} awaiting Charlie; nothing typed in the decision box.",
     "clicks": "Click Review on the document.",
-    "callouts": "1 approval flow bar; 2 tabs; 3 Decision comment; 4 Approve, Reject, Send comments"
+    "callouts": [
+      "approval flow bar",
+      "tabs",
+      "Decision comment",
+      "Approve, Reject, Send comments"
+    ]
   },
   "approvals-3": {
     "app": "staff",
-    "address": "/approvals/<n>",
+    "address": "/approvals/{inReview}",
     "signInAs": "Charlie",
+    "state": "{inReview}: text selected, comment box open with Suggest a change ticked. Not sent.",
     "clicks": "Select a phrase, click Comment, tick Suggest a change.",
-    "callouts": "1 selected text; 2 Comment toolbar button; 3 comment box; 4 Suggest a change tick box; 5 Suggested text; 6 Comment send button"
+    "callouts": [
+      "selected text",
+      "Comment toolbar button",
+      "comment box",
+      "Suggest a change tick box",
+      "Suggested text",
+      "Comment send button"
+    ]
   },
   "approvals-4": {
     "app": "staff",
-    "address": "/approvals/<n>",
+    "address": "/approvals/{edited}",
     "signInAs": "Charlie",
+    "state": "{edited}: Bob edited after Charlie last looked, so the Changes since you last reviewed tab shows.",
     "clicks": "Needs Bob to edit after a first look, then reopen. Click Changes since you last reviewed.",
-    "callouts": "1 the tab; 2 changed sections; 3 Mark as reviewed"
+    "callouts": ["the tab", "changed sections", "Mark as reviewed"]
+  },
+  "approvals-5": {
+    "app": "staff",
+    "address": "/drafts/{rejected}",
+    "signInAs": "Bob",
+    "state": "{rejected}: Charlie sent changes back; Bob opens the document and sees the status, comments and history.",
+    "clicks": "After Charlie sent changes back, open the draft.",
+    "callouts": [
+      "status badge (Changes requested)",
+      "the note to address feedback",
+      "History & approvals in Actions",
+      "Submit for approval"
+    ]
   },
   "appendices-1": {
     "app": "staff",
-    "address": "/drafts/<n>",
+    "address": "/drafts/{withAppendices}",
     "signInAs": "Bob",
+    "state": "{withAppendices} as a draft with two appendices, one published and one never published.",
     "clicks": "Open a draft, add two appendices.",
-    "callouts": "1 Appendices panel; 2 Add appendix; 3 appendix rows and badges; 4 move up and down; 5 Edit; 6 Retire"
+    "callouts": [
+      "Appendices panel",
+      "Add appendix",
+      "appendix rows and badges",
+      "move up and down",
+      "Edit",
+      "Retire"
+    ]
   },
   "appendices-2": {
     "app": "staff",
-    "address": "/drafts/<n>/appendices/A",
+    "address": "/drafts/{withAppendices}/appendices/A",
     "signInAs": "Bob",
+    "state": "The appendix page of {withAppendices}, with two published versions and a newer draft.",
     "clicks": "Click Edit on Appendix A, save, publish, edit again.",
-    "callouts": "1 Draft and Published tabs; 2 Unified and Diff; 3 Published version picker; 4 Save appendix, Publish, Retire; 5 Contributors; 6 Back link"
+    "callouts": [
+      "Draft and Published tabs",
+      "Unified and Diff",
+      "Published version picker",
+      "Save appendix, Publish, Retire",
+      "Contributors",
+      "Back link"
+    ]
+  },
+  "appendices-3": {
+    "app": "staff",
+    "address": "/drafts/{withAppendices}/appendices/A",
+    "signInAs": "Bob and Alice, in two browsers",
+    "state": "Two browsers (Bob and Alice) have the same appendix open; each sees Editing together and the other cursor.",
+    "clicks": "Open the same appendix in both.",
+    "callouts": [
+      "Editing together",
+      "Who is here",
+      "the other person's name and cursor"
+    ]
   },
   "library-1": {
     "app": "admin",
     "address": "/admin/definitions-library",
     "signInAs": "Alice",
+    "state": "A category exists; the Definitions page has a category chosen and the New definition form open, empty.",
     "clicks": "Structure, Definitions, choose a category, New definition.",
-    "callouts": "1 Definitions in menu; 2 Category chooser; 3 New definition; 4 Term and Definition boxes"
+    "callouts": [
+      "Definitions in menu",
+      "Category chooser",
+      "New definition",
+      "Term and Definition boxes"
+    ]
   },
   "library-2": {
     "app": "staff",
-    "address": "/drafts/<n>",
+    "address": "/drafts/{linked}",
     "signInAs": "Bob",
+    "state": "{linked}: a draft with a definition, a related policy, a reference and a contact already attached, and the Add controls visible.",
     "clicks": "Scroll below the editor after Alice created items.",
-    "callouts": "1 Definitions and Add a definition; 2 Related with Policy and Relationship; 3 References; 4 Contacts; 5 move and remove buttons"
+    "callouts": [
+      "Definitions and Add a definition",
+      "Related with Policy and Relationship",
+      "References",
+      "Contacts",
+      "move and remove buttons"
+    ]
   },
   "library-3": {
     "app": "staff",
-    "address": "/policies/<n>",
+    "address": "/policies/{linked}",
     "signInAs": "Erin",
+    "state": "{linked} published, read as Erin; the Related, Definitions, References and Contacts tabs each hold something.",
     "clicks": "Open the published document, click each tab.",
-    "callouts": "1 Related tab; 2 Definitions tab; 3 References tab; 4 Contacts tab"
+    "callouts": [
+      "Related tab",
+      "Definitions tab",
+      "References tab",
+      "Contacts tab"
+    ]
   },
   "reading-and-history-1": {
     "app": "staff",
-    "address": "/policies/<n>",
+    "address": "/policies/{published}",
     "signInAs": "Erin",
+    "state": "{published} published with a table of contents, a details block and two appendices.",
     "clicks": "Open a published policy with an appendix.",
-    "callouts": "1 On this page outline; 2 document text; 3 Details block; 4 tabs; 5 Actions menu; 6 Appendices with Last Updated"
+    "callouts": [
+      "On this page outline",
+      "document text",
+      "Details block",
+      "tabs",
+      "Actions menu",
+      "Appendices with Last Updated"
+    ]
   },
   "reading-and-history-2": {
     "app": "staff",
-    "address": "/policies/<n>",
+    "address": "/policies/{twoVersions}",
     "signInAs": "Erin",
+    "state": "{twoVersions}: two published versions with visible changes between them.",
     "clicks": "Needs two published versions. Click the Changes tab.",
-    "callouts": "1 Changes tab; 2 From version and To version; 3 Side by side and Unified; 4 added and removed marks; 5 Show unchanged"
+    "callouts": [
+      "Changes tab",
+      "From version and To version",
+      "Side by side and Unified",
+      "added and removed marks",
+      "Show unchanged"
+    ]
   },
   "reading-and-history-3": {
     "app": "staff",
-    "address": "/policies/<n>",
+    "address": "/policies/{published}",
     "signInAs": "Erin",
+    "state": "{published}; Actions menu open, Print / Export dialog open.",
     "clicks": "Actions, Print / Export.",
-    "callouts": "1 Print / Export item; 2 dialog title; 3 Include version history page; 4 Print"
+    "callouts": [
+      "Print / Export item",
+      "dialog title",
+      "Include version history page",
+      "Print"
+    ]
   },
   "reading-and-history-4": {
     "app": "staff",
-    "address": "/policies/<n>",
+    "address": "/policies/{ack}",
     "signInAs": "Erin",
+    "state": "{ack}: a policy that asks Erin to acknowledge and she has not yet; the dialog is open, not confirmed.",
     "clicks": "Open a published policy that asks for acknowledgement, click Acknowledge.",
-    "callouts": "1 Please review and confirm card; 2 Acknowledge button; 3 dialog with Name, Time, Version"
+    "callouts": [
+      "Please review and confirm card",
+      "Acknowledge button",
+      "dialog with Name, Time, Version"
+    ]
+  },
+  "reading-and-history-5": {
+    "app": "staff",
+    "address": "/policies/{twoVersions}",
+    "signInAs": "Erin",
+    "state": "{twoVersions}: History & approvals open, with several events.",
+    "clicks": "Actions, History & approvals.",
+    "callouts": [
+      "History & approvals item",
+      "the list of events",
+      "who and when"
+    ]
   },
   "admin-1": {
     "app": "admin",
     "address": "/admin/categories",
     "signInAs": "Alice",
+    "state": "A category with a default template that is not locked.",
     "clicks": "Categories, Directory, pick a category with a default template.",
-    "callouts": "1 category tree and + New category; 2 Details & Defaults; 3 Default template and Authors must use this template; 4 Default workflow; 5 Acknowledgement audience; 6 Documents this category holds; 7 Save"
+    "callouts": [
+      "category tree and + New category",
+      "Details & Defaults",
+      "Default template and Authors must use this template",
+      "Default workflow",
+      "Acknowledgement audience",
+      "Documents this category holds",
+      "Save"
+    ]
   },
   "admin-2": {
     "app": "admin",
     "address": "/admin/templates",
     "signInAs": "Alice",
+    "state": "A template with required and optional sections and a draft version being created.",
     "clicks": "Structure, Templates, open a template, Create version.",
-    "callouts": "1 template list and + New template; 2 sections with Required switch; 3 Create version; 4 Next: Review and Publish version"
+    "callouts": [
+      "template list and + New template",
+      "sections with Required switch",
+      "Create version",
+      "Next: Review and Publish version"
+    ]
   },
   "admin-3": {
     "app": "admin",
     "address": "/admin/workflows",
     "signInAs": "Alice",
+    "state": "A workflow with two stages, one with a quorum, and Allow veto approvers visible.",
     "clicks": "Structure, Workflows, open a workflow.",
-    "callouts": "1 stage cards; 2 quorum choice; 3 + Add approver and + Add stage; 4 due within; 5 Allow veto approvers; 6 Save workflow"
+    "callouts": [
+      "stage cards",
+      "quorum choice",
+      "+ Add approver and + Add stage",
+      "due within",
+      "Allow veto approvers",
+      "Save workflow"
+    ]
+  },
+  "admin-4": {
+    "app": "admin",
+    "address": "/admin/access",
+    "signInAs": "Alice",
+    "state": "Access for a category with a few Allow and Deny rows and the Simulator open for one person.",
+    "clicks": "Categories, Access, choose a category, open the Simulator.",
+    "callouts": [
+      "category list",
+      "Read, Acknowledge, Approve, Author columns",
+      "Allow, Deny, Blank",
+      "Simulator"
+    ]
+  },
+  "admin-5": {
+    "app": "admin",
+    "address": "/admin/users",
+    "signInAs": "Alice",
+    "state": "Users & roles lists the eight test people with roles and groups.",
+    "clicks": "People, Users & roles.",
+    "callouts": [
+      "People in the menu",
+      "the list with Roles and Groups",
+      "a person to open",
+      "Act as"
+    ]
   }
 }

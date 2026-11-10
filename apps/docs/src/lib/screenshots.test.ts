@@ -11,17 +11,23 @@ const read = (path: string) =>
   >;
 const manifest = read("../data/screenshots.json");
 const capture = read("../../screenshots/slots.json");
-const docs = new URL("../../docs/", import.meta.url);
-
-const used = readdirSync(docs)
-  .filter((name) => name.endsWith(".md"))
-  .flatMap((name) =>
-    [
-      ...readFileSync(new URL(name, docs), "utf8").matchAll(
-        /<Screenshot slot="([^"]+)"/g,
-      ),
-    ].map((match) => match[1]),
-  );
+// The working copy and every cut version hold the same guide pages.
+const directories = [
+  new URL("../../docs/", import.meta.url),
+  ...readdirSync(new URL("../../versioned_docs/", import.meta.url)).map(
+    (name) => new URL(`../../versioned_docs/${name}/`, import.meta.url),
+  ),
+];
+const usedIn = (docs: URL) =>
+  readdirSync(docs)
+    .filter((name) => name.endsWith(".md"))
+    .flatMap((name) =>
+      [
+        ...readFileSync(new URL(name, docs), "utf8").matchAll(
+          /<Screenshot slot="([^"]+)"/g,
+        ),
+      ].map((match) => match[1]),
+    );
 
 test("the capture list and the manifest name the same slots", () => {
   assert.deepEqual(
@@ -30,8 +36,14 @@ test("the capture list and the manifest name the same slots", () => {
   );
 });
 
-test("every slot is used on exactly one page, and every use is a known slot", () => {
-  assert.deepEqual([...used].toSorted(), Object.keys(manifest).toSorted());
+test("every slot is used once in each version of the guide, and every use is a known slot", () => {
+  for (const directory of directories) {
+    assert.deepEqual(
+      usedIn(directory).toSorted(),
+      Object.keys(manifest).toSorted(),
+      directory.pathname,
+    );
+  }
 });
 
 test("a slot is ready only when its picture exists, and the other way round", () => {

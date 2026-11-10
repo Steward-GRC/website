@@ -19,13 +19,23 @@ Publish a document first (see [Approvals](./approvals.md)). Then sign in as **Er
 5. The **Actions** menu.
 6. The **Appendices** section. Each shows "Appendix A: Title" and "Last Updated" with a date.
 
-7. Choose **Library**, then the document.
-8. Read the text. Use **On this page** to move around.
-9. Scroll to **Appendices**. Each appendix shows a "Not policy" label: it is supporting material.
+**Steps:**
+
+1. Choose **Library**, then the document.
+2. Read the text. Use **On this page** to move around.
+3. Scroll to **Appendices**. Each appendix shows a "Not policy" label: it is supporting material.
 
 Notices at the top tell you if a newer draft or a version in review exists, or if this version was superseded or withdrawn. A word count and read time show near the title. An **AI summary** toggle exists. It is simulated, and appears only on a published document. In the demo it may only say "Summary will appear after the next publish."
 
 ## History and approvals
+
+<Screenshot slot="reading-and-history-5" alt="History and approvals" />
+
+1. **History & approvals** in the **Actions** menu.
+2. The list of events.
+3. Who did each one, and when.
+
+**Steps:**
 
 1. Open **Actions**.
 2. Choose **History & approvals**.
@@ -43,9 +53,11 @@ You need at least two published versions. Publish once, then start editing the p
 4. Added text underlined, removed text struck through.
 5. **Show** unchanged paragraphs.
 
-6. Choose the **Changes** tab.
-7. Pick **From version** and **To version**.
-8. Switch the layout with **Side by side** or **Unified**.
+**Steps:**
+
+1. Choose the **Changes** tab.
+2. Pick **From version** and **To version**.
+3. Switch the layout with **Side by side** or **Unified**.
 
 **Summarise changes** is AI and simulated.
 
@@ -58,9 +70,11 @@ You need at least two published versions. Publish once, then start editing the p
 3. The **Include version history page** tick box.
 4. **Print**.
 
-5. Open **Actions**, then **Print / Export**.
-6. Tick **Include version history page** if you want who approved it and when.
-7. Choose **Print** to open the print preview.
+**Steps:**
+
+1. Open **Actions**, then **Print / Export**.
+2. Tick **Include version history page** if you want who approved it and when.
+3. Choose **Print** to open the print preview.
 
 The printout has the document number, version and status in the header, "Printed" with the time and your name, and a reminder to check Steward for the current version. Sensitive documents are watermarked. Admins also have **Export PDF** under **Admin actions**. In the demo it hands back one small sample PDF, not your document.
 
@@ -74,8 +88,10 @@ Policies can ask people to confirm they have read them. Procedures never do.
 2. The **Acknowledge** button.
 3. The dialog "Acknowledge this policy?" listing Name, Time and Version.
 
-4. Open a policy that needs acknowledgement. Or choose **To acknowledge** in the left navigation and then **Read & acknowledge**.
-5. Choose **Acknowledge**, then confirm.
-6. The card changes to "Acknowledged" with the date.
+**Steps:**
+
+1. Open a policy that needs acknowledgement. Or choose **To acknowledge** in the left navigation and then **Read & acknowledge**.
+2. Choose **Acknowledge**, then confirm.
+3. The card changes to "Acknowledged" with the date.
 
 Whether a policy asks for acknowledgement depends on the category's acknowledgement trigger (**None**, **On publish** or **On change**) and audience. A category uses its own setting, or the nearest parent's. In the fresh demo, Finance, Expenses and Purchasing are **On publish**; People, Leave and Conduct are **On change**; every other category is **None**. There are no documents to acknowledge until someone publishes one.

@@ -41,10 +41,12 @@ Sign in as **Bob Author** and open a draft.
 4. **Contacts** with **Add a contact**.
 5. The up, down and remove buttons next to each added item.
 
-6. Under the editor, find the sections **Definitions**, **Related**, **References** and **Contacts**.
-7. Pick an item in the dropdown and choose **Add**.
-8. Use the arrows to reorder references and contacts. Definitions are always alphabetical.
-9. Remove an item with the X button.
+**Steps:**
+
+1. Under the editor, find the sections **Definitions**, **Related**, **References** and **Contacts**.
+2. Pick an item in the dropdown and choose **Add**.
+3. Use the arrows to reorder references and contacts. Definitions are always alphabetical.
+4. Remove an item with the X button.
 
 For **Related**, pick another policy and a relationship such as "is related to", "supersedes", "depends on", "implements" or "references". The other policy shows the opposite relationship. You need a second document to do this.
 

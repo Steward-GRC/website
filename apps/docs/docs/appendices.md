@@ -21,10 +21,12 @@ Sign in as **Bob Author** and open a draft.
 5. **Edit**.
 6. **Retire**.
 
-7. Choose **Add appendix**. A blank title is called Appendix A, B and so on.
-8. Choose **Edit** to open the appendix page.
-9. Change the title in **Appendix title** and the text, then choose **Save appendix**.
-10. Choose **Publish** to make it the version readers see.
+**Steps:**
+
+1. Choose **Add appendix**. A blank title is called Appendix A, B and so on.
+2. Choose **Edit** to open the appendix page.
+3. Change the title in **Appendix title** and the text, then choose **Save appendix**.
+4. Choose **Publish** to make it the version readers see.
 
 To reorder, use the up and down buttons on each row. Reordering never creates a draft of the policy.
 
@@ -59,5 +61,11 @@ You need two different people in two different browsers. One person in two tabs 
 2. In another browser or private window, sign in as another person who may author in the same category. Alice is the safest choice: as site admin she may author in every category. Bob is the only other person who may write by default.
 3. Both open the same draft or appendix.
 4. You see **Editing together**, **Who is here**, and the other person's name and coloured cursor ("Name typing").
+
+<Screenshot slot="appendices-3" alt="Two people editing the same appendix" />
+
+1. **Editing together**.
+2. **Who is here**.
+3. The other person's name and coloured cursor.
 
 Edits reach the other person at once. If the live room does not connect within a few seconds, the editor works alone and you save with **Save draft**. A page shows "Reconnecting…" while it retries.

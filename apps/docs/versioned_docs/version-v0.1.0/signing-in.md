@@ -26,14 +26,20 @@ The apps are linked. The staff app has an **Admin** link in its header for peopl
 
 <Screenshot slot="signing-in-1" alt="The staff sign-in page with the Dev quick login box" />
 
-1. The **Dev quick login** box under the sign-in form, marked DEV.
+1. The **Dev quick login** box under the sign-in form, marked DEV. It is only in the mock, development and testing builds, never in a production Steward.
 2. The dropdown with the placeholder **Sign in as a test user**.
 3. The username and password form. You do not need it.
 
-4. Open the sign-in page.
-5. Under the form, open the **Dev quick login** dropdown.
-6. Choose a person. You are signed in at once.
-7. To switch person, use **Sign out** in the account menu, then pick someone else.
+:::note
+The Dev quick login is only in the mock, development and testing builds. It is never in a production Steward.
+:::
+
+**Steps:**
+
+1. Open the sign-in page.
+2. Under the form, open the **Dev quick login** dropdown.
+3. Choose a person. You are signed in at once.
+4. To switch person, use **Sign out** in the account menu, then pick someone else.
 
 Every page then shows a thin bar, "Dev login, test users only".
 

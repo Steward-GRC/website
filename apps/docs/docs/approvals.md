@@ -18,8 +18,10 @@ Sign in as **Charlie Approver**. First have Bob [submit a document](./policies-a
 4. **Coming to you**: later stages where you are an approver. Use **Preview**.
 5. The **Review** button on a row.
 
-6. Choose **Approvals**.
-7. Choose **Review** on the document.
+**Steps:**
+
+1. Choose **Approvals**.
+2. Choose **Review** on the document.
 
 ## Decide
 
@@ -30,10 +32,12 @@ Sign in as **Charlie Approver**. First have Bob [submit a document](./policies-a
 3. The **Decision comment** box.
 4. The **Approve**, **Reject** and **Send comments** buttons.
 
-5. Read the document on the **Proposed Publish** tab.
-6. Write in **Decision comment**. A comment is required to approve, reject or send comments.
-7. Choose **Approve**, **Reject** or **Send comments**.
-8. Confirm in the dialog ("Approve this version" or "Reject this version").
+**Steps:**
+
+1. Read the document on the **Proposed Publish** tab.
+2. Write in **Decision comment**. A comment is required to approve, reject or send comments.
+3. Choose **Approve**, **Reject** or **Send comments**.
+4. Confirm in the dialog ("Approve this version" or "Reject this version").
 
 | Button            | What happens                                                                                                                    |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,10 +56,12 @@ Sign in as **Charlie Approver**. First have Bob [submit a document](./policies-a
 5. The **Suggested text** box ("The words to use instead").
 6. The **Comment** button that sends it.
 
-7. Select words in the document.
-8. Choose **Comment** and write your note.
-9. Tick **Suggest a change** to propose replacement words, and fill in the suggested text.
-10. Choose **Comment**.
+**Steps:**
+
+1. Select words in the document.
+2. Choose **Comment** and write your note.
+3. Tick **Suggest a change** to propose replacement words, and fill in the suggested text.
+4. Choose **Comment**.
 
 The author replies. A suggestion goes back and forth in rounds. The author can reply with **Change it** (take your text), **Remove the note**, **Counter** (send different text). You can **Accept** a counter, or end with **Not agreed** and a reason. The proposer can **Withdraw**. Each thread is between the author and one approver. You see only your own threads. The author sees all of them. Appendices take no comments.
 
@@ -69,6 +75,13 @@ A **veto approver** is different. Their single rejection ends the version as rej
 
 ## What the author sees
 
+<Screenshot slot="approvals-5" alt="A draft that has changes requested" />
+
+1. The status badge, here **Changes requested**.
+2. The note to address the feedback and submit again.
+3. **History & approvals** in the **Actions** menu.
+4. **Submit for approval**, for the next round.
+
 Sign in as Bob. He sees the document's status (In review, Rejected, or Changes requested), your comments, and the history under **History & approvals**. A rejected or commented draft shows "Changes requested" with a note to address the feedback and resubmit.
 
 ## Changes since you last reviewed
@@ -81,9 +94,11 @@ If the author edits after you looked, a tab **Changes since you last reviewed** 
 2. The changed sections.
 3. **Mark as reviewed**.
 
-4. Open the tab.
-5. Read the changes.
-6. Choose **Mark as reviewed**.
+**Steps:**
+
+1. Open the tab.
+2. Read the changes.
+3. Choose **Mark as reviewed**.
 
 :::note
 To see this tab, Bob has to edit after submitting. The editor stays open while a document is in review, so this works. (The submit dialog says otherwise; see [Policies and procedures](./policies-and-procedures.md#submit-for-approval).)

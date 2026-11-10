@@ -11,7 +11,7 @@
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "typecheck": "tsc",
-    "test": "node --experimental-strip-types --test redirects.test.ts src/lib/*.test.ts"
+    "test": "node --experimental-strip-types --test redirects.test.ts src/lib/*.test.ts screenshots/*.test.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

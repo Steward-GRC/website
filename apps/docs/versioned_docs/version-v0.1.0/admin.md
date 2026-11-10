@@ -22,9 +22,11 @@ The admin menu groups: **Overview**, **Categories**, **Structure**, **Policies**
 6. **Documents this category holds**.
 7. **Save**.
 
-8. Choose **Directory** under Categories.
-9. Pick a category.
-10. Change the defaults and choose **Save**.
+**Steps:**
+
+1. Choose **Directory** under Categories.
+2. Pick a category.
+3. Change the defaults and choose **Save**.
 
 **Slug** sets the document number prefix, for example POL-FINANCE-000001. A category that has no default template cannot be locked.
 
@@ -34,6 +36,13 @@ To lock a template:
 2. Tick **Authors must use this template**.
 3. Choose **Save**.
 4. As Bob, start a new policy in that category. The **Template** box shows the locked template.
+
+<Screenshot slot="admin-4" alt="The Access page and the Simulator" />
+
+1. The list of categories.
+2. The **Read**, **Acknowledge**, **Approve** and **Author** columns.
+3. **Allow**, **Deny** or **Blank** for each.
+4. The **Simulator**.
 
 **Access** (under Categories) sets, per category and top to bottom, who can **Read**, **Acknowledge**, **Approve** and **Author**, as **Allow**, **Deny** or **Blank**. Blank means denied unless an ancestor allows it. The **Simulator** shows what a chosen person can do before you save.
 
@@ -84,5 +93,12 @@ A published version is used for new documents. Existing documents keep the struc
 | Grace (template admin)    | Template work. [to check in the demo] which admin pages                                                                                                          |
 | Dave (compliance admin)   | Compliance and assurance pages. [to check in the demo] which admin pages                                                                                         |
 | Bob, Charlie, Erin, Heidi | Bob, Charlie and Erin: staff app only. Heidi manages a group, so she can open the admin app and see **My groups**. [to check in the demo] what else she reaches. |
+
+<Screenshot slot="admin-5" alt="Users and roles" />
+
+1. **People** in the admin menu.
+2. The list, with **Roles** and **Groups**.
+3. A person to open.
+4. **Act as**, on that person's page.
 
 **Users & roles** (under People) lists everyone with **Roles** and **Groups**. Open a person to see Profile, Security, Roles & access and Advanced. **Act as** lets an admin see what another person sees for up to 30 minutes.

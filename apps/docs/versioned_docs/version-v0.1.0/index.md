@@ -44,7 +44,7 @@ About 45 to 60 minutes to do everything. About 20 minutes covers the main path: 
 
 ## A suggested first path
 
-1. Sign in as Bob (author). See [Signing in](./signing-in.md).
+1. Sign in as Bob (author), with the Dev quick login (it is only in the demo, never in a production Steward). See [Signing in](./signing-in.md).
 2. Create a policy and write in it. See [Policies and procedures](./policies-and-procedures.md).
 3. Submit it for approval.
 4. Sign out and sign in as Charlie (approver). Approve it. See [Approvals](./approvals.md).

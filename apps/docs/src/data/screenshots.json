@@ -26,6 +26,9 @@
   "policies-and-procedures-6": {
     "ready": false
   },
+  "policies-and-procedures-7": {
+    "ready": false
+  },
   "approvals-1": {
     "ready": false
   },
@@ -38,10 +41,16 @@
   "approvals-4": {
     "ready": false
   },
+  "approvals-5": {
+    "ready": false
+  },
   "appendices-1": {
     "ready": false
   },
   "appendices-2": {
+    "ready": false
+  },
+  "appendices-3": {
     "ready": false
   },
   "library-1": {
@@ -65,6 +74,9 @@
   "reading-and-history-4": {
     "ready": false
   },
+  "reading-and-history-5": {
+    "ready": false
+  },
   "admin-1": {
     "ready": false
   },
@@ -72,6 +84,12 @@
     "ready": false
   },
   "admin-3": {
+    "ready": false
+  },
+  "admin-4": {
+    "ready": false
+  },
+  "admin-5": {
     "ready": false
   }
 }

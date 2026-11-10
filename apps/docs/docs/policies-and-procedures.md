@@ -18,10 +18,12 @@ A policy is a rule people must follow and can require acknowledgement. A procedu
 2. The **New policy** and **New procedure** buttons.
 3. The list of documents. It is empty on a fresh demo.
 
-4. Choose **Library** in the left navigation.
-5. Choose **New policy** (or **New procedure**).
-6. Fill in the draft details: **Title**, **Category**, **Subcategory** and **Template**. Also **Sensitivity** (**Standard** or **Sensitive**).
-7. Choose **Create policy** (or **Create procedure**).
+**Steps:**
+
+1. Choose **Library** in the left navigation.
+2. Choose **New policy** (or **New procedure**).
+3. Fill in the draft details: **Title**, **Category**, **Subcategory** and **Template**. Also **Sensitivity** (**Standard** or **Sensitive**).
+4. Choose **Create policy** (or **Create procedure**).
 
 <Screenshot slot="policies-and-procedures-2" alt="The new policy form" />
 
@@ -110,12 +112,20 @@ If submitting is refused, no approval workflow applies to its category, or a sta
 2. **Withdraw from review…**.
 3. The "Withdraw from review?" dialog with **Withdraw** and **Keep in review**.
 
-4. Open **Actions**.
-5. Choose **Withdraw from review…**.
-6. Choose **Withdraw**. The approvers stop reviewing it and it goes back to Draft. Your changes stay.
+**Steps:**
+
+1. Open **Actions**.
+2. Choose **Withdraw from review…**.
+3. Choose **Withdraw**. The approvers stop reviewing it and it goes back to Draft. Your changes stay.
 
 **Discard draft…** in the same menu deletes the draft. A published version stays live.
 
 ## Find your drafts
+
+<Screenshot slot="policies-and-procedures-7" alt="My drafts" />
+
+1. **My drafts**, the page you are on.
+2. The **New** button.
+3. The list of drafts, with the document number, title and when it was updated.
 
 **My drafts** lists everything with a saved draft. There is also **Import policies from a CSV** for creating many drafts at once.
