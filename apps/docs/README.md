@@ -13,9 +13,13 @@ npm run typecheck -w @product/docs
 
 ## ✨ What is where
 
-- 📝 **`docs/`:** the demo guide, nine pages, served at `/docs/`. The sidebar is `sidebars.ts`.
-  Steward has no release yet, so `versions.json` is empty and there is no snapshot or vNext; the
-  first release brings the template's versioning back (`npm run docs:version`).
+- 📝 **`docs/`:** vNext, the working copy of the guide, served at `/docs/vnext/` under a banner
+  naming the upcoming and current release (`src/theme/DocVersionBanner`, from
+  `packages/frame/release.ts`). The sidebar is `sidebars.ts`.
+- 🗂️ **Snapshots:** `versioned_docs/`, `versioned_sidebars/` and `versions.json`, one snapshot per
+  version, cut by `npm run docs:version` from the root. The first is v0.1.0; the newest is the
+  default, at `/docs/`. When the product cuts `rc.1` the docs become v1.0.0: see
+  [RELEASING.md](../../RELEASING.md).
 - 🖼️ **Screenshots:** each picture is `<Screenshot slot="..." alt="..." />`, followed by a numbered
   list that matches the numbers drawn on the picture. Until a slot is captured it draws a plain
   labelled box. `screenshots/slots.json` says how to reach each state (address, person, clicks,

@@ -273,7 +273,8 @@ const config: Config = {
                 `<img class="footer__mark mark--light" src="${baseUrl}img/brand/mark-light.svg" width="24" height="24" alt="" />` +
                 `<img class="footer__mark mark--dark" src="${baseUrl}img/brand/mark-dark.svg" width="24" height="24" alt="" />` +
                 `<span class="footer__wordmark">${escapeHtml(product.name)}</span></a>` +
-                `<p class="footer__tagline">${escapeHtml(TAGLINE)}</p></div>`,
+                `<p class="footer__tagline">${escapeHtml(TAGLINE)}</p>` +
+                `<p class="footer__tagline">Docs ${escapeHtml(release.version)}</p></div>`,
             },
           ],
           title: null,

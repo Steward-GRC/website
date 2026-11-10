@@ -7,6 +7,7 @@ import {
   docsInstances,
   docsVersionProblem,
   docsVersions,
+  readState,
   releaseVersion,
 } from "./docs-version.mjs";
 
@@ -75,7 +76,10 @@ test("the release's docs version must be the newest, so it's the default", () =>
   );
 });
 
-// No test that the repo's own release is cut: Steward has no release yet and
-// the docs are one unversioned guide (versions.json is empty). Add the
-// template's check back with the first release, with scripts/check-docs-version.mjs
-// in the deploy.
+test("the repo's own release has its version cut in the docs", () => {
+  const state = readState();
+  assert.equal(state.length, 1);
+  for (const { name, version, versions } of state) {
+    assert.equal(docsVersionProblem(version, versions, name), null);
+  }
+});
