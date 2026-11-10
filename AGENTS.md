@@ -56,4 +56,11 @@ Follow the logging rules in `CLAUDE.md`. In short:
   `.claude/hooks` (run `bash .claude/hooks/install.sh` once per clone).
 - Open every PR as a draft. CI skips drafts, so run the full checks locally, push once they pass,
   and mark the PR ready when the work is finished; see CLAUDE.md "CI and Actions minutes".
-- <project-specific conventions, non-obvious constraints, and traps an agent should know>
+- The repo root is the product page; `apps/docs`, `packages/frame` and `packages/brand` are the docs
+  workspace from the website and docs template. Lint and format cover the workspace only
+  (`.prettierignore`, `.oxlintrc.json`); do not run `oxfmt` over the product page.
+- Docs checks: `npm run check:docs`. Screenshots are taken in light mode; see `apps/docs/README.md`.
+
+## Template sync
+
+- Last synced to `the-rabbit-hole-tech/template-website-docs` release **v1.0.1**

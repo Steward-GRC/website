@@ -1,0 +1,65 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": [
+    "./node_modules/@bugs5382/node-oxlint-config/configs/base.json",
+    "./node_modules/@bugs5382/node-oxlint-config/configs/a11y.json"
+  ],
+  "settings": { "react": { "version": "19.2" } },
+  "ignorePatterns": [
+    "app/**",
+    "public/**",
+    "vite.config.ts",
+    "react-router.config.ts",
+    "**/build/**",
+    "**/build-sub-path/**",
+    "**/.docusaurus/**",
+    "**/.react-router/**",
+    "coverage/**"
+  ],
+  "rules": {
+    // File names stay kebab-case, the same names the product sites use, so a
+    // fix moves between a product and this template file for file.
+    "unicorn/filename-case": ["error", { "cases": { "kebabCase": true } }],
+    // "docs" is this repo's word for the docs site, and "doc" Docusaurus's
+    // word for one of its pages; neither is an abbreviation here.
+    "unicorn-js/prevent-abbreviations": [
+      "error",
+      { "replacements": { "doc": false, "docs": false } }
+    ],
+    // The Web Storage and DOM APIs the consent store wraps return null, and
+    // React renders nothing for null, so null is part of their contracts.
+    "unicorn/no-null": "off"
+  },
+  "overrides": [
+    {
+      // Framework entry points: React Router's route modules and route
+      // config, and Docusaurus's swizzled theme components, pages and sidebar
+      // are loaded by their default export.
+      "files": [
+        "apps/site/app/root.tsx",
+        "apps/site/app/routes.ts",
+        "apps/site/app/routes/**",
+        "apps/docs/sidebars.ts",
+        "apps/docs/src/pages/**",
+        "apps/docs/src/theme/**"
+      ],
+      "rules": { "import/no-default-export": "off" }
+    },
+    {
+      // Docusaurus finds swizzled components by their own names.
+      "files": ["apps/docs/src/theme/**"],
+      "rules": { "unicorn/filename-case": "off" }
+    },
+    {
+      // Command-line scripts: the exit code is how CI reads their result.
+      "files": ["scripts/**", "apps/site/scripts/**"],
+      "rules": { "unicorn/no-process-exit": "off" }
+    },
+    {
+      // Vite plugin hooks and patched Storage methods get their object as
+      // `this`, by those APIs' design.
+      "files": ["apps/site/shared-public.ts", "scripts/check-no-storage.mjs"],
+      "rules": { "unicorn-js/no-this-outside-of-class": "off" }
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+/**
+ * The docs' frame and page-level rules.
+ *
+ * The theme itself (tokens, navbar, sidebar, callouts) lives in theme.css,
+ * loaded before this file in theme.customCss. Add page-level tweaks here, and
+ * use the --docs-* tokens from theme.css rather than new colours.
+ */
+
+/* The strip, header and footer: the site's (apps/site/app/components
+   strip.tsx, nav.tsx and footer.tsx), rebuilt on Docusaurus's classes from the
+   same packages/frame/site-frame.css tokens, so the two sites sit on top of
+   each other pixel for pixel. Every size, face, line height and colour is set
+   here rather than left to Infima, whose defaults differ from the site's. */
+
+:root {
+  --ifm-navbar-height: var(--frame-header-height);
+  --docusaurus-announcement-bar-height: auto;
+}
+
+/* The strip: src/theme/AnnouncementBar draws the same markup the site
+   renders (packages/frame/strip.ts) in the announcement bar's place; this is
+   the band behind it, as the site's .strip. */
+.theme-announcement-bar {
+  display: block;
+  height: auto;
+  border-bottom: 1px solid var(--frame-border);
+  background: var(--frame-strip-bg) !important;
+  color: var(--frame-ink) !important;
+}
+
+.theme-announcement-bar > div {
+  padding: 0;
+  font-size: 100%;
+  text-align: start;
+}
+
+/* The page column: the site's .container, so the header, the doc pages and
+   the footer sit inside the same left and right edges as the site's. */
+.container {
+  padding-inline: var(--frame-gutter);
+}
+
+.footer > .container {
+  max-width: var(--frame-max);
+  margin-inline: auto;
+}
+
+[class*="docRoot_"] {
+  max-width: var(--frame-max);
+  margin-inline: auto;
+  padding-inline: var(--frame-gutter);
+}
+
+[class*="docMainContainer_"] > .container {
+  padding-inline: 0;
+}
+
+[class*="docSidebarContainer_"] .menu {
+  padding-left: 0;
+}
+
+/* Docusaurus runs the sidebar up behind the header; its right-hand rule
+   would show through the header's tint, which the site doesn't have.
+   Clipping that strip (only padding there) keeps the header the same. */
+[class*="docSidebarContainer_"] {
+  clip-path: inset(var(--ifm-navbar-height) 0 0 0);
+}
+
+@media (min-width: 997px) {
+  [class*="docMainContainer_"] > .container {
+    padding-left: var(--frame-gutter);
+  }
+}
+
+/* Header. The blur sits on a layer behind the bar, not on the bar itself: a
+   backdrop-filter would make the bar the containing block for its fixed
+   children, trapping the phone menu and the sidebar button inside it. */
+.navbar {
+  height: auto;
+  padding: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--frame-border);
+  background: transparent;
+  font-family: var(--frame-font-sans);
+  line-height: normal;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--frame-header-bg);
+  backdrop-filter: var(--frame-header-blur);
+}
+
+.navbar__inner {
+  box-sizing: border-box;
+  max-width: var(--frame-max);
+  margin-inline: auto;
+  padding: var(--frame-header-pad) var(--frame-gutter);
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.navbar__brand {
+  flex-shrink: 0;
+  gap: var(--frame-brand-gap);
+  margin-right: 0;
+  color: var(--frame-ink);
+}
+
+.navbar__brand:hover {
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+.navbar__logo {
+  height: var(--frame-logo);
+  margin-right: 0;
+}
+
+.navbar__logo img {
+  width: var(--frame-logo);
+  height: var(--frame-logo);
+}
+
+.navbar__title {
+  overflow: visible;
+  font-family: var(--frame-font-mono);
+  font-size: var(--frame-wordmark-size);
+  line-height: var(--frame-wordmark-line);
+  font-weight: var(--frame-wordmark-weight);
+  letter-spacing: var(--frame-wordmark-spacing);
+  color: var(--frame-ink);
+}
+
+.navbar__items--right {
+  gap: var(--frame-nav-gap);
+  font-size: var(--frame-nav-size);
+  line-height: var(--frame-nav-line);
+}
+
+.navbar__items--right > .navbar__item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  white-space: nowrap;
+  height: var(--frame-nav-line);
+  padding: 0;
+}
+
+.navbar__items--right .navbar__link {
+  display: block;
+  font-weight: 400;
+  line-height: var(--frame-nav-line);
+  color: var(--frame-muted);
+}
+
+/* No current-page colour on Docs: the site has none, so the bar stays the
+   same when moving between the two. aria-current still marks it. */
+.navbar__items--right .navbar__link--active {
+  color: var(--frame-muted);
+}
+
+.navbar__items--right .navbar__link:hover,
+.navbar__items--right .navbar__link:focus-visible {
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+/* Docusaurus's own colour switch, in the bar and in the phone menu: it's
+   turned off (disableSwitch) and the shared switch (custom-themeToggle)
+   replaces it; this keeps it hidden should it ever render. */
+.navbar__items--right > [class*="colorModeToggle_"],
+.navbar-sidebar__brand [class*="toggle_"] {
+  display: none;
+}
+
+/* The doc toolbar (src/components/doc-toolbar.tsx) at the right end of the
+   breadcrumb line: the version picker for this page's docs and the
+   full-width switch, in the mono face the wordmark uses at the nav size.
+   It keeps them out of the header, so the header stays the site's at every
+   width. */
+/* One line, one height, on every doc page: the breadcrumbs take the room
+   the toolbar leaves and cut a long trail with an ellipsis (the full trail
+   is the line's title), so the title below always starts at the same y.
+   --doc-toolbar-row-height is the breadcrumbs' own pill height. On phones the
+   toolbar always takes a line of its own under the breadcrumbs, on every
+   page alike. */
+.doc-toolbar-row {
+  --doc-toolbar-row-height: 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--frame-nav-gap);
+  height: var(--doc-toolbar-row-height);
+  margin-bottom: 0.8rem;
+}
+
+.doc-toolbar-row__crumbs {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.doc-toolbar-row__crumbs .theme-doc-breadcrumbs {
+  margin-bottom: 0;
+}
+
+/* The crumbs keep their size and their separators (drawn by Infima after
+   each item) stay inside them; src/theme/DocBreadcrumbs folds the crumbs
+   above the page into one "…" item when the trail doesn't fit. Only the
+   current page's name gives way, last, with an ellipsis, and never below
+   a few characters. */
+.doc-toolbar-row__crumbs .breadcrumbs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+.doc-toolbar-row__crumbs .breadcrumbs__item {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* The folded crumbs' "…" is plain text, not a pill, so it takes little
+   room. */
+.doc-toolbar-row__crumbs .breadcrumbs__item--folded .breadcrumbs__link {
+  padding-inline: 0.25rem;
+}
+
+.doc-toolbar-row__crumbs .breadcrumbs__item:last-child {
+  flex: 0 1 auto;
+  min-width: 5em;
+  overflow: hidden;
+}
+
+.doc-toolbar-row__crumbs .breadcrumbs__item:last-child .breadcrumbs__link {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-toolbar-row .doc-toolbar {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 996px) {
+  .doc-toolbar-row {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    height: auto;
+  }
+
+  .doc-toolbar-row__crumbs {
+    flex-basis: 100%;
+    height: var(--doc-toolbar-row-height);
+  }
+}
+
+.doc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--frame-nav-gap);
+  margin-left: auto;
+  font-size: var(--frame-nav-size);
+  line-height: var(--frame-nav-line);
+}
+
+/* Infima hides every navbar__item under 997px (it expects them in the
+   phone menu); the picker here isn't in the navbar, so it stays. */
+.doc-toolbar .navbar__item.dropdown,
+.doc-toolbar > .navbar__item {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.doc-toolbar__version.navbar__link {
+  display: block;
+  padding: 0;
+  font-family: var(--frame-font-mono);
+  font-weight: 400;
+  line-height: var(--frame-nav-line);
+  color: var(--frame-muted);
+  white-space: nowrap;
+}
+
+.doc-toolbar__version.navbar__link:hover,
+.doc-toolbar__version.navbar__link:focus-visible,
+.dropdown--show > .doc-toolbar__version.navbar__link {
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+/* The menu opens under the picker, aligned to its right edge, so it never
+   runs past the right side of a narrow screen. */
+.doc-toolbar .dropdown__menu {
+  left: auto;
+  right: 0;
+  min-width: 10rem;
+  border: 1px solid var(--frame-border);
+  background: var(--frame-surface);
+  font-family: var(--frame-font-mono);
+  font-size: var(--frame-nav-size);
+}
+
+/* The content column only gets narrower than the window above the frame
+   width, so the full-width switch shows only there. */
+.doc-toolbar__width {
+  display: none;
+}
+
+@media (min-width: 72rem) {
+  .doc-toolbar__width {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Full width: the doc layout (sidebar, content, table of contents) spans the
+   window, gutter to gutter, with the sidebar at the window's left edge
+   instead of the frame's. The header, the footer and the strip don't move;
+   only the doc layout widens. */
+html[data-content-width="full"] [class*="docRoot_"] {
+  max-width: none;
+  margin-inline: 0;
+}
+
+html[data-content-width="full"] [class*="docMainContainer_"] > .container {
+  max-width: none;
+  margin-inline: 0;
+}
+
+/* The docs sidebar only reaches phones and tablets through the menu button.
+   It floats at the bottom left of doc pages, off the header, so the header
+   stays the site's exactly; other pages don't need it. */
+.navbar__toggle {
+  position: fixed;
+  left: var(--frame-gutter);
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--frame-border);
+  border-radius: 50%;
+  background: var(--frame-surface);
+  box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.45);
+  color: var(--frame-ink);
+}
+
+.navbar__toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+html:not(.plugin-docs) .navbar__toggle {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  html.plugin-docs .footer {
+    padding-bottom: calc(3rem + 2.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Footer, on Docusaurus's footer classes: the brand and tagline, three link
+   groups, then the legal line, in the page column. */
+.footer {
+  border-top: 1px solid var(--frame-border);
+  padding: var(--frame-footer-pad-top) 0 var(--frame-footer-pad-bottom);
+  background: var(--frame-bg);
+  font-family: var(--frame-font-sans);
+  line-height: normal;
+}
+
+.footer__links {
+  display: grid;
+  grid-template-columns: var(--frame-footer-cols);
+  gap: var(--frame-footer-gap);
+  margin: 0 0 var(--frame-footer-gap);
+}
+
+.footer__links > .footer__col {
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__title {
+  margin: 0 0 var(--frame-footer-heading-gap);
+  font-family: var(--frame-font-mono);
+  font-size: var(--frame-footer-heading-size);
+  line-height: var(--frame-footer-heading-line);
+  font-weight: 700;
+  letter-spacing: var(--frame-footer-heading-spacing);
+  text-transform: uppercase;
+  color: var(--frame-muted);
+}
+
+/* The brand column has no title; Docusaurus still renders its empty box. */
+.footer__title:empty {
+  display: none;
+}
+
+.footer__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--frame-footer-link-gap);
+  margin: 0;
+  font-size: var(--frame-footer-size);
+  line-height: var(--frame-footer-line);
+}
+
+.footer__item {
+  margin: 0;
+}
+
+.footer__link-item {
+  display: inline;
+  line-height: inherit;
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+.footer__link-item:hover,
+.footer__link-item:focus-visible {
+  color: var(--frame-primary);
+  text-decoration: none;
+}
+
+.footer__link-item svg {
+  display: none;
+}
+
+/* A block-level flex box, so no line box (whose strut differs between the
+   two sites) sets its height. */
+.footer__name {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: var(--frame-brand-gap);
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+.footer__name:hover {
+  color: var(--frame-ink);
+  text-decoration: none;
+}
+
+.footer__mark {
+  width: var(--frame-footer-mark);
+  height: var(--frame-footer-mark);
+}
+
+.footer__wordmark {
+  font-family: var(--frame-font-mono);
+  font-size: var(--frame-footer-wordmark-size);
+  line-height: var(--frame-wordmark-line);
+  font-weight: var(--frame-wordmark-weight);
+  letter-spacing: var(--frame-wordmark-spacing);
+}
+
+.footer__tagline {
+  margin: var(--frame-footer-tagline-gap) 0 0;
+  font-size: var(--frame-footer-size);
+  line-height: var(--frame-footer-line);
+  color: var(--frame-muted);
+  max-width: var(--frame-footer-tagline-max);
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--frame-border);
+  padding-top: var(--frame-legal-pad);
+  text-align: start;
+}
+
+.footer__copyright {
+  margin: 0;
+  font-size: var(--frame-legal-size);
+  line-height: var(--frame-legal-line);
+  color: var(--frame-muted);
+}
+
+@media (max-width: 720px) {
+  .footer__links {
+    grid-template-columns: var(--frame-footer-cols-narrow);
+  }
+
+  .footer__links > .footer__col:first-child {
+    grid-column: 1 / -1;
+  }
+}

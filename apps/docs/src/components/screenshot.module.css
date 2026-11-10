@@ -1,0 +1,37 @@
+.figure {
+  margin: 1.5rem 0;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--docs-border);
+  border-radius: var(--docs-radius);
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  aspect-ratio: 16 / 10;
+  border: 2px dashed var(--docs-border);
+  border-radius: var(--docs-radius);
+  background: var(--docs-muted);
+  color: var(--docs-muted-foreground);
+  font-size: 0.875rem;
+}
+
+.slot {
+  font-family: var(--docs-font-mono);
+  font-size: 1rem;
+  color: var(--docs-foreground);
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--docs-muted-foreground);
+}

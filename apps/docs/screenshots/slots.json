@@ -1,0 +1,177 @@
+{
+  "index-1": {
+    "app": "staff",
+    "address": "/",
+    "signInAs": "Bob",
+    "clicks": "Sign in.",
+    "callouts": "1 left navigation; 2 My work page"
+  },
+  "signing-in-1": {
+    "app": "staff",
+    "address": "/sign-in",
+    "signInAs": "not signed in",
+    "clicks": "Sign out first.",
+    "callouts": "1 Dev quick login box; 2 \"Sign in as a test user\" dropdown; 3 username and password form"
+  },
+  "signing-in-2": {
+    "app": "admin",
+    "address": "/admin/sign-in",
+    "signInAs": "not signed in",
+    "clicks": "Sign out first.",
+    "callouts": "1 Admin tag; 2 Dev quick login dropdown"
+  },
+  "policies-and-procedures-1": {
+    "app": "staff",
+    "address": "/policies",
+    "signInAs": "Bob",
+    "clicks": "Click Library.",
+    "callouts": "1 Library in navigation; 2 New policy and New procedure; 3 empty list"
+  },
+  "policies-and-procedures-2": {
+    "app": "staff",
+    "address": "/drafts/new/policy",
+    "signInAs": "Bob",
+    "clicks": "Library, New policy, choose a category.",
+    "callouts": "1 Title; 2 Category; 3 Subcategory; 4 Template; 5 locked-template text (needs a locked category from admin-1)"
+  },
+  "policies-and-procedures-3": {
+    "app": "staff",
+    "address": "/drafts/<n>",
+    "signInAs": "Bob",
+    "clicks": "Create a policy from Standard Policy, type a few lines.",
+    "callouts": "1 document area; 2 AI menu; 3 Submit for approval; 4 Actions menu; 5 save status and Save draft; 6 Required sections; 7 Appendices; 8 Next version"
+  },
+  "policies-and-procedures-4": {
+    "app": "staff",
+    "address": "/drafts/<n>",
+    "signInAs": "Bob",
+    "clicks": "Open the draft, click AI, Review draft.",
+    "callouts": "1 AI menu items; 2 AI review sheet and finding labels; 3 Jump to links; 4 Re-run review"
+  },
+  "policies-and-procedures-5": {
+    "app": "staff",
+    "address": "/drafts/<n>",
+    "signInAs": "Bob",
+    "clicks": "Fill every required section, click Submit for approval (do not confirm).",
+    "callouts": "1 document and workflow names; 2 version block with Major, Minor, Fix (only for a revision of a published document); 3 Keep editing; 4 Submit for approval"
+  },
+  "policies-and-procedures-6": {
+    "app": "staff",
+    "address": "/drafts/<n>",
+    "signInAs": "Bob",
+    "clicks": "Submit it, then click Actions.",
+    "callouts": "1 Actions menu; 2 Withdraw from review; 3 the Withdraw dialog with Withdraw and Keep in review (click Withdraw from review first)"
+  },
+  "approvals-1": {
+    "app": "staff",
+    "address": "/approvals",
+    "signInAs": "Charlie",
+    "clicks": "After Bob submitted, click Approvals.",
+    "callouts": "1 Approvals navigation with count; 2 Pending list; 3 In progress; 4 Coming to you; 5 Review button"
+  },
+  "approvals-2": {
+    "app": "staff",
+    "address": "/approvals/<n>",
+    "signInAs": "Charlie",
+    "clicks": "Click Review on the document.",
+    "callouts": "1 approval flow bar; 2 tabs; 3 Decision comment; 4 Approve, Reject, Send comments"
+  },
+  "approvals-3": {
+    "app": "staff",
+    "address": "/approvals/<n>",
+    "signInAs": "Charlie",
+    "clicks": "Select a phrase, click Comment, tick Suggest a change.",
+    "callouts": "1 selected text; 2 Comment toolbar button; 3 comment box; 4 Suggest a change tick box; 5 Suggested text; 6 Comment send button"
+  },
+  "approvals-4": {
+    "app": "staff",
+    "address": "/approvals/<n>",
+    "signInAs": "Charlie",
+    "clicks": "Needs Bob to edit after a first look, then reopen. Click Changes since you last reviewed.",
+    "callouts": "1 the tab; 2 changed sections; 3 Mark as reviewed"
+  },
+  "appendices-1": {
+    "app": "staff",
+    "address": "/drafts/<n>",
+    "signInAs": "Bob",
+    "clicks": "Open a draft, add two appendices.",
+    "callouts": "1 Appendices panel; 2 Add appendix; 3 appendix rows and badges; 4 move up and down; 5 Edit; 6 Retire"
+  },
+  "appendices-2": {
+    "app": "staff",
+    "address": "/drafts/<n>/appendices/A",
+    "signInAs": "Bob",
+    "clicks": "Click Edit on Appendix A, save, publish, edit again.",
+    "callouts": "1 Draft and Published tabs; 2 Unified and Diff; 3 Published version picker; 4 Save appendix, Publish, Retire; 5 Contributors; 6 Back link"
+  },
+  "library-1": {
+    "app": "admin",
+    "address": "/admin/definitions-library",
+    "signInAs": "Alice",
+    "clicks": "Structure, Definitions, choose a category, New definition.",
+    "callouts": "1 Definitions in menu; 2 Category chooser; 3 New definition; 4 Term and Definition boxes"
+  },
+  "library-2": {
+    "app": "staff",
+    "address": "/drafts/<n>",
+    "signInAs": "Bob",
+    "clicks": "Scroll below the editor after Alice created items.",
+    "callouts": "1 Definitions and Add a definition; 2 Related with Policy and Relationship; 3 References; 4 Contacts; 5 move and remove buttons"
+  },
+  "library-3": {
+    "app": "staff",
+    "address": "/policies/<n>",
+    "signInAs": "Erin",
+    "clicks": "Open the published document, click each tab.",
+    "callouts": "1 Related tab; 2 Definitions tab; 3 References tab; 4 Contacts tab"
+  },
+  "reading-and-history-1": {
+    "app": "staff",
+    "address": "/policies/<n>",
+    "signInAs": "Erin",
+    "clicks": "Open a published policy with an appendix.",
+    "callouts": "1 On this page outline; 2 document text; 3 Details block; 4 tabs; 5 Actions menu; 6 Appendices with Last Updated"
+  },
+  "reading-and-history-2": {
+    "app": "staff",
+    "address": "/policies/<n>",
+    "signInAs": "Erin",
+    "clicks": "Needs two published versions. Click the Changes tab.",
+    "callouts": "1 Changes tab; 2 From version and To version; 3 Side by side and Unified; 4 added and removed marks; 5 Show unchanged"
+  },
+  "reading-and-history-3": {
+    "app": "staff",
+    "address": "/policies/<n>",
+    "signInAs": "Erin",
+    "clicks": "Actions, Print / Export.",
+    "callouts": "1 Print / Export item; 2 dialog title; 3 Include version history page; 4 Print"
+  },
+  "reading-and-history-4": {
+    "app": "staff",
+    "address": "/policies/<n>",
+    "signInAs": "Erin",
+    "clicks": "Open a published policy that asks for acknowledgement, click Acknowledge.",
+    "callouts": "1 Please review and confirm card; 2 Acknowledge button; 3 dialog with Name, Time, Version"
+  },
+  "admin-1": {
+    "app": "admin",
+    "address": "/admin/categories",
+    "signInAs": "Alice",
+    "clicks": "Categories, Directory, pick a category with a default template.",
+    "callouts": "1 category tree and + New category; 2 Details & Defaults; 3 Default template and Authors must use this template; 4 Default workflow; 5 Acknowledgement audience; 6 Documents this category holds; 7 Save"
+  },
+  "admin-2": {
+    "app": "admin",
+    "address": "/admin/templates",
+    "signInAs": "Alice",
+    "clicks": "Structure, Templates, open a template, Create version.",
+    "callouts": "1 template list and + New template; 2 sections with Required switch; 3 Create version; 4 Next: Review and Publish version"
+  },
+  "admin-3": {
+    "app": "admin",
+    "address": "/admin/workflows",
+    "signInAs": "Alice",
+    "clicks": "Structure, Workflows, open a workflow.",
+    "callouts": "1 stage cards; 2 quorum choice; 3 + Add approver and + Add stage; 4 due within; 5 Allow veto approvers; 6 Save workflow"
+  }
+}

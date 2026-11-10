@@ -1,0 +1,425 @@
+/*
+ * The docs theme: the --docs-* tokens, a neutral grey set that matches the
+ * frame (packages/frame/site-frame.css), mapped onto Docusaurus's Infima
+ * variables. A product swaps these values for its own palette (TEMPLATE.md);
+ * everything below the tokens reads them, so nothing else changes.
+ */
+
+:root {
+  --docs-background: #ece4d8;
+  --docs-foreground: #261b25;
+  --docs-card: #ffffff;
+  --docs-primary: #5d2a5b;
+  --docs-primary-rgb: 93, 42, 91;
+  --docs-primary-foreground: #ffffff;
+  --docs-muted: #f4eee5;
+  --docs-muted-foreground: #665967;
+  --docs-border: #dcd0c1;
+  --docs-destructive: #dc2626;
+  --docs-destructive-rgb: 220, 38, 38;
+  --docs-success: #16a34a;
+  --docs-success-rgb: 22, 163, 74;
+  --docs-warning: #d97706;
+  --docs-warning-rgb: 217, 119, 6;
+
+  --docs-font-sans: var(--frame-font-sans);
+  --docs-font-mono: var(--frame-font-mono);
+  --docs-radius: 0.5rem;
+}
+
+[data-theme="dark"] {
+  --docs-background: #1a121a;
+  --docs-foreground: #f1e9f0;
+  --docs-card: #261b25;
+  --docs-primary: #d9b3d6;
+  --docs-primary-rgb: 217, 179, 214;
+  --docs-primary-foreground: #1a121a;
+  --docs-muted: #33263a;
+  --docs-muted-foreground: #bcaebb;
+  --docs-border: #3d2f3c;
+  --docs-destructive: #e5484d;
+  --docs-destructive-rgb: 229, 72, 77;
+  --docs-success: #2fbf71;
+  --docs-success-rgb: 47, 191, 113;
+  --docs-warning: #f5a623;
+  --docs-warning-rgb: 245, 166, 35;
+}
+
+:root {
+  --ifm-color-primary: #404040;
+  --ifm-color-primary-dark: #3a3a3a;
+  --ifm-color-primary-darker: #363636;
+  --ifm-color-primary-darkest: #2d2d2d;
+  --ifm-color-primary-light: #464646;
+  --ifm-color-primary-lighter: #4a4a4a;
+  --ifm-color-primary-lightest: #535353;
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #d4d4d4;
+  --ifm-color-primary-dark: #c4c4c4;
+  --ifm-color-primary-darker: #bcbcbc;
+  --ifm-color-primary-darkest: #a6a6a6;
+  --ifm-color-primary-light: #e0e0e0;
+  --ifm-color-primary-lighter: #e5e5e5;
+  --ifm-color-primary-lightest: #f2f2f2;
+}
+
+:root,
+[data-theme="dark"] {
+  --ifm-color-success: var(--docs-success);
+  --ifm-color-warning: var(--docs-warning);
+  --ifm-color-danger: var(--docs-destructive);
+  --ifm-color-info: var(--docs-primary);
+
+  --ifm-background-color: var(--docs-background);
+  --ifm-background-surface-color: var(--docs-card);
+  --ifm-color-content: var(--docs-foreground);
+  --ifm-color-content-secondary: var(--docs-muted-foreground);
+  --ifm-heading-color: var(--docs-foreground);
+  --ifm-hr-background-color: var(--docs-border);
+
+  --ifm-font-family-base: var(--docs-font-sans);
+  --ifm-heading-font-family: var(--docs-font-sans);
+  --ifm-font-family-monospace: var(--docs-font-mono);
+  --ifm-heading-font-weight: 600;
+  --ifm-global-radius: var(--docs-radius);
+  --ifm-code-font-size: 90%;
+  --ifm-code-background: var(--docs-muted);
+  --ifm-code-border-radius: calc(var(--docs-radius) - 4px);
+
+  --ifm-menu-color: var(--docs-muted-foreground);
+  --ifm-menu-color-active: var(--docs-primary);
+  --ifm-menu-color-background-hover: var(--docs-muted);
+  --ifm-menu-color-background-active: rgba(var(--docs-primary-rgb), 0.1);
+
+  --ifm-toc-border-color: var(--docs-border);
+  --ifm-table-border-color: var(--docs-border);
+  --ifm-table-head-background: var(--docs-muted);
+  --ifm-table-stripe-background: transparent;
+
+  --ifm-tabs-color: var(--docs-muted-foreground);
+  --ifm-tabs-color-active: var(--docs-primary);
+  --ifm-tabs-color-active-border: var(--docs-primary);
+
+  --ifm-breadcrumb-item-background-active: var(--docs-muted);
+
+  --docusaurus-highlighted-code-line-bg: rgba(var(--docs-primary-rgb), 0.12);
+}
+
+body {
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+}
+
+/* The header, the strip above it and the footer are the site's, drawn from
+   packages/frame/site-frame.css and mapped onto Docusaurus's classes in
+   custom.css. */
+
+/* Sidebar: mono items, muted until hovered, the active item tinted with the
+   primary colour. */
+.theme-doc-sidebar-container {
+  border-right-color: var(--docs-border) !important;
+}
+
+.menu {
+  font-family: var(--docs-font-mono);
+  font-size: 0.875rem;
+}
+
+.menu__link {
+  border-radius: calc(var(--docs-radius) - 2px);
+}
+
+.menu__link:hover,
+.menu__caret:hover {
+  color: var(--docs-foreground);
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  font-weight: 500;
+}
+
+.menu__list-item-collapsible:hover {
+  background: var(--docs-muted);
+}
+
+.menu__list-item-collapsible--active,
+.menu__list-item-collapsible--active:hover {
+  background: var(--ifm-menu-color-background-active);
+}
+
+/* Light mode uses the darkest primary shade for the active sidebar item, so
+   the small text clears AA on its tint whatever primary a product picks. */
+:root:not([data-theme="dark"]) {
+  --ifm-menu-color-active: var(--ifm-color-primary-darkest);
+}
+
+/* Carets and chevrons. Infima and Docusaurus draw them as fixed-colour SVGs
+   (a grey arrow, a half-transparent black chevron, and an invert() filter in
+   dark mode), so none of them follow the palette. Each is redrawn here as a
+   mask filled with a palette colour: muted at rest, the foreground on hover,
+   and the active colour on the open section. Every one clears 3:1 against the
+   surface it sits on in both modes. */
+:root {
+  --docs-chevron: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/></svg>");
+  --docs-breadcrumb-chevron: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><polygon points='79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128'/></svg>");
+  --docusaurus-collapse-button-bg: transparent;
+  --docusaurus-collapse-button-bg-hover: var(--docs-muted);
+}
+
+[data-theme="dark"]:root {
+  --docusaurus-collapse-button-bg: transparent;
+  --docusaurus-collapse-button-bg-hover: var(--docs-muted);
+}
+
+.menu__link--sublist-caret::after,
+.menu__caret::before,
+[class*="tocCollapsibleButton_"]::after {
+  background: currentColor;
+  filter: none;
+  -webkit-mask: var(--docs-chevron) 50% / 2rem 2rem no-repeat;
+  mask: var(--docs-chevron) 50% / 2rem 2rem no-repeat;
+}
+
+.menu__caret {
+  color: var(--ifm-menu-color);
+}
+
+.menu__list-item-collapsible--active .menu__caret {
+  color: var(--ifm-menu-color-active);
+}
+
+[class*="tocCollapsibleButton_"] {
+  color: var(--docs-muted-foreground);
+}
+
+[class*="tocCollapsibleButton_"]:hover {
+  color: var(--docs-foreground);
+}
+
+/* The hide button also carries .button--outline.button--secondary, whose
+   foreground colour would otherwise win. */
+.button.button--outline[class*="collapseSidebarButton_"],
+[class*="expandButton_"] {
+  color: var(--docs-muted-foreground);
+}
+
+.button.button--outline[class*="collapseSidebarButton_"]:hover,
+.button.button--outline[class*="collapseSidebarButton_"]:focus,
+[class*="expandButton_"]:hover,
+[class*="expandButton_"]:focus {
+  color: var(--docs-foreground);
+}
+
+[class*="collapseSidebarButtonIcon_"] g,
+[class*="expandButtonIcon_"] g {
+  fill: currentColor;
+}
+
+.dropdown > .navbar__link::after {
+  border-top-color: var(--docs-muted-foreground);
+}
+
+.dropdown > .navbar__link:hover::after,
+.dropdown:hover > .navbar__link::after {
+  border-top-color: var(--docs-foreground);
+}
+
+.navbar__toggle,
+.navbar-sidebar__close {
+  color: var(--docs-foreground);
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+  background: var(--docs-muted-foreground);
+  filter: none;
+  opacity: 1;
+  -webkit-mask: var(--docs-breadcrumb-chevron) center / 100% 100% no-repeat;
+  mask: var(--docs-breadcrumb-chevron) center / 100% 100% no-repeat;
+}
+
+/* The Details box borrows Infima's info alert, whose fixed teal tint is not
+   in the palette; it takes the callout pattern so its arrow sits on a
+   palette surface. */
+details.alert {
+  --ifm-alert-foreground-color: var(--docs-foreground);
+  --ifm-alert-background-color: rgba(var(--docs-primary-rgb), 0.1);
+  --ifm-alert-border-color: rgba(var(--docs-primary-rgb), 0.4);
+  box-shadow: none;
+}
+
+details.alert > summary::before {
+  border-left-color: var(--docs-primary);
+}
+
+[class*="backToTopButton_"] {
+  background-color: var(--docs-muted);
+}
+
+[class*="backToTopButton_"]::after {
+  background-color: var(--docs-foreground);
+  -webkit-mask: var(--docs-chevron) 50% / 2rem 2rem no-repeat;
+  mask: var(--docs-chevron) 50% / 2rem 2rem no-repeat;
+}
+
+/* Tabs follow the same pattern as the top nav. */
+.tabs {
+  border-bottom: 1px solid var(--docs-border);
+}
+
+.tabs__item {
+  font-family: var(--docs-font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  border-radius: calc(var(--docs-radius) - 2px) calc(var(--docs-radius) - 2px) 0
+    0;
+  margin-bottom: -1px;
+}
+
+.tabs__item:hover {
+  background: var(--docs-muted);
+  color: var(--docs-foreground);
+}
+
+.tabs__item--active,
+.tabs__item--active:hover {
+  color: var(--docs-primary);
+}
+
+/* Callouts: a soft tint of the status colour, a
+   40% border, and body text in the normal foreground so it stays readable.
+   The left edge and the icon carry the full status colour. */
+.theme-admonition.alert {
+  --docs-alert-rgb: var(--docs-primary-rgb);
+  --ifm-alert-foreground-color: var(--docs-foreground);
+  --ifm-alert-background-color: rgba(var(--docs-alert-rgb), 0.1);
+  --ifm-alert-background-color-highlight: rgba(var(--docs-alert-rgb), 0.18);
+  --ifm-alert-border-color: rgb(var(--docs-alert-rgb));
+  --ifm-alert-border-width: 1px;
+  --ifm-alert-border-left-width: 4px;
+  border-style: solid;
+  border-color: rgba(var(--docs-alert-rgb), 0.4);
+  border-left-color: rgb(var(--docs-alert-rgb));
+  box-shadow: none;
+}
+
+.theme-admonition.alert--success {
+  --docs-alert-rgb: var(--docs-success-rgb);
+}
+
+.theme-admonition.alert--warning {
+  --docs-alert-rgb: var(--docs-warning-rgb);
+}
+
+.theme-admonition.alert--danger {
+  --docs-alert-rgb: var(--docs-destructive-rgb);
+}
+
+.theme-admonition.alert--secondary {
+  --ifm-alert-background-color: var(--docs-muted);
+  --ifm-alert-background-color-highlight: var(--docs-border);
+  border-color: var(--docs-border);
+  border-left-color: var(--docs-muted-foreground);
+}
+
+.theme-admonition.alert svg {
+  fill: var(--docs-alert-icon, rgb(var(--docs-alert-rgb)));
+}
+
+/* The light green and amber reach only 2.8:1 on their tints, so the icons
+   (non-text, 3:1 needed) take the next darker step of the same ramps. */
+:root:not([data-theme="dark"]) .theme-admonition.alert--success {
+  --docs-alert-icon: #15803d;
+}
+
+:root:not([data-theme="dark"]) .theme-admonition.alert--warning {
+  --docs-alert-icon: #b45309;
+}
+
+.theme-admonition.alert--secondary svg {
+  fill: var(--docs-muted-foreground);
+}
+
+.theme-admonition.alert a {
+  color: var(--ifm-link-color);
+  text-decoration-color: currentColor;
+}
+
+/* Code: cards with a border, in both modes. */
+.theme-code-block {
+  border: 1px solid var(--docs-border);
+  box-shadow: none;
+}
+
+code {
+  border: none;
+  vertical-align: baseline;
+}
+
+/* Tables: bordered, with a muted head row. */
+table thead tr {
+  border-bottom: 1px solid var(--docs-border);
+}
+
+table th {
+  font-weight: 600;
+}
+
+table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+/* Buttons: medium weight, small text, a medium radius. */
+.button {
+  border-radius: calc(var(--docs-radius) - 2px);
+  font-weight: 500;
+}
+
+.button--primary {
+  --ifm-button-background-color: var(--docs-primary);
+  --ifm-button-border-color: var(--docs-primary);
+  color: var(--docs-primary-foreground);
+}
+
+.button--primary:hover {
+  --ifm-button-background-color: rgba(var(--docs-primary-rgb), 0.9);
+  --ifm-button-border-color: rgba(var(--docs-primary-rgb), 0.9);
+  color: var(--docs-primary-foreground);
+}
+
+.button--secondary {
+  --ifm-button-background-color: var(--docs-muted);
+  --ifm-button-border-color: var(--docs-muted);
+  color: var(--docs-foreground);
+}
+
+.button--secondary:hover {
+  --ifm-button-background-color: var(--docs-border);
+  color: var(--docs-foreground);
+}
+
+.button--outline.button--secondary {
+  --ifm-button-background-color: transparent;
+  --ifm-button-border-color: var(--docs-border);
+  color: var(--docs-foreground);
+}
+
+.button--outline.button--secondary:hover {
+  --ifm-button-background-color: var(--docs-muted);
+}
+
+/* Prev and next links and breadcrumbs on the same surfaces. */
+.pagination-nav__link {
+  border-color: var(--docs-border);
+  background: var(--docs-card);
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--docs-primary);
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--docs-foreground);
+}
