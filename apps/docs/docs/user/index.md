@@ -10,8 +10,8 @@ Steward is an open-source system for managing policies and procedures. People wr
 
 <Screenshot slot="index-1" alt="The staff home page, My work" />
 
-1. The left navigation: Library, Templates, Approvals and the other staff pages.
-2. The "My work" page, which lists what is waiting on the signed-in person.
+1. The left navigation: **Library**, **Templates**, **Approvals** and the other staff pages.
+2. The **My work** page, which lists what is waiting on the signed-in person.
 
 ## Two apps
 

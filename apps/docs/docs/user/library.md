@@ -18,10 +18,11 @@ An admin opens the admin app.
 
 <Screenshot slot="library-1" alt="The Definitions page in the admin app" />
 
-1. **Definitions** under Structure in the admin menu.
+1. The **New definition** dialog.
 2. The **Category** chooser. Definitions belong to a category.
-3. **New definition**.
-4. The **Term** and **Definition** boxes.
+3. **Term**.
+4. **Definition**.
+5. **Create definition**.
 
 - **Definitions**: **New definition**, with **Term**, **Definition** and **Category**. A term must be unique.
 - **References & standards** (References): **New reference**, with **Label**, **Kind** (**Standard**, **Text** or **Link**), **Clause**, **Link** and **Reference text**.
@@ -35,11 +36,11 @@ An author opens a draft.
 
 <Screenshot slot="library-2" alt="The links section on a draft" />
 
-1. **Definitions** with the **Add a definition** dropdown and **Add**.
-2. **Related** with the **Policy** and **Relationship** dropdowns and **Add**.
-3. **References** with **Add a reference**.
-4. **Contacts** with **Add a contact**.
-5. The up, down and remove buttons next to each added item.
+1. **Definitions**, with the dropdown and **Add**.
+2. **Related**, with the **Policy** and **Relationship** dropdowns and **Add**.
+3. **References**, with **Add a reference**.
+4. **Contacts**, with **Add a contact**.
+5. The remove (X) button, and on references and contacts the up and down arrows.
 
 **Steps:**
 
@@ -58,9 +59,9 @@ Open the published document as any person. Each kind has its own tab: **Related*
 
 <Screenshot slot="library-3" alt="The reader tabs" />
 
-1. The **Related** tab.
-2. The **Definitions** tab.
+1. The **Definitions** tab.
+2. The **Related** tab.
 3. The **References** tab.
-4. The **Contacts** tab with department, email, phone, hours and notes.
+4. The **Contacts** tab, with department, email and phone.
 
 When nothing is attached a tab says, for example, "No contacts attached." Defined terms and links are also included when you print.

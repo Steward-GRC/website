@@ -44,8 +44,8 @@ The admin sign-in page has the same dropdown.
 
 <Screenshot slot="signing-in-2" alt="The admin sign-in page" />
 
-1. The Admin tag on the sign-in page.
-2. The same **Dev quick login** dropdown.
+1. The **Admin** tag on the sign-in page.
+2. The same **Dev quick login** dropdown (only in the mock, development and testing builds).
 
 ## The eight test people
 
@@ -56,7 +56,7 @@ The admin sign-in page has the same dropdown.
 | Charlie Approver | charlie  | Approver                             | Approves or rejects. Sole approver in the Finance sign-off workflow in the sample data.       |
 | Dave Officer     | dave     | Privacy officer and compliance admin | Compliance screens and the admin app. Not needed for the main path.                           |
 | Erin Reader      | erin     | Reader                               | Reads published, non-sensitive documents and acknowledges policies.                           |
-| Frank Disabled   | frank    | None                                 | Disabled on purpose. Signing in as Frank fails.                                               |
+| Frank Approver   | frank    | Approver                             | Approves or rejects. A second approver, for example in the committee workflow.                |
 | Grace Templates  | grace    | Template admin                       | Works with templates. [to check in the demo] Which Templates page she can open.               |
 | Heidi Manager    | heidi    | Group manager                        | Manages a group (Facilities team in the sample data). Has no author or approver role.         |
 

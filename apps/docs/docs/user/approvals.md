@@ -14,9 +14,8 @@ You are an approver. First an author must [submit a document](./policies-and-pro
 
 1. **Approvals** in the left navigation, with a count of what is waiting.
 2. The **Pending** list: drafts waiting for your decision.
-3. **In progress**: runs you already decided that are still moving through later stages.
-4. **Coming to you**: later stages where you are an approver. Use **Preview**.
-5. The **Review** button on a row.
+3. **Coming to you**: later stages where you are an approver. Use **Preview**.
+4. The **Review** button on a row.
 
 **Steps:**
 
@@ -27,10 +26,16 @@ You are an approver. First an author must [submit a document](./policies-and-pro
 
 <Screenshot slot="approvals-2" alt="The review page" />
 
-1. The approval flow bar: Submitted, each stage, Publish. It shows "n of m approved".
-2. The tabs: **Proposed Publish**, **Changes vs the current published version**, **History**. (For a revision, the first tab reads **Upcoming version (under review)**.)
-3. The **Decision comment** box.
-4. The **Approve**, **Reject** and **Send comments** buttons.
+1. The approval flow bar: Submitted, each stage, Publish.
+2. The tabs. **Proposed Publish** shows the document; a revision also has **Changes vs the current published version**.
+
+The decision area is at the bottom of the page, below the document and its comments.
+
+<Screenshot slot="approvals-6" alt="The decision area" />
+
+1. **Your decision**.
+2. The **Decision comment** box. A comment is required to approve, reject or send comments.
+3. **Send comments**, **Reject** and **Approve**.
 
 **Steps:**
 
@@ -49,12 +54,11 @@ You are an approver. First an author must [submit a document](./policies-and-pro
 
 <Screenshot slot="approvals-3" alt="Comment card with Suggest a change" />
 
-1. The selected text.
-2. The **Comment** button on the floating toolbar.
-3. The comment box.
-4. The **Suggest a change** tick box.
-5. The **Suggested text** box ("The words to use instead").
-6. The **Comment** button that sends it.
+1. The words you selected.
+2. The comment box.
+3. The **Suggest a change** tick box.
+4. The **Suggested text** box ("The words to use instead").
+5. The **Comment** button that sends it.
 
 **Steps:**
 
@@ -91,8 +95,7 @@ If the author edits after you looked, a tab **Changes since you last reviewed** 
 <Screenshot slot="approvals-4" alt="Changes since you last reviewed" />
 
 1. The **Changes since you last reviewed** tab.
-2. The changed sections.
-3. **Mark as reviewed**.
+2. The changes: added text is underlined and green, removed text is struck through, with a count of each.
 
 **Steps:**
 

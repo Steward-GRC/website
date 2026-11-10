@@ -1,13 +1,13 @@
 {
-  "draft": "",
-  "ready": "",
-  "inReview": "",
-  "edited": "",
-  "rejected": "",
-  "withAppendices": "",
-  "linked": "",
-  "published": "",
-  "twoVersions": "",
-  "ack": "",
-  "tour": ""
+  "draft": "POL-FACILITIES-000002",
+  "ready": "POL-EXPENSES-000001",
+  "inReview": "POL-PEOPLE-000001",
+  "edited": "POL-SECURITY-000002",
+  "rejected": "PRC-CONDUCT-000001",
+  "withAppendices": "POL-EXPENSES-000001",
+  "linked": "POL-RECORDS-000001",
+  "published": "POL-EXPENSES-000001",
+  "twoVersions": "POL-EXPENSES-000001",
+  "ack": "POL-FACILITIES-000001",
+  "tour": "POL-EXPENSES-000001"
 }

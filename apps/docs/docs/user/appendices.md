@@ -14,18 +14,17 @@ Open a draft.
 
 <Screenshot slot="appendices-1" alt="The Appendices panel" />
 
-1. The **Appendices** panel on the draft.
+1. The **Appendices** panels, with **Retired appendices** below.
 2. **Add appendix**.
-3. A row such as "Appendix A: Title", with a **Draft** or **Not published** badge.
-4. The move up and down buttons ("Move appendix A up").
-5. **Edit**.
-6. **Retire**.
+3. A row's badge: **Draft** or **Not published**.
+4. **Edit**, the move up and down arrows, and **Retire** on a row.
+5. **Restore**, in **Retired appendices**.
 
 **Steps:**
 
 1. Choose **Add appendix**. A blank title is called Appendix A, B and so on.
 2. Choose **Edit** to open the appendix page.
-3. Change the title in **Appendix title** and the text, then choose **Save appendix**.
+3. Change the title in **Appendix title** and the text. It saves by itself; the page shows **Saved**.
 4. Choose **Publish** to make it the version readers see.
 
 To reorder, use the up and down buttons on each row. Reordering never creates a draft of the policy.
@@ -35,11 +34,10 @@ To reorder, use the up and down buttons on each row. Reordering never creates a 
 <Screenshot slot="appendices-2" alt="The appendix page" />
 
 1. The **Draft** and **Published** tabs.
-2. The **Unified** and **Diff** view switch.
-3. The **Published version** picker.
-4. **Save appendix**, **Publish**, **Retire**.
-5. **Contributors**.
-6. **Back to** the policy draft link.
+2. The **View** switch: **Unified** and **Diff**.
+3. **Contributors**: everyone who saved or published it.
+4. **Retire** and **Publish**.
+5. The back link to the policy draft.
 
 - **Draft** tab: edit here. **Diff** shows your draft against the published appendix.
 - **Published** tab: what readers see. The **Published version** picker chooses an earlier version. The first published version has nothing earlier to compare with.
@@ -60,12 +58,10 @@ You need two different people in two different browsers. One person in two tabs 
 1. Sign in as Bob in your usual browser. A private window may need the private link again.
 2. In another browser or private window, sign in as another person who may author in the same category. Alice is the safest choice: as site admin she may author in every category. Bob is the only other person who may write by default.
 3. Both open the same draft or appendix.
-4. You see **Editing together**, **Who is here**, and the other person's name and coloured cursor ("Name typing").
+4. You see the other person's name, for example "Alice Admin editing", and their cursor in the text, labelled with their name.
 
 <Screenshot slot="appendices-3" alt="Two people editing the same appendix" />
 
-1. **Editing together**.
-2. **Who is here**.
-3. The other person's name and coloured cursor.
+1. Who else is editing, by name. Their cursor shows in the text with their name.
 
 Edits reach the other person at once. If the live room does not connect within a few seconds, the editor works alone and you save with **Save draft**. A page shows "Reconnecting…" while it retries.

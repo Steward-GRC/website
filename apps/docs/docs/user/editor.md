@@ -39,13 +39,13 @@ Three ways to format:
 1. **Bold**, **Italic**, **Underline**, **Subscript** and **Superscript**.
 2. **Highlight**.
 3. **Clear formatting**.
-4. The heading buttons, **Heading 1** to **Heading 5**.
+4. **Heading 1** to **Heading 5**.
 5. **Bulleted list** and **Numbered list**.
-6. **Align left**, **Align center** and **Align right**.
+6. **Align center**, **Align left** and **Align right**.
 7. **Link**.
 8. **Rework selected text with AI**, when AI is on.
 
-Select some words and the toolbar appears over them. A button looks pressed when the selection already has that format; press it again to take the format off. On Windows and Linux use **Ctrl** where a shortcut says **Cmd**.
+Select some words with the mouse and the toolbar appears over them. It has two rows: the text formats on the first, and the headings, lists, alignment, link and AI on the second. A button looks pressed when the selection already has that format; press it again to take the format off. On Windows and Linux use **Ctrl** where a shortcut says **Cmd**, and **Alt** where it says **Option**.
 
 | Button                                  | What it does                                                                                                                                                                                                                                   | Shortcut          |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
@@ -70,9 +70,8 @@ The toolbar is deliberately short. It has no font, size or colour choices, no st
 
 <Screenshot slot="editor-2" alt="The / menu on an empty line" />
 
-1. The **+** button that appears on an empty line.
-2. The menu of blocks.
-3. A block's name and the word you type to find it, for example `/callout`.
+1. The menu of blocks.
+2. A block's name. Type `/` then a few letters of it to find it.
 
 There are three ways to add a block:
 
@@ -114,9 +113,9 @@ Select a block by clicking it or moving onto it with the arrow keys. **Enter** a
 <Screenshot slot="editor-4" alt="A table with its toolbar" />
 
 1. The table, drawn with a dashed grid while you write and a solid one for the reader.
-2. The table toolbar, above the table while the cursor is in it.
+2. The table toolbar above it: **Row**, **Column**, **Cell**, **Colour**, **Align**, **Width**, **Size**, **Borders**, **Style**, **Caption** and **Delete table**.
 3. The header row.
-4. A selected range of cells.
+4. The cell you are in.
 
 A table starts 3 by 3 with a header row. While the cursor is in it, the table toolbar lets you add, move and delete rows and columns, turn the header row and column on and off, merge and split cells, shade cells from the short colour list, align text across and down, set widths and heights, draw borders, band rows and columns, and add a caption. Drag across cells to select a range. Paste cells copied from a spreadsheet and they fill the table, adding the rows and columns they need.
 
@@ -138,8 +137,8 @@ A table starts 3 by 3 with a header row. While the cursor is in it, the table to
 
 <Screenshot slot="editor-6" alt="The find and replace bar" />
 
-1. The find box, with the number of matches.
-2. **Previous** and **Next**.
+1. The find box.
+2. **Previous** and **Next** (the up and down arrows), and the count, such as "1 of 14".
 3. **Match case**.
 4. The replace box, with **Replace** and **Replace all**.
 
@@ -147,8 +146,7 @@ Press **Cmd+F** (**Ctrl+F**) in the editor to open the bar over it. Type to find
 
 <Screenshot slot="editor-7" alt="The list of keyboard shortcuts" />
 
-1. The groups of shortcuts.
-2. The keys for your computer.
+1. The list of shortcuts, in groups: **Text**, **Blocks**, **Alignment** and **General**, with the keys for your computer.
 
 Press **Cmd+/** (**Ctrl+/**) for a list of every shortcut that is on in this editor. Escape closes it.
 
@@ -171,14 +169,13 @@ The same editor is used on both sides of a review. Approving, rejecting and send
 
 <Screenshot slot="editor-8" alt="The approver's toolbar, with only Comment" />
 
-1. The document, read only. You cannot change the text.
-2. Text you have selected.
-3. The toolbar, with **Comment** and nothing else.
+1. The words you selected.
+2. The toolbar, with **Comment** and nothing else.
 
-4. Open the document from **Approvals** with **Review**.
-5. Select the words you want to comment on. The toolbar shows **Comment**.
-6. Choose **Comment**, write your note, and tick **Suggest a change** if you want to propose replacement words.
-7. Choose **Comment** again to send it. The author sees it on the same words.
-8. Decide with **Approve**, **Reject** or **Send comments**.
+3. Open the document from **Approvals** with **Review**.
+4. Select the words you want to comment on. The toolbar shows **Comment**.
+5. Choose **Comment**, write your note, and tick **Suggest a change** if you want to propose replacement words.
+6. Choose **Comment** again to send it. The author sees it on the same words.
+7. Decide with **Approve**, **Reject** or **Send comments**.
 
 **Seeing what changed.** On a revision of a published document, the **View** switch above the editor changes between **Unified** and **Diff**, which shows your edits against the published text as they are made. An approver who looked earlier sees the **Changes since you last reviewed** tab.

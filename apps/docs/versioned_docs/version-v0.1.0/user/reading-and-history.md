@@ -12,12 +12,12 @@ Publish a document first (see [Approvals](./approvals.md)). Then read it as a re
 
 <Screenshot slot="reading-and-history-1" alt="The reader page" />
 
-1. The **On this page** outline (table of contents). Click a heading to jump to it.
+1. The **On this page** outline. Click a heading to jump to it.
 2. The document text.
-3. The **Details** block: **Owner**, **Status**, **Version**, **Published**, **Sensitivity**, **Last updated**.
-4. The tabs: **View**, **Changes**, **Related**, **Definitions**, **References**, **Contacts**.
-5. The **Actions** menu.
-6. The **Appendices** section. Each shows "Appendix A: Title" and "Last Updated" with a date.
+3. The details block: **Status**, **Sensitivity**, **Owner**, **Version**, **Published** and **Last updated**.
+4. The tabs: **View**, one for each kind of link, and **Changes**.
+5. The **Actions** menu: **Print / Export** and **History & approvals**.
+6. The appendices, listed at the end of the outline.
 
 **Steps:**
 
@@ -31,9 +31,9 @@ Notices at the top tell you if a newer draft or a version in review exists, or i
 
 <Screenshot slot="reading-and-history-5" alt="History and approvals" />
 
-1. **History & approvals** in the **Actions** menu.
-2. The list of events.
-3. Who did each one, and when.
+1. **History & approvals**, opened from the **Actions** menu.
+2. The versions, newest first, each with its status.
+3. An event: what happened, and when.
 
 **Steps:**
 
@@ -48,15 +48,15 @@ You need at least two published versions. Publish once, then start editing the p
 <Screenshot slot="reading-and-history-2" alt="The Changes tab" />
 
 1. The **Changes** tab.
-2. The **From version** and **To version** pickers.
-3. The **Side by side** and **Unified** layout switch.
-4. Added text underlined, removed text struck through.
-5. **Show** unchanged paragraphs.
+2. The two version pickers, from the older version to the newer.
+3. The **Unified** and **Side by side** switch.
+4. The legend: added text is marked new, removed text is marked old.
+5. A bar such as "2 unchanged sections"; press it to show them.
 
 **Steps:**
 
 1. Choose the **Changes** tab.
-2. Pick **From version** and **To version**.
+2. Pick the two versions in the pickers, the older on the left and the newer on the right.
 3. Switch the layout with **Side by side** or **Unified**.
 
 **Summarise changes** is AI and simulated.
@@ -65,10 +65,9 @@ You need at least two published versions. Publish once, then start editing the p
 
 <Screenshot slot="reading-and-history-3" alt="The print dialog" />
 
-1. **Print / Export** in the **Actions** menu.
-2. The "Print this version" dialog.
-3. The **Include version history page** tick box.
-4. **Print**.
+1. The "Print this version" dialog. Open it with **Print / Export** in the **Actions** menu.
+2. **Include version history page**.
+3. **Print**.
 
 **Steps:**
 
@@ -84,9 +83,9 @@ Policies can ask people to confirm they have read them. Procedures never do.
 
 <Screenshot slot="reading-and-history-4" alt="The acknowledgement card" />
 
-1. The "Please review and confirm" card at the top of the policy.
-2. The **Acknowledge** button.
-3. The dialog "Acknowledge this policy?" listing Name, Time and Version.
+1. The "Acknowledge this policy?" dialog. Open it with **Acknowledge** on the "Please review and confirm" card.
+2. Your name, the version and the time. They are recorded against your name.
+3. **Acknowledge**.
 
 **Steps:**
 

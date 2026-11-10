@@ -54,3 +54,18 @@ test("a slot is ready only when its picture exists, and the other way round", ()
     assert.equal(existsSync(file), ready === true, slot);
   }
 });
+
+test("the list under each picture is the slot's callouts, in order", () => {
+  const BLOCK = /<Screenshot slot="([^"]+)"[^>]*\/>\n\n((?:\d+\. .*\n?)+)/g;
+  for (const directory of directories) {
+    for (const file of markdownFiles(directory.pathname)) {
+      for (const match of readFileSync(file, "utf8").matchAll(BLOCK)) {
+        const [, slot, list] = match;
+        const expected = (capture[slot].callouts as unknown as string[]).map(
+          (text, index) => `${index + 1}. ${text}`,
+        );
+        assert.deepEqual(list.trim().split("\n"), expected, `${file} ${slot}`);
+      }
+    }
+  }
+});

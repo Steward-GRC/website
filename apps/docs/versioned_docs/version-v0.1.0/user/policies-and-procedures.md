@@ -13,8 +13,8 @@ A policy is a rule people must follow and can require acknowledgement. A procedu
 <Screenshot slot="policies-and-procedures-1" alt="The Library page with the New policy button" />
 
 1. The **Library** item in the left navigation.
-2. The **New policy** and **New procedure** buttons.
-3. The list of documents. It is empty when nothing is in that category.
+2. The **New policy** button. Procedures have their own **Library**, with **New procedure**.
+3. The list of documents. A category with nothing in it says "No policies match these filters".
 
 **Steps:**
 
@@ -26,7 +26,7 @@ A policy is a rule people must follow and can require acknowledgement. A procedu
 <Screenshot slot="policies-and-procedures-2" alt="The new policy form" />
 
 1. The **Title** box.
-2. The **Category** box. Some categories only hold other categories, or only policies, or only procedures. The form tells you if your choice cannot hold the document.
+2. The **Category** box. Some categories only hold other categories, or only policies, or only procedures; the form tells you if your choice cannot hold the document.
 3. The **Subcategory** box.
 4. The **Template** box. **No template (freeform)** gives you a blank document.
 5. The text "Set by the category: authors use this template." when the template is locked.
@@ -46,22 +46,14 @@ Choose a category that has an approval workflow and a person who can approve in 
 <Screenshot slot="policies-and-procedures-3" alt="The draft editor" />
 
 1. The document area. Start writing, or press `/` for blocks.
-2. The **AI** menu.
+2. The **Actions** menu, which holds the AI items, **Withdraw from review** and **Discard draft**.
 3. The **Submit for approval** button.
-4. The **Actions** menu.
-5. The save status next to the **Save draft** button.
-6. The **Required sections** panel.
-7. The **Appendices** panel.
-8. The **Next version** panel.
+4. The save status: **Saved**, **Saving…** or **Unsaved changes**.
+5. The **Required sections** panel.
+6. The **Appendices** panel.
+7. The **Next version** panel.
 
-What you can do in the editor:
-
-- Headings, quotes, bulleted and numbered lists, links, code blocks and tables.
-- A **+** button on an empty line and a `/` menu for blocks such as image, callout, toggle, divider and table.
-- A floating toolbar on selected text (bold, italic, headings, quote, link, **Comment**).
-- Files: the **File** block in the `/` menu. PDF, Word, Excel, PowerPoint, CSV, text, Markdown, RTF, image and video files, up to 10 MB.
-- Images: upload one, or paste an image link with `/image`.
-- Comments and suggestions: select text and choose **Comment**. See [Approvals](./approvals.md).
+The editor has a toolbar for selected text and a `/` menu for blocks such as a callout, a table, an image or a file. Both are described on [The editor](./editor.md). Select text and choose **Comment** to leave a note; see [Approvals](./approvals.md).
 
 A new draft from a template opens with each template section as a heading, in order. If you delete one, it is added back when the draft opens again.
 
@@ -73,16 +65,17 @@ Your work autosaves. The status reads **Saving…**, then **Saved**, or **Unsave
 
 The **Required sections** panel shows, for example, "2 of 3", and marks empty required sections as "empty". **Reset required sections** puts back headings you removed. You cannot send the draft for approval while a required section is empty, and you cannot send a document with no text at all.
 
-## The AI menu (simulated)
+## The AI items (simulated)
 
-<Screenshot slot="policies-and-procedures-4" alt="The AI menu and the AI review sheet" />
+The AI items are in the **Actions** menu: **Generate a draft…** (or **Improve draft…** once there is text), **Rewrite a section…** and **Review draft**. While a document is in review, the menu says AI is not available.
 
-1. The **AI** menu with **Generate a draft…**, **Improve draft…**, **Review draft** and **Rewrite a section…**.
-2. The **AI review** sheet. Findings are marked **Blocker**, **Warning** or **Note**.
-3. **Jump to** links that take you to the section.
-4. **Re-run review**.
+<Screenshot slot="policies-and-procedures-4" alt="The AI review sheet" />
 
-Choose **AI**, then **Review draft**. The sheet is a gap check before you submit. Findings are advice and change nothing. If nothing is found it says "No gaps found". In the demo the results are made up; see [Things to know](../demo/things-to-know.md). **Generate a draft…** fills only sections that are still empty. **Rewrite a section…** shows a suggestion with **Apply to draft** and **Discard**.
+1. The **AI review** sheet. Findings are marked **Blocker**, **Warning** or **Note**, and each says it is simulated.
+2. The **Jump to** links that take you to the section.
+3. **Re-run review**.
+
+Choose **Actions**, then **Review draft**. The sheet is a gap check before you submit. Findings are advice and change nothing. If nothing is found it says "No gaps found". In the demo the results are made up; see [Things to know](../demo/things-to-know.md). **Generate a draft…** fills only sections that are still empty. **Rewrite a section…** shows a suggestion with **Apply to draft** and **Discard**.
 
 ## Submit for approval
 
@@ -93,7 +86,7 @@ Choose **AI**, then **Review draft**. The sheet is a gap check before you submit
 
 <Screenshot slot="policies-and-procedures-5" alt="The submit dialog" />
 
-1. The document name and the workflow it goes to.
+1. The document and the workflow it goes to.
 2. The version block with **Major**, **Minor** and **Fix**. It appears for a revision of a published document.
 3. **Keep editing**.
 4. **Submit for approval**.
@@ -104,11 +97,11 @@ If submitting is refused, no approval workflow applies to its category, or a sta
 
 ## Withdraw
 
-<Screenshot slot="policies-and-procedures-6" alt="The Actions menu in review" />
+<Screenshot slot="policies-and-procedures-6" alt="The Withdraw from review dialog" />
 
-1. The **Actions** menu.
-2. **Withdraw from review…**.
-3. The "Withdraw from review?" dialog with **Withdraw** and **Keep in review**.
+1. The "Withdraw from review?" dialog.
+2. **Withdraw**.
+3. **Keep in review**.
 
 **Steps:**
 

@@ -37,7 +37,12 @@ export const drawCallouts = async (page, boxes) => {
         disc.style.cssText = `position:fixed;left:${left}px;top:${top}px;width:${size}px;height:${size}px;border-radius:50%;background:${colour};color:#fff;font:700 14px/${size}px system-ui,sans-serif;text-align:center;box-shadow:0 0 0 2px #fff`;
         root.append(disc);
       }
-      document.body.append(root);
+      // A page's find bar or dialog may sit in the browser's top layer, above
+      // anything added to the body; the callouts then go inside it.
+      const host = [
+        ...document.querySelectorAll(":modal, :popover-open"),
+      ].pop();
+      (host ?? document.body).append(root);
     },
     { boxes, colour: COLOUR },
   );
@@ -51,6 +56,30 @@ export const clearCallouts = (page) =>
 export const resolveBoxes = async (page, items) => {
   const boxes = [];
   for (const item of items) {
+    if (item.union) {
+      const parts = [];
+      for (const part of item.union) {
+        const target = part.filter({ visible: true }).first();
+        await target.waitFor({ state: "visible", timeout: 5000 }).catch(() => {
+          throw new Error(`callout ${item.n} not found`);
+        });
+        parts.push(await target.boundingBox());
+      }
+      const x = Math.min(...parts.map((b) => b.x));
+      const y = Math.min(...parts.map((b) => b.y));
+      const right = Math.max(...parts.map((b) => b.x + b.width));
+      const bottom = Math.max(...parts.map((b) => b.y + b.height));
+      boxes.push({
+        height: bottom - y,
+        n: item.n,
+        outline: item.outline !== false,
+        side: item.side ?? "tl",
+        width: right - x,
+        x,
+        y,
+      });
+      continue;
+    }
     const locator =
       typeof item.loc === "string" ? page.locator(item.loc) : item.loc;
     const target = locator.filter({ visible: true }).first();

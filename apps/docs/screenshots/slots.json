@@ -5,7 +5,10 @@
     "signInAs": "Bob",
     "state": "Bob is signed in; a few documents exist so My work is not empty.",
     "clicks": "Sign in.",
-    "callouts": ["left navigation", "My work page"]
+    "callouts": [
+      "The left navigation: **Library**, **Templates**, **Approvals** and the other staff pages.",
+      "The **My work** page, which lists what is waiting on the signed-in person."
+    ]
   },
   "signing-in-1": {
     "app": "staff",
@@ -14,9 +17,9 @@
     "state": "Nobody signed in. The Dev quick login lists only the eight test people.",
     "clicks": "Sign out first.",
     "callouts": [
-      "Dev quick login box (only in the mock, development and testing builds, never in production)",
-      "\"Sign in as a test user\" dropdown",
-      "username and password form"
+      "The **Dev quick login** box under the sign-in form, marked DEV. It is only in the mock, development and testing builds, never in a production Steward.",
+      "The dropdown with the placeholder **Sign in as a test user**.",
+      "The username and password form. You do not need it."
     ]
   },
   "signing-in-2": {
@@ -26,8 +29,8 @@
     "state": "Nobody signed in to the admin app.",
     "clicks": "Sign out first.",
     "callouts": [
-      "Admin tag",
-      "Dev quick login dropdown (same note: never in production)"
+      "The **Admin** tag on the sign-in page.",
+      "The same **Dev quick login** dropdown (only in the mock, development and testing builds)."
     ]
   },
   "policies-and-procedures-1": {
@@ -37,9 +40,9 @@
     "state": "The Library has documents in several categories.",
     "clicks": "Click Library.",
     "callouts": [
-      "Library in navigation",
-      "New policy and New procedure",
-      "empty list"
+      "The **Library** item in the left navigation.",
+      "The **New policy** button. Procedures have their own **Library**, with **New procedure**.",
+      "The list of documents. A category with nothing in it says \"No policies match these filters\"."
     ]
   },
   "policies-and-procedures-2": {
@@ -49,11 +52,11 @@
     "state": "A category with a default, unlocked template (Standard Policy) is chosen. The form is open, nothing created.",
     "clicks": "Library, New policy, choose a category.",
     "callouts": [
-      "Title",
-      "Category",
-      "Subcategory",
-      "Template",
-      "locked-template text (needs a locked category from admin-1)"
+      "The **Title** box.",
+      "The **Category** box. Some categories only hold other categories, or only policies, or only procedures; the form tells you if your choice cannot hold the document.",
+      "The **Subcategory** box.",
+      "The **Template** box. **No template (freeform)** gives you a blank document.",
+      "The text \"Set by the category: authors use this template.\" when the template is locked."
     ]
   },
   "policies-and-procedures-3": {
@@ -63,14 +66,13 @@
     "state": "{draft}: a Standard Policy draft of Bob's with two sections written and one required section empty; AI simulation on.",
     "clicks": "Create a policy from Standard Policy, type a few lines.",
     "callouts": [
-      "document area",
-      "AI menu",
-      "Submit for approval",
-      "Actions menu",
-      "save status and Save draft",
-      "Required sections",
-      "Appendices",
-      "Next version"
+      "The document area. Start writing, or press `/` for blocks.",
+      "The **Actions** menu, which holds the AI items, **Withdraw from review** and **Discard draft**.",
+      "The **Submit for approval** button.",
+      "The save status: **Saved**, **Saving\u2026** or **Unsaved changes**.",
+      "The **Required sections** panel.",
+      "The **Appendices** panel.",
+      "The **Next version** panel."
     ]
   },
   "policies-and-procedures-4": {
@@ -80,10 +82,9 @@
     "state": "{draft} with AI simulation on; the AI menu is open and the review sheet shows a Blocker, a Warning and a Note.",
     "clicks": "Open the draft, click AI, Review draft.",
     "callouts": [
-      "AI menu items",
-      "AI review sheet and finding labels",
-      "Jump to links",
-      "Re-run review"
+      "The **AI review** sheet. Findings are marked **Blocker**, **Warning** or **Note**, and each says it is simulated.",
+      "The **Jump to** links that take you to the section.",
+      "**Re-run review**."
     ]
   },
   "policies-and-procedures-5": {
@@ -93,10 +94,10 @@
     "state": "{ready}: a draft of Bob's with every required section filled, in a category that has a workflow. Submit dialog open, not confirmed.",
     "clicks": "Fill every required section, click Submit for approval (do not confirm).",
     "callouts": [
-      "document and workflow names",
-      "version block with Major, Minor, Fix (only for a revision of a published document)",
-      "Keep editing",
-      "Submit for approval"
+      "The document and the workflow it goes to.",
+      "The version block with **Major**, **Minor** and **Fix**. It appears for a revision of a published document.",
+      "**Keep editing**.",
+      "**Submit for approval**."
     ]
   },
   "policies-and-procedures-6": {
@@ -106,9 +107,9 @@
     "state": "{inReview}: Bob's document in review at stage 1 of 2. Actions menu open, Withdraw dialog open, not confirmed.",
     "clicks": "Submit it, then click Actions.",
     "callouts": [
-      "Actions menu",
-      "Withdraw from review",
-      "the Withdraw dialog with Withdraw and Keep in review (click Withdraw from review first)"
+      "The \"Withdraw from review?\" dialog.",
+      "**Withdraw**.",
+      "**Keep in review**."
     ]
   },
   "policies-and-procedures-7": {
@@ -118,9 +119,9 @@
     "state": "Bob has several drafts: one in draft, one in review, one a revision of a published document.",
     "clicks": "Click My drafts.",
     "callouts": [
-      "My drafts in navigation or header",
-      "the New button",
-      "the list with number, title and updated"
+      "**My drafts**, the page you are on.",
+      "The **New** button.",
+      "The list of drafts, with the document number, title and when it was updated."
     ]
   },
   "approvals-1": {
@@ -130,24 +131,21 @@
     "state": "Charlie has pending, in-progress and coming-to-you items.",
     "clicks": "After Bob submitted, click Approvals.",
     "callouts": [
-      "Approvals navigation with count",
-      "Pending list",
-      "In progress",
-      "Coming to you",
-      "Review button"
+      "**Approvals** in the left navigation, with a count of what is waiting.",
+      "The **Pending** list: drafts waiting for your decision.",
+      "**Coming to you**: later stages where you are an approver. Use **Preview**.",
+      "The **Review** button on a row."
     ]
   },
   "approvals-2": {
     "app": "staff",
     "address": "/approvals/{inReview}",
     "signInAs": "Charlie",
-    "state": "{inReview} awaiting Charlie; nothing typed in the decision box.",
+    "state": "{inReview} awaiting Charlie; top of the page.",
     "clicks": "Click Review on the document.",
     "callouts": [
-      "approval flow bar",
-      "tabs",
-      "Decision comment",
-      "Approve, Reject, Send comments"
+      "The approval flow bar: Submitted, each stage, Publish.",
+      "The tabs. **Proposed Publish** shows the document; a revision also has **Changes vs the current published version**."
     ]
   },
   "approvals-3": {
@@ -157,12 +155,11 @@
     "state": "{inReview}: text selected, comment box open with Suggest a change ticked. Not sent.",
     "clicks": "Select a phrase, click Comment, tick Suggest a change.",
     "callouts": [
-      "selected text",
-      "Comment toolbar button",
-      "comment box",
-      "Suggest a change tick box",
-      "Suggested text",
-      "Comment send button"
+      "The words you selected.",
+      "The comment box.",
+      "The **Suggest a change** tick box.",
+      "The **Suggested text** box (\"The words to use instead\").",
+      "The **Comment** button that sends it."
     ]
   },
   "approvals-4": {
@@ -171,7 +168,10 @@
     "signInAs": "Charlie",
     "state": "{edited}: Bob edited after Charlie last looked, so the Changes since you last reviewed tab shows.",
     "clicks": "Needs Bob to edit after a first look, then reopen. Click Changes since you last reviewed.",
-    "callouts": ["the tab", "changed sections", "Mark as reviewed"]
+    "callouts": [
+      "The **Changes since you last reviewed** tab.",
+      "The changes: added text is underlined and green, removed text is struck through, with a count of each."
+    ]
   },
   "approvals-5": {
     "app": "staff",
@@ -180,10 +180,10 @@
     "state": "{rejected}: Charlie sent changes back; Bob opens the document and sees the status, comments and history.",
     "clicks": "After Charlie sent changes back, open the draft.",
     "callouts": [
-      "status badge (Changes requested)",
-      "the note to address feedback",
-      "History & approvals in Actions",
-      "Submit for approval"
+      "The status badge, here **Changes requested**.",
+      "The note to address the feedback and submit again.",
+      "**History & approvals** in the **Actions** menu.",
+      "**Submit for approval**, for the next round."
     ]
   },
   "appendices-1": {
@@ -193,12 +193,11 @@
     "state": "{withAppendices} as a draft with two appendices, one published and one never published.",
     "clicks": "Open a draft, add two appendices.",
     "callouts": [
-      "Appendices panel",
-      "Add appendix",
-      "appendix rows and badges",
-      "move up and down",
-      "Edit",
-      "Retire"
+      "The **Appendices** panels, with **Retired appendices** below.",
+      "**Add appendix**.",
+      "A row's badge: **Draft** or **Not published**.",
+      "**Edit**, the move up and down arrows, and **Retire** on a row.",
+      "**Restore**, in **Retired appendices**."
     ]
   },
   "appendices-2": {
@@ -208,12 +207,11 @@
     "state": "The appendix page of {withAppendices}, with two published versions and a newer draft.",
     "clicks": "Click Edit on Appendix A, save, publish, edit again.",
     "callouts": [
-      "Draft and Published tabs",
-      "Unified and Diff",
-      "Published version picker",
-      "Save appendix, Publish, Retire",
-      "Contributors",
-      "Back link"
+      "The **Draft** and **Published** tabs.",
+      "The **View** switch: **Unified** and **Diff**.",
+      "**Contributors**: everyone who saved or published it.",
+      "**Retire** and **Publish**.",
+      "The back link to the policy draft."
     ]
   },
   "appendices-3": {
@@ -223,9 +221,7 @@
     "state": "Two browsers (Bob and Alice) have the same appendix open; each sees Editing together and the other cursor.",
     "clicks": "Open the same appendix in both.",
     "callouts": [
-      "Editing together",
-      "Who is here",
-      "the other person's name and cursor"
+      "Who else is editing, by name. Their cursor shows in the text with their name."
     ]
   },
   "library-1": {
@@ -235,10 +231,11 @@
     "state": "A category exists; the Definitions page has a category chosen and the New definition form open, empty.",
     "clicks": "Structure, Definitions, choose a category, New definition.",
     "callouts": [
-      "Definitions in menu",
-      "Category chooser",
-      "New definition",
-      "Term and Definition boxes"
+      "The **New definition** dialog.",
+      "The **Category** chooser. Definitions belong to a category.",
+      "**Term**.",
+      "**Definition**.",
+      "**Create definition**."
     ]
   },
   "library-2": {
@@ -248,11 +245,11 @@
     "state": "{linked}: a draft with a definition, a related policy, a reference and a contact already attached, and the Add controls visible.",
     "clicks": "Scroll below the editor after Alice created items.",
     "callouts": [
-      "Definitions and Add a definition",
-      "Related with Policy and Relationship",
-      "References",
-      "Contacts",
-      "move and remove buttons"
+      "**Definitions**, with the dropdown and **Add**.",
+      "**Related**, with the **Policy** and **Relationship** dropdowns and **Add**.",
+      "**References**, with **Add a reference**.",
+      "**Contacts**, with **Add a contact**.",
+      "The remove (X) button, and on references and contacts the up and down arrows."
     ]
   },
   "library-3": {
@@ -262,10 +259,10 @@
     "state": "{linked} published, read as Erin; the Related, Definitions, References and Contacts tabs each hold something.",
     "clicks": "Open the published document, click each tab.",
     "callouts": [
-      "Related tab",
-      "Definitions tab",
-      "References tab",
-      "Contacts tab"
+      "The **Definitions** tab.",
+      "The **Related** tab.",
+      "The **References** tab.",
+      "The **Contacts** tab, with department, email and phone."
     ]
   },
   "reading-and-history-1": {
@@ -275,12 +272,12 @@
     "state": "{published} published with a table of contents, a details block and two appendices.",
     "clicks": "Open a published policy with an appendix.",
     "callouts": [
-      "On this page outline",
-      "document text",
-      "Details block",
-      "tabs",
-      "Actions menu",
-      "Appendices with Last Updated"
+      "The **On this page** outline. Click a heading to jump to it.",
+      "The document text.",
+      "The details block: **Status**, **Sensitivity**, **Owner**, **Version**, **Published** and **Last updated**.",
+      "The tabs: **View**, one for each kind of link, and **Changes**.",
+      "The **Actions** menu: **Print / Export** and **History & approvals**.",
+      "The appendices, listed at the end of the outline."
     ]
   },
   "reading-and-history-2": {
@@ -290,11 +287,11 @@
     "state": "{twoVersions}: two published versions with visible changes between them.",
     "clicks": "Needs two published versions. Click the Changes tab.",
     "callouts": [
-      "Changes tab",
-      "From version and To version",
-      "Side by side and Unified",
-      "added and removed marks",
-      "Show unchanged"
+      "The **Changes** tab.",
+      "The two version pickers, from the older version to the newer.",
+      "The **Unified** and **Side by side** switch.",
+      "The legend: added text is marked new, removed text is marked old.",
+      "A bar such as \"2 unchanged sections\"; press it to show them."
     ]
   },
   "reading-and-history-3": {
@@ -304,10 +301,9 @@
     "state": "{published}; Actions menu open, Print / Export dialog open.",
     "clicks": "Actions, Print / Export.",
     "callouts": [
-      "Print / Export item",
-      "dialog title",
-      "Include version history page",
-      "Print"
+      "The \"Print this version\" dialog. Open it with **Print / Export** in the **Actions** menu.",
+      "**Include version history page**.",
+      "**Print**."
     ]
   },
   "reading-and-history-4": {
@@ -317,9 +313,9 @@
     "state": "{ack}: a policy that asks Erin to acknowledge and she has not yet; the dialog is open, not confirmed.",
     "clicks": "Open a published policy that asks for acknowledgement, click Acknowledge.",
     "callouts": [
-      "Please review and confirm card",
-      "Acknowledge button",
-      "dialog with Name, Time, Version"
+      "The \"Acknowledge this policy?\" dialog. Open it with **Acknowledge** on the \"Please review and confirm\" card.",
+      "Your name, the version and the time. They are recorded against your name.",
+      "**Acknowledge**."
     ]
   },
   "reading-and-history-5": {
@@ -329,9 +325,9 @@
     "state": "{twoVersions}: History & approvals open, with several events.",
     "clicks": "Actions, History & approvals.",
     "callouts": [
-      "History & approvals item",
-      "the list of events",
-      "who and when"
+      "**History & approvals**, opened from the **Actions** menu.",
+      "The versions, newest first, each with its status.",
+      "An event: what happened, and when."
     ]
   },
   "admin-1": {
@@ -341,26 +337,26 @@
     "state": "A category with a default template that is not locked.",
     "clicks": "Categories, Directory, pick a category with a default template.",
     "callouts": [
-      "category tree and + New category",
-      "Details & Defaults",
-      "Default template and Authors must use this template",
-      "Default workflow",
-      "Acknowledgement audience",
-      "Documents this category holds",
-      "Save"
+      "The category tree on the left, with **Filter categories**.",
+      "**Name** and **Slug**.",
+      "**Default template**, and the **Authors must use this template** tick box that locks it.",
+      "**Default workflow**.",
+      "**Acknowledgement audience**.",
+      "**Documents this category holds**.",
+      "**Save**."
     ]
   },
   "admin-2": {
     "app": "admin",
     "address": "/admin/templates",
     "signInAs": "Alice",
-    "state": "A template with required and optional sections and a draft version being created.",
+    "state": "A template with a draft version open: sections with required switches.",
     "clicks": "Structure, Templates, open a template, Create version.",
     "callouts": [
-      "template list and + New template",
-      "sections with Required switch",
-      "Create version",
-      "Next: Review and Publish version"
+      "The three steps: **Sections**, **Review** and **Publish**.",
+      "A section's **Required** switch.",
+      "**Next: Review**.",
+      "**Version history**, with the draft."
     ]
   },
   "admin-3": {
@@ -370,12 +366,12 @@
     "state": "A workflow with two stages, one with a quorum, and Allow veto approvers visible.",
     "clicks": "Structure, Workflows, open a workflow.",
     "callouts": [
-      "stage cards",
-      "quorum choice",
-      "+ Add approver and + Add stage",
-      "due within",
-      "Allow veto approvers",
-      "Save workflow"
+      "The stage name.",
+      "The quorum choice: **One**, **Quorum** or **All**.",
+      "**+ Add approver**.",
+      "**Due** in working days.",
+      "**Allow veto approvers**, and who may veto.",
+      "**Save workflow**."
     ]
   },
   "admin-4": {
@@ -385,10 +381,11 @@
     "state": "Access for a category with a few Allow and Deny rows and the Simulator open for one person.",
     "clicks": "Categories, Access, choose a category, open the Simulator.",
     "callouts": [
-      "category list",
-      "Read, Acknowledge, Approve, Author columns",
-      "Allow, Deny, Blank",
-      "Simulator"
+      "**Filter categories**: the list of categories.",
+      "**Read** for a person or group: **Allow**, **Deny** or blank.",
+      "**Approve**: the same choices.",
+      "**+ Add rule**.",
+      "The **Simulator**: pick a person and see what they can do before you save."
     ]
   },
   "admin-5": {
@@ -398,10 +395,10 @@
     "state": "Users & roles lists the eight test people with roles and groups.",
     "clicks": "People, Users & roles.",
     "callouts": [
-      "People in the menu",
-      "the list with Roles and Groups",
-      "a person to open",
-      "Act as"
+      "**People** in the admin menu.",
+      "The list, with **Roles** and **Groups**.",
+      "A person to open.",
+      "**Search users**."
     ]
   },
   "editor-1": {
@@ -411,26 +408,25 @@
     "state": "Editor Tour draft; select a phrase in a paragraph; the toolbar appears.",
     "clicks": "Editor Tour draft; select a phrase in a paragraph; the toolbar appears.",
     "callouts": [
-      "Bold, Italic, Underline, Subscript, Superscript",
-      "Highlight",
-      "Clear formatting",
-      "Heading 1 to Heading 5",
-      "Bulleted list and Numbered list",
-      "Align left, center and right",
-      "Link",
-      "Rework selected text with AI"
+      "**Bold**, **Italic**, **Underline**, **Subscript** and **Superscript**.",
+      "**Highlight**.",
+      "**Clear formatting**.",
+      "**Heading 1** to **Heading 5**.",
+      "**Bulleted list** and **Numbered list**.",
+      "**Align center**, **Align left** and **Align right**.",
+      "**Link**.",
+      "**Rework selected text with AI**, when AI is on."
     ]
   },
   "editor-2": {
     "app": "staff",
-    "address": "/drafts/{tour}",
+    "address": "/drafts/{draft}",
     "signInAs": "Bob",
-    "state": "Editor Tour draft; click the empty last line, press the plus button area and type / so the menu is open.",
+    "state": "{draft}: click the empty line under Policy statement and type /; the menu is open.",
     "clicks": "Editor Tour draft; click the empty last line, press the plus button area and type / so the menu is open.",
     "callouts": [
-      "the + button on an empty line",
-      "the menu of blocks",
-      "a block's name and its typed word"
+      "The menu of blocks.",
+      "A block's name. Type `/` then a few letters of it to find it."
     ]
   },
   "editor-3": {
@@ -439,7 +435,12 @@
     "signInAs": "Bob",
     "state": "Editor Tour draft with a callout, an open toggle, a button and a divider in view.",
     "clicks": "Editor Tour draft with a callout, an open toggle, a button and a divider in view.",
-    "callouts": ["Callout", "Toggle (open)", "Button", "Divider"]
+    "callouts": [
+      "A **Callout**.",
+      "A **Toggle**, open.",
+      "A **Button**.",
+      "A **Divider**."
+    ]
   },
   "editor-4": {
     "app": "staff",
@@ -448,10 +449,10 @@
     "state": "Editor Tour draft with a table; the cursor in a cell so the table toolbar shows and a range of cells selected.",
     "clicks": "Editor Tour draft with a table; the cursor in a cell so the table toolbar shows and a range of cells selected.",
     "callouts": [
-      "the table",
-      "the table toolbar",
-      "the header row",
-      "the selected range of cells"
+      "The table, drawn with a dashed grid while you write and a solid one for the reader.",
+      "The table toolbar above it: **Row**, **Column**, **Cell**, **Colour**, **Align**, **Width**, **Size**, **Borders**, **Style**, **Caption** and **Delete table**.",
+      "The header row.",
+      "The cell you are in."
     ]
   },
   "editor-5": {
@@ -461,9 +462,9 @@
     "state": "Editor Tour draft with an image (alt text and caption) selected so its settings show, and a file block.",
     "clicks": "Editor Tour draft with an image (alt text and caption) selected so its settings show, and a file block.",
     "callouts": [
-      "Image with caption and alt text",
-      "the image's settings",
-      "File with title, description, name and size"
+      "An **Image**, with its caption and alt text.",
+      "The image's settings.",
+      "A **File**, with its title, description, name and size."
     ]
   },
   "editor-6": {
@@ -473,10 +474,10 @@
     "state": "Editor Tour draft; Cmd+F open with a search that has several matches and the replace box showing.",
     "clicks": "Editor Tour draft; Cmd+F open with a search that has several matches and the replace box showing.",
     "callouts": [
-      "find box with the match count",
-      "Previous and Next",
-      "Match case",
-      "replace box with Replace and Replace all"
+      "The find box.",
+      "**Previous** and **Next** (the up and down arrows), and the count, such as \"1 of 14\".",
+      "**Match case**.",
+      "The replace box, with **Replace** and **Replace all**."
     ]
   },
   "editor-7": {
@@ -485,7 +486,9 @@
     "signInAs": "Bob",
     "state": "Editor Tour draft; Cmd+/ open.",
     "clicks": "Editor Tour draft; Cmd+/ open.",
-    "callouts": ["the groups of shortcuts", "the keys for this computer"]
+    "callouts": [
+      "The list of shortcuts, in groups: **Text**, **Blocks**, **Alignment** and **General**, with the keys for your computer."
+    ]
   },
   "editor-8": {
     "app": "staff",
@@ -494,9 +497,20 @@
     "state": "Document in review; some text selected; the toolbar shows only Comment.",
     "clicks": "Document in review; some text selected; the toolbar shows only Comment.",
     "callouts": [
-      "the document, read only",
-      "selected text",
-      "the toolbar with only Comment"
+      "The words you selected.",
+      "The toolbar, with **Comment** and nothing else."
+    ]
+  },
+  "approvals-6": {
+    "app": "staff",
+    "address": "/approvals/{inReview}",
+    "signInAs": "Charlie",
+    "state": "{inReview} awaiting Charlie; scrolled to the decision area; nothing typed.",
+    "clicks": "Scroll down to Your decision.",
+    "callouts": [
+      "**Your decision**.",
+      "The **Decision comment** box. A comment is required to approve, reject or send comments.",
+      "**Send comments**, **Reject** and **Approve**."
     ]
   }
 }

@@ -1,119 +1,122 @@
 {
   "index-1": {
-    "ready": false
+    "ready": true
   },
   "signing-in-1": {
-    "ready": false
+    "ready": true
   },
   "signing-in-2": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-1": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-2": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-3": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-4": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-5": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-6": {
-    "ready": false
+    "ready": true
   },
   "policies-and-procedures-7": {
-    "ready": false
+    "ready": true
   },
   "approvals-1": {
-    "ready": false
+    "ready": true
   },
   "approvals-2": {
-    "ready": false
+    "ready": true
   },
   "approvals-3": {
-    "ready": false
+    "ready": true
   },
   "approvals-4": {
-    "ready": false
+    "ready": true
   },
   "approvals-5": {
     "ready": false
   },
   "appendices-1": {
-    "ready": false
+    "ready": true
   },
   "appendices-2": {
-    "ready": false
+    "ready": true
   },
   "appendices-3": {
-    "ready": false
+    "ready": true
   },
   "library-1": {
-    "ready": false
+    "ready": true
   },
   "library-2": {
-    "ready": false
+    "ready": true
   },
   "library-3": {
-    "ready": false
+    "ready": true
   },
   "reading-and-history-1": {
-    "ready": false
+    "ready": true
   },
   "reading-and-history-2": {
-    "ready": false
+    "ready": true
   },
   "reading-and-history-3": {
-    "ready": false
+    "ready": true
   },
   "reading-and-history-4": {
-    "ready": false
+    "ready": true
   },
   "reading-and-history-5": {
-    "ready": false
+    "ready": true
   },
   "admin-1": {
-    "ready": false
+    "ready": true
   },
   "admin-2": {
-    "ready": false
+    "ready": true
   },
   "admin-3": {
-    "ready": false
+    "ready": true
   },
   "admin-4": {
-    "ready": false
+    "ready": true
   },
   "admin-5": {
-    "ready": false
+    "ready": true
   },
   "editor-1": {
-    "ready": false
+    "ready": true
   },
   "editor-2": {
-    "ready": false
+    "ready": true
   },
   "editor-3": {
     "ready": false
   },
   "editor-4": {
-    "ready": false
+    "ready": true
   },
   "editor-5": {
     "ready": false
   },
   "editor-6": {
-    "ready": false
+    "ready": true
   },
   "editor-7": {
-    "ready": false
+    "ready": true
   },
   "editor-8": {
-    "ready": false
+    "ready": true
+  },
+  "approvals-6": {
+    "ready": true
   }
 }

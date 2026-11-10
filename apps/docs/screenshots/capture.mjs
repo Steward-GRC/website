@@ -48,7 +48,7 @@ const newContext = () =>
   browser.newContext({
     colorScheme: "light",
     deviceScaleFactor: 1,
-    reducedMotion: "reduce",
+    reducedMotion: "no-preference",
     viewport: { height: 800, width: 1280 },
   });
 
@@ -103,7 +103,9 @@ const anonymous = async (route) => {
 
 // A long page may take a taller window (same width); the default is 1280x800.
 const snap = async (page, slot, items, { height = 800 } = {}) => {
-  await page.setViewportSize({ height, width: 1280 });
+  if (page.viewportSize()?.height !== height) {
+    await page.setViewportSize({ height, width: 1280 });
+  }
   await page.waitForTimeout(400);
   const boxes = await resolveBoxes(page, items);
   await drawCallouts(page, boxes);
@@ -111,6 +113,19 @@ const snap = async (page, slot, items, { height = 800 } = {}) => {
   await clearCallouts(page);
   mkdirSync(OUT, { recursive: true });
   writeFileSync(path.join(OUT, `${slot}.png`), png);
+};
+
+// Selects text the way a person does, with the mouse; the selection toolbar
+// only shows for a real drag, not for a script-made selection.
+const dragSelect = async (page, locator) => {
+  const box = await locator.boundingBox();
+  await page.mouse.move(box.x + 4, box.y + 10);
+  await page.mouse.down();
+  await page.mouse.move(box.x + Math.min(300, box.width - 8), box.y + 10, {
+    steps: 8,
+  });
+  await page.mouse.up();
+  await page.waitForTimeout(800);
 };
 
 const role = (page, r, name) => page.getByRole(r, { name });
@@ -160,23 +175,13 @@ const slots = {
   "policies-and-procedures-1": async () => {
     const p = await as("Bob");
     await go(p, "/policies");
-    // An empty list: Information, then Devices, which holds nothing.
-    await p
-      .locator("main")
-      .getByRole("button", { name: "Information", exact: true })
-      .click();
-    await p
-      .locator("main")
-      .getByRole("button", { name: "Devices", exact: true })
-      .click();
+    // An empty list: the Devices category holds nothing.
+    await p.getByRole("button", { name: "Devices", exact: true }).click();
     await p.waitForTimeout(600);
     await snap(p, "policies-and-procedures-1", [
       { n: 1, loc: nav(p).getByRole("link", { name: "Library" }).first() },
       { n: 2, loc: p.getByRole("link", { name: "New policy" }) },
-      {
-        n: 3,
-        loc: p.locator("main").getByRole("heading", { name: "Policies" }),
-      },
+      { n: 3, loc: text(p, "No policies match these filters.") },
     ]);
   },
   "policies-and-procedures-2": async () => {
@@ -199,27 +204,26 @@ const slots = {
     await go(p, "/drafts/{draft}");
     await snap(p, "policies-and-procedures-3", [
       { n: 1, loc: p.locator("[contenteditable=true]").first() },
-      { n: 2, loc: role(p, "button", "AI") },
+      { n: 2, loc: role(p, "button", "Actions") },
       { n: 3, loc: role(p, "button", "Submit for approval") },
-      { n: 4, loc: role(p, "button", "Actions") },
-      { n: 5, loc: text(p, /Saved|Saving|Unsaved/) },
-      { n: 6, loc: text(p, "Required sections", { exact: true }) },
-      { n: 7, loc: text(p, "Appendices", { exact: true }) },
-      { n: 8, loc: text(p, "Next version", { exact: true }) },
+      { n: 4, loc: text(p, "Saved", { exact: true }) },
+      { n: 5, loc: text(p, "Required sections", { exact: true }) },
+      { n: 6, loc: text(p, "Appendices", { exact: true }) },
+      { n: 7, loc: text(p, "Next version", { exact: true }) },
     ]);
   },
   "policies-and-procedures-4": async () => {
     const p = await as("Bob");
     await go(p, "/drafts/{draft}");
-    await role(p, "button", "AI").click();
+    await role(p, "button", "Actions").click();
     const menu = p.getByRole("menu");
+    await menu.waitFor();
     await menuItem(p, /Review draft/).click();
     await p
       .getByText(/AI review/i)
       .first()
-      .waitFor({ timeout: 15_000 });
+      .waitFor({ timeout: 20_000 });
     await snap(p, "policies-and-procedures-4", [
-      { n: 1, loc: menu },
       { n: 2, loc: p.getByText(/AI review/i).first() },
       { n: 3, loc: p.getByText(/Jump to/i).first() },
       { n: 4, loc: role(p, "button", /Re-run review/i) },
@@ -242,21 +246,14 @@ const slots = {
     const p = await as("Bob");
     await go(p, "/drafts/{inReview}");
     await role(p, "button", "Actions").click();
-    const item = menuItem(p, /Withdraw from review/);
-    await item.waitFor();
-    const actions = await role(p, "button", "Actions").boundingBox();
-    const itemBox = await item.boundingBox();
-    await item.click();
+    await menuItem(p, /Withdraw from review/).click();
     const d = dialog(p);
     await d.waitFor();
-    // The menu closes when the dialog opens, so its two callouts are drawn from
-    // the boxes measured before the click.
     await snap(p, "policies-and-procedures-6", [
-      { n: 3, loc: d },
-      { n: 1, loc: role(p, "button", "Actions") },
+      { n: 1, loc: d.getByRole("heading").first() },
+      { n: 2, loc: d.getByRole("button", { name: "Withdraw", exact: true }) },
+      { n: 3, loc: d.getByRole("button", { name: "Keep in review" }) },
     ]);
-    void actions;
-    void itemBox;
   },
   "policies-and-procedures-7": async () => {
     const p = await as("Bob");
@@ -273,35 +270,52 @@ const slots = {
     await snap(p, "approvals-1", [
       { n: 1, loc: nav(p).getByRole("link", { name: /Approvals/ }) },
       { n: 2, loc: text(p, "Pending", { exact: true }) },
-      { n: 3, loc: text(p, "In progress", { exact: true }) },
-      { n: 4, loc: text(p, "Coming to you", { exact: true }) },
-      { n: 5, loc: p.getByRole("link", { name: "Review" }).first() },
+      { n: 3, loc: text(p, "Coming to you", { exact: true }) },
+      { n: 4, loc: p.getByRole("link", { name: "Review" }).first() },
     ]);
   },
   "approvals-2": async () => {
     const p = await as("Charlie");
     await go(p, "/approvals/{inReview}");
+    const step = (name) =>
+      text(p, name, { exact: true }).locator(
+        "xpath=ancestor::*[contains(@class,'rounded')][1]",
+      );
     await snap(p, "approvals-2", [
-      { n: 1, loc: text(p, /of \d+ approved/).first() },
+      { n: 1, union: [step("Submitted"), step("Publish")] },
       { n: 2, loc: p.getByRole("tablist") },
-      { n: 3, loc: p.getByLabel(/Decision comment/i) },
-      { n: 4, loc: role(p, "button", /^Approve/) },
+    ]);
+  },
+  "approvals-6": async () => {
+    const p = await as("Charlie");
+    await go(p, "/approvals/{inReview}");
+    await p.getByLabel(/Decision comment/i).scrollIntoViewIfNeeded();
+    await p.mouse.wheel(0, 200);
+    await snap(p, "approvals-6", [
+      { n: 1, loc: text(p, "Your decision", { exact: true }) },
+      { n: 2, loc: p.getByLabel(/Decision comment/i) },
+      {
+        n: 3,
+        union: [
+          role(p, "button", "Send comments"),
+          role(p, "button", "Approve"),
+        ],
+      },
     ]);
   },
   "approvals-3": async () => {
     const p = await as("Charlie");
     await go(p, "/approvals/{inReview}");
     const target = p.locator("article p, main p").first();
-    await target.selectText();
-    await role(p, "button", "Comment").first().click();
+    await dragSelect(p, target);
+    await p.locator('[data-kg-toolbar-button="comment"]').click();
     await p.getByLabel(/Suggest a change/i).check();
     await snap(p, "approvals-3", [
       { n: 1, loc: target },
-      { n: 2, loc: role(p, "button", "Comment").first() },
-      { n: 3, loc: p.getByRole("textbox").last() },
-      { n: 4, loc: p.getByLabel(/Suggest a change/i) },
-      { n: 5, loc: p.getByLabel(/Suggested text/i) },
-      { n: 6, loc: role(p, "button", "Comment").last() },
+      { n: 2, loc: p.getByPlaceholder(/What's up with this/i) },
+      { n: 3, loc: p.getByLabel(/Suggest a change/i) },
+      { n: 4, loc: p.getByLabel(/Suggested text/i) },
+      { n: 5, loc: role(p, "button", "Comment").last() },
     ]);
   },
   "approvals-4": async () => {
@@ -310,8 +324,7 @@ const slots = {
     await role(p, "tab", /Changes since you last reviewed/).click();
     await snap(p, "approvals-4", [
       { n: 1, loc: role(p, "tab", /Changes since you last reviewed/) },
-      { n: 2, loc: p.getByRole("tabpanel") },
-      { n: 3, loc: role(p, "button", /Mark as reviewed/) },
+      { n: 2, loc: p.getByText(/added in the newer version/).first() },
     ]);
   },
   "approvals-5": async () => {
@@ -327,28 +340,41 @@ const slots = {
   "appendices-1": async () => {
     const p = await as("Bob");
     await go(p, "/drafts/{withAppendices}");
-    const panel = text(p, "Appendices", { exact: true })
-      .first()
-      .locator("xpath=ancestor::*[self::section or self::div][2]");
-    await snap(p, "appendices-1", [
-      { n: 1, loc: panel },
-      { n: 2, loc: role(p, "button", "Add appendix") },
-      { n: 3, loc: text(p, /Appendix A/).first() },
-      { n: 4, loc: role(p, "button", /Move appendix A/).first() },
-      { n: 5, loc: role(p, "link", "Edit").first() },
-      { n: 6, loc: role(p, "button", "Retire").first() },
-    ]);
+    const rowActions = [
+      role(p, "link", /Edit appendix A/),
+      role(p, "button", /Retire appendix A/),
+    ];
+    await snap(
+      p,
+      "appendices-1",
+      [
+        {
+          n: 1,
+          union: [
+            text(p, "Appendices", { exact: true }),
+            role(p, "button", /^Restore/),
+          ],
+        },
+        { n: 2, loc: role(p, "button", "Add appendix") },
+        { n: 3, loc: text(p, "Not published", { exact: true }) },
+        { n: 4, union: rowActions },
+        { n: 5, loc: role(p, "button", /^Restore/) },
+      ],
+      { height: 1100 },
+    );
   },
   "appendices-2": async () => {
     const p = await as("Bob");
     await go(p, "/drafts/{withAppendices}/appendices/A");
     await snap(p, "appendices-2", [
       { n: 1, loc: p.getByRole("tablist").first() },
-      { n: 2, loc: role(p, "button", /Unified/) },
-      { n: 3, loc: p.getByLabel(/Published version/i) },
-      { n: 4, loc: role(p, "button", "Save appendix") },
-      { n: 5, loc: text(p, "Contributors", { exact: true }) },
-      { n: 6, loc: p.getByRole("link", { name: /^Back to/ }) },
+      { n: 2, loc: text(p, "View", { exact: true }) },
+      { n: 3, loc: text(p, /Contributors/) },
+      {
+        n: 4,
+        union: [role(p, "button", "Retire"), role(p, "button", "Publish")],
+      },
+      { n: 5, loc: p.getByRole("link", { name: /^Back to/ }) },
     ]);
   },
   "appendices-3": async () => {
@@ -356,44 +382,57 @@ const slots = {
     const alice = await as("Alice", { fresh: true });
     await go(bob, "/drafts/{withAppendices}/appendices/A");
     await go(alice, "/drafts/{withAppendices}/appendices/A");
-    await bob.waitForTimeout(2500);
+    const box = await alice
+      .locator("[contenteditable=true] p")
+      .first()
+      .boundingBox();
+    await alice.mouse.click(box.x + 60, box.y + 10);
+    await bob.waitForTimeout(3500);
     await snap(bob, "appendices-3", [
-      { n: 1, loc: text(bob, /Editing together/i).first() },
-      { n: 2, loc: text(bob, /Who is here/i).first() },
-      { n: 3, loc: text(bob, /Alice/).first() },
+      { n: 1, loc: text(bob, /Alice Admin editing/) },
     ]);
   },
   "library-1": async () => {
     const p = await as("Alice", { admin: true });
     await go(p, "/admin/definitions-library");
-    await role(p, "button", /New definition/).click();
+    await role(p, "button", /New definition/)
+      .first()
+      .click();
+    const d = dialog(p);
+    await d.waitFor();
     await snap(p, "library-1", [
-      { n: 1, loc: p.getByRole("link", { name: "Definitions" }).first() },
-      { n: 2, loc: p.getByLabel(/Category/i).first() },
-      { n: 3, loc: role(p, "button", /New definition/) },
-      { n: 4, loc: p.getByLabel(/^Term/) },
+      { n: 1, loc: d },
+      { n: 2, loc: d.getByLabel("Category") },
+      { n: 3, loc: d.getByLabel("Term") },
+      { n: 4, loc: d.getByLabel("Definition", { exact: true }) },
+      { n: 5, loc: d.getByRole("button", { name: "Create definition" }) },
     ]);
   },
   "library-2": async () => {
     const p = await as("Bob");
     await go(p, "/drafts/{linked}");
-    await text(p, "Definitions", { exact: true })
-      .first()
-      .scrollIntoViewIfNeeded();
-    await snap(p, "library-2", [
-      { n: 1, loc: text(p, "Definitions", { exact: true }).first() },
-      { n: 2, loc: text(p, "Related", { exact: true }).first() },
-      { n: 3, loc: text(p, "References", { exact: true }).first() },
-      { n: 4, loc: text(p, "Contacts", { exact: true }).first() },
-      { n: 5, loc: p.getByRole("button", { name: /Move|Remove/ }).first() },
-    ]);
+    const heading = text(p, "Definitions", { exact: true }).first();
+    await heading.scrollIntoViewIfNeeded();
+    await p.evaluate(() => window.scrollBy(0, 330));
+    await snap(
+      p,
+      "library-2",
+      [
+        { n: 1, loc: heading },
+        { n: 2, loc: text(p, "Related", { exact: true }).first() },
+        { n: 3, loc: text(p, "References", { exact: true }).first() },
+        { n: 4, loc: text(p, "Contacts", { exact: true }).first() },
+        { n: 5, loc: p.getByRole("button", { name: /^Remove/ }).first() },
+      ],
+      { height: 1500 },
+    );
   },
   "library-3": async () => {
     const p = await as("Erin");
     await go(p, "/policies/{linked}");
     await snap(p, "library-3", [
-      { n: 1, loc: role(p, "tab", /^Related/) },
-      { n: 2, loc: role(p, "tab", /^Definitions/) },
+      { n: 1, loc: role(p, "tab", /^Definitions/) },
+      { n: 2, loc: role(p, "tab", /^Related/) },
       { n: 3, loc: role(p, "tab", /^References/) },
       { n: 4, loc: role(p, "tab", /^Contacts/) },
     ]);
@@ -401,25 +440,44 @@ const slots = {
   "reading-and-history-1": async () => {
     const p = await as("Erin");
     await go(p, "/policies/{published}");
-    await snap(p, "reading-and-history-1", [
-      { n: 1, loc: text(p, /On this page/i).first() },
-      { n: 2, loc: p.locator("article").first() },
-      { n: 3, loc: text(p, "Details", { exact: true }).first() },
-      { n: 4, loc: p.getByRole("tablist") },
-      { n: 5, loc: role(p, "button", "Actions") },
-      { n: 6, loc: text(p, /Last Updated/i).first() },
-    ]);
+    await snap(
+      p,
+      "reading-and-history-1",
+      [
+        { n: 1, loc: text(p, "On this page", { exact: true }) },
+        { n: 2, loc: text(p, "1. Purpose") },
+        {
+          n: 3,
+          union: [
+            text(p, "Status", { exact: true }),
+            text(p, "Last updated", { exact: true }),
+            text(p, "v3.0.0", { exact: true }).first(),
+          ],
+        },
+        { n: 4, loc: p.getByRole("tablist") },
+        { n: 5, loc: role(p, "button", "Actions") },
+        { n: 6, loc: p.getByRole("link", { name: /Appendix A/ }).first() },
+      ],
+      { height: 1000 },
+    );
   },
   "reading-and-history-2": async () => {
     const p = await as("Erin");
     await go(p, "/policies/{twoVersions}");
     await role(p, "tab", "Changes").click();
+    await p.waitForTimeout(800);
     await snap(p, "reading-and-history-2", [
       { n: 1, loc: role(p, "tab", "Changes") },
-      { n: 2, loc: p.getByLabel(/From version/i) },
-      { n: 3, loc: role(p, "button", /Side by side/) },
-      { n: 4, loc: p.locator("ins, del, mark").first() },
-      { n: 5, loc: text(p, /Show .*unchanged/i).first() },
+      {
+        n: 2,
+        union: [
+          p.getByRole("combobox").first(),
+          p.getByRole("combobox").nth(1),
+        ],
+      },
+      { n: 3, loc: text(p, "Side by side", { exact: true }) },
+      { n: 4, loc: text(p, /added in the newer version/) },
+      { n: 5, loc: text(p, /unchanged sections?/).first() },
     ]);
   },
   "reading-and-history-3": async () => {
@@ -430,74 +488,96 @@ const slots = {
     const d = dialog(p);
     await d.waitFor();
     await snap(p, "reading-and-history-3", [
-      { n: 1, loc: role(p, "button", "Actions") },
-      { n: 2, loc: d.getByRole("heading").first() },
-      { n: 3, loc: d.getByLabel(/Include version history/i) },
-      { n: 4, loc: d.getByRole("button", { name: "Print" }) },
+      { n: 1, loc: d.getByRole("heading").first() },
+      { n: 2, loc: d.getByLabel(/Include version history/i) },
+      { n: 3, loc: d.getByRole("button", { name: "Print" }) },
     ]);
   },
   "reading-and-history-4": async () => {
     const p = await as("Erin");
     await go(p, "/policies/{ack}");
-    const card = text(p, /Please review and confirm/i).first();
-    const button = role(p, "button", "Acknowledge");
-    await button.first().click();
+    await role(p, "button", "Acknowledge").first().click();
     const d = dialog(p);
     await d.waitFor();
     await snap(p, "reading-and-history-4", [
-      { n: 1, loc: card },
-      { n: 2, loc: button },
-      { n: 3, loc: d },
+      { n: 1, loc: d },
+      {
+        n: 2,
+        union: [
+          d.getByText("Name", { exact: true }),
+          d.getByText("Time", { exact: true }),
+        ],
+      },
+      { n: 3, loc: d.getByRole("button", { name: "Acknowledge" }) },
     ]);
   },
   "reading-and-history-5": async () => {
     const p = await as("Erin");
     await go(p, "/policies/{twoVersions}");
-    await p.getByRole("link", { name: "History & approvals" }).last().click();
-    await p.waitForLoadState("networkidle");
+    await role(p, "button", "Actions").click();
+    await menuItem(p, /History/).click();
+    const heading = p.getByRole("heading", { name: "History & approvals" });
+    await heading.waitFor();
+    await heading.scrollIntoViewIfNeeded();
     await snap(p, "reading-and-history-5", [
+      { n: 1, loc: heading },
       {
-        n: 1,
-        loc: p.getByRole("link", { name: "History & approvals" }).first(),
+        n: 2,
+        union: [text(p, /^v3\.0\.0$/).last(), text(p, /^v1\.0\.0$/).last()],
       },
-      { n: 2, loc: p.getByRole("list").first() },
-      { n: 3, loc: text(p, /Published/).first() },
+      { n: 3, loc: text(p, "Published v3.0.0") },
     ]);
   },
   "editor-1": async () => {
     const p = await as("Bob");
     await go(p, "/drafts/{tour}");
-    await p.locator("[contenteditable=true] p").first().selectText();
+    await dragSelect(p, p.locator("[contenteditable=true] p").first());
     await p.locator("[data-kg-selection-toolbar]").waitFor();
     const button = (id) => p.locator(`[data-kg-toolbar-button="${id}"]`);
     await snap(p, "editor-1", [
-      { n: 1, loc: button("bold") },
+      { n: 1, union: [button("bold"), button("superscript")] },
       { n: 2, loc: button("highlight") },
       { n: 3, loc: button("clearFormatting") },
-      { n: 4, loc: button("heading1") },
-      { n: 5, loc: button("bulletList") },
-      { n: 6, loc: button("alignLeft") },
+      { n: 4, union: [button("h1"), button("h5")] },
+      { n: 5, union: [button("bulletList"), button("numberList")] },
+      { n: 6, union: [button("alignCenter"), button("alignRight")] },
       { n: 7, loc: button("link") },
       { n: 8, loc: button("ai") },
     ]);
   },
   "editor-2": async () => {
     const p = await as("Bob");
-    await go(p, "/drafts/{tour}");
-    const last = p.locator("[contenteditable=true] p").last();
-    await last.click();
-    await p.keyboard.press("End");
-    await p.keyboard.type("/");
-    await p.locator("[data-kg-slash-menu]").waitFor();
-    await snap(p, "editor-2", [
-      {
-        n: 1,
-        loc: p.locator("[data-kg-plus-button], [aria-label*='Add a card']"),
-      },
-      { n: 2, loc: p.locator("[data-kg-slash-menu]") },
-      { n: 3, loc: p.locator("[data-kg-slash-menu]").getByText("/callout") },
-    ]);
-    await p.keyboard.press("Backspace");
+    await go(p, "/drafts/{draft}");
+    // The empty section under "Policy statement" is an empty line. The step
+    // types a "/" there to open the menu and always takes it out again, so the
+    // draft is left as it was.
+    const empty = p
+      .locator("[contenteditable=true]")
+      .getByRole("heading", { name: "Policy statement" })
+      .locator("xpath=following-sibling::p[1]");
+    try {
+      await empty.click();
+      await p.keyboard.press("Slash");
+      await p.locator("[data-kg-slash-menu]").waitFor({ timeout: 8000 });
+      await snap(p, "editor-2", [
+        { n: 1, loc: p.locator("[data-kg-slash-menu]") },
+        {
+          n: 2,
+          loc: p.locator("[data-kg-slash-menu]").getByText("Callout").first(),
+        },
+      ]);
+    } finally {
+      await p.keyboard.press("Escape");
+      const left = await empty.textContent();
+      if (left?.trim() === "/") {
+        await empty.click();
+        await p.keyboard.press("End");
+        await p.keyboard.press("Backspace");
+        await p
+          .getByText("Saved", { exact: true })
+          .waitFor({ timeout: 15_000 });
+      }
+    }
   },
   "editor-3": async () => {
     const p = await as("Bob");
@@ -540,7 +620,7 @@ const slots = {
       [
         { n: 1, loc: p.locator("table").first() },
         { n: 2, loc: p.locator("[data-kg-table-toolbar]") },
-        { n: 3, loc: p.locator("table th, table tr").first() },
+        { n: 3, loc: p.locator("table tr").first() },
         { n: 4, loc: cell },
       ],
       { height: 1000 },
@@ -593,12 +673,11 @@ const slots = {
     const p = await as("Charlie");
     await go(p, "/approvals/{inReview}");
     const target = p.locator("article p, main p").first();
-    await target.selectText();
+    await dragSelect(p, target);
     await p.locator("[data-kg-selection-toolbar]").waitFor();
     await snap(p, "editor-8", [
-      { n: 1, loc: p.locator("article, main").first(), outline: false },
-      { n: 2, loc: target },
-      { n: 3, loc: p.locator("[data-kg-selection-toolbar]") },
+      { n: 1, loc: target },
+      { n: 2, loc: p.locator("[data-kg-selection-toolbar]") },
     ]);
   },
   "admin-1": async () => {
@@ -638,10 +717,10 @@ const slots = {
       .click();
     await p.waitForLoadState("networkidle");
     await snap(p, "admin-2", [
-      { n: 1, loc: p.getByRole("link", { name: /Templates/ }).first() },
-      { n: 2, loc: p.getByText("Required", { exact: true }).first() },
-      { n: 3, loc: role(p, "button", /v\d+ Draft/) },
-      { n: 4, loc: role(p, "button", /Next: Review/) },
+      { n: 1, union: [text(p, "1 Sections"), text(p, "3 Publish")] },
+      { n: 2, loc: p.getByRole("switch").first() },
+      { n: 3, loc: role(p, "button", /Next: Review/) },
+      { n: 4, loc: text(p, "Version history", { exact: true }) },
     ]);
   },
   "admin-3": async () => {
@@ -659,7 +738,7 @@ const slots = {
       [
         { n: 1, loc: p.getByLabel("Stage 1 name") },
         { n: 2, loc: p.getByRole("radio").first() },
-        { n: 3, loc: role(p, "button", /Add approver/).first() },
+        { n: 3, loc: p.getByText(/Add approver/).first() },
         { n: 4, loc: p.getByLabel("Stage 1 due within") },
         { n: 5, loc: p.getByLabel(/veto/i).first() },
         { n: 6, loc: role(p, "button", /Save workflow/) },
@@ -681,6 +760,7 @@ const slots = {
       { n: 2, loc: role(p, "button", /^Read for/).first() },
       { n: 3, loc: role(p, "button", /^Approve for/).first() },
       { n: 4, loc: role(p, "button", /Add rule/) },
+      { n: 5, loc: text(p, "Simulator", { exact: true }) },
     ]);
   },
   "admin-5": async () => {
