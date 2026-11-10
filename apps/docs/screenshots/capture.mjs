@@ -502,7 +502,7 @@ const slots = {
     await p.waitForLoadState("networkidle");
     await snap(p, "admin-2", [
       { n: 1, loc: p.getByRole("link", { name: /Templates/ }).first() },
-      { n: 2, loc: role(p, "button", "Required").first() },
+      { n: 2, loc: p.getByText("Required", { exact: true }).first() },
       { n: 3, loc: role(p, "button", /v\d+ Draft/) },
       { n: 4, loc: role(p, "button", /Next: Review/) },
     ]);
