@@ -133,6 +133,27 @@ const text = (page, t, options) => page.getByText(t, options);
 const nav = (page) => page.getByRole("navigation", { name: "Main navigation" });
 const menuItem = (page, name) => page.getByRole("menuitem", { name });
 const dialog = (page) => page.getByRole("dialog");
+// A command bar group, found by its heading.
+const group = (page, heading) =>
+  dialog(page)
+    .locator("[cmdk-group]")
+    .filter({
+      has: page.locator("[cmdk-group-heading]", { hasText: heading }),
+    });
+
+// The Editor Tour draft, opened once per run and shared by editor-3 and
+// editor-5. Leaving a draft that holds a callout, toggle or captioned image
+// saves it with that text blanked, so a second visit would shoot empty cards:
+// reset the docs data (or restart the mock) before the next run.
+let cards;
+const cardsPage = async () => {
+  if (!cards) {
+    cards = await as("Bob", { fresh: true });
+    await go(cards, "/drafts/{cards}");
+    await cards.waitForTimeout(2000);
+  }
+  return cards;
+};
 
 // One entry per slot, in the order of slots.json. Each opens the state the
 // slot's `clicks` describe, then calls snap with its numbered callouts.
@@ -580,8 +601,7 @@ const slots = {
     }
   },
   "editor-3": async () => {
-    const p = await as("Bob");
-    await go(p, "/drafts/{tour}");
+    const p = await cardsPage();
     const card = (name) =>
       p.locator("[data-kg-card]").filter({ hasText: name }).first();
     await p.locator("[data-kg-card]").first().scrollIntoViewIfNeeded();
@@ -627,8 +647,7 @@ const slots = {
     );
   },
   "editor-5": async () => {
-    const p = await as("Bob");
-    await go(p, "/drafts/{tour}");
+    const p = await cardsPage();
     const image = p.locator("[data-kg-card='image'], .kg-image-card").first();
     await image.scrollIntoViewIfNeeded();
     await image.click();
@@ -637,8 +656,8 @@ const slots = {
       "editor-5",
       [
         { n: 1, loc: image },
-        { n: 2, loc: p.locator("[data-kg-settings-panel]") },
-        { n: 3, loc: p.locator("[data-kg-file-card]").first() },
+        { n: 2, loc: p.locator("[data-kg-card-toolbar='image']") },
+        { n: 3, loc: p.locator("[data-kg-card='file']").first() },
       ],
       { height: 1200 },
     );
@@ -678,6 +697,75 @@ const slots = {
     await snap(p, "editor-8", [
       { n: 1, loc: target },
       { n: 2, loc: p.locator("[data-kg-selection-toolbar]") },
+    ]);
+  },
+  "search-1": async () => {
+    const p = await as("Bob", { fresh: true });
+    await go(p, "/policies");
+    // Two documents opened from the bar fill Recent.
+    for (const [query, number] of [
+      ["expense", "POL-EXPENSES-000001"],
+      ["incident", "PRC-INCIDENT-000001"],
+    ]) {
+      await p.keyboard.press("Control+k");
+      await p.keyboard.type(query);
+      const result = dialog(p).getByRole("option", { name: number });
+      await result.waitFor();
+      await p.waitForTimeout(500);
+      await result.click();
+      await p.waitForLoadState("networkidle");
+      await p.waitForTimeout(1000);
+    }
+    await go(p, "/policies");
+    await p.waitForTimeout(1500);
+    await p.keyboard.press("Control+k");
+    await dialog(p).waitFor();
+    await snap(p, "search-1", [
+      { n: 1, loc: p.locator("form[role=search]") },
+      { n: 2, loc: dialog(p).getByRole("combobox") },
+      { n: 3, loc: group(p, "Actions") },
+      { n: 4, loc: group(p, "Create") },
+      { n: 5, loc: group(p, "Recent") },
+    ]);
+  },
+  "search-2": async () => {
+    const p = await as("Bob");
+    await go(p, "/policies");
+    await p.waitForTimeout(1500);
+    await p.keyboard.press("Control+k");
+    await p.keyboard.type("supplier");
+    await text(p, /See all results/).waitFor();
+    await snap(p, "search-2", [
+      { n: 1, loc: dialog(p).getByRole("combobox") },
+      { n: 2, loc: group(p, "Policies") },
+      { n: 3, loc: group(p, "Procedures") },
+      { n: 4, loc: text(p, /See all results for/) },
+    ]);
+  },
+  "search-3": async () => {
+    const p = await as("Bob");
+    await go(p, "/policies");
+    await p.waitForTimeout(1500);
+    await p.locator("main").click({ position: { x: 5, y: 5 } });
+    await p.keyboard.press("Shift+C");
+    await dialog(p).waitFor();
+    await snap(p, "search-3", [
+      { n: 1, loc: dialog(p).getByRole("combobox") },
+      { n: 2, loc: group(p, "Create") },
+      { n: 3, loc: dialog(p).getByRole("option").first() },
+    ]);
+  },
+  "search-4": async () => {
+    const p = await as("Alice", { admin: true });
+    await go(p, "/admin/policies/POL-EXPENSES-000001");
+    await p.waitForTimeout(1500);
+    await p.keyboard.press("Control+k");
+    await dialog(p).waitFor();
+    await snap(p, "search-4", [
+      { n: 1, loc: dialog(p).getByRole("combobox") },
+      { n: 2, loc: group(p, "Actions") },
+      { n: 3, loc: group(p, "Admin") },
+      { n: 4, loc: group(p, "Create") },
     ]);
   },
   "admin-1": async () => {

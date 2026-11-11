@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
         "user/appendices",
         "user/library",
         "user/reading-and-history",
+        "user/search",
       ],
       label: "User guide",
       type: "category",

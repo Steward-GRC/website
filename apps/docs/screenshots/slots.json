@@ -431,7 +431,7 @@
   },
   "editor-3": {
     "app": "staff",
-    "address": "/drafts/{tour}",
+    "address": "/drafts/{cards}",
     "signInAs": "Bob",
     "state": "Editor Tour draft with a callout, an open toggle, a button and a divider in view.",
     "clicks": "Editor Tour draft with a callout, an open toggle, a button and a divider in view.",
@@ -457,14 +457,14 @@
   },
   "editor-5": {
     "app": "staff",
-    "address": "/drafts/{tour}",
+    "address": "/drafts/{cards}",
     "signInAs": "Bob",
     "state": "Editor Tour draft with an image (alt text and caption) selected so its settings show, and a file block.",
     "clicks": "Editor Tour draft with an image (alt text and caption) selected so its settings show, and a file block.",
     "callouts": [
       "An **Image**, with its caption and alt text.",
-      "The image's settings.",
-      "A **File**, with its title, description, name and size."
+      "The image's toolbar: regular, wide and full width, and a link. The **Alt** button by the caption sets the alt text.",
+      "A **File**, with its title, name and size. A description shows under the title when you add one."
     ]
   },
   "editor-6": {
@@ -511,6 +511,58 @@
       "**Your decision**.",
       "The **Decision comment** box. A comment is required to approve, reject or send comments.",
       "**Send comments**, **Reject** and **Approve**."
+    ]
+  },
+  "search-1": {
+    "app": "staff",
+    "address": "/policies",
+    "signInAs": "Bob",
+    "state": "Bob has opened two documents from the command bar, so Recent has entries.",
+    "clicks": "Press Ctrl+K (Cmd+K on a Mac) with nothing typed.",
+    "callouts": [
+      "The **Search** field in the header, with its **Cmd+K** key hint. Click it, or press the shortcut, to open the command bar.",
+      "The **Search Steward** box. Type here; **Esc** closes the bar.",
+      "**Actions**: what you can do on the page you are on, with the key for each.",
+      "**Create**: **New policy**, **New procedure** and **New draft from a template**.",
+      "**Recent**: documents you opened from the command bar before."
+    ]
+  },
+  "search-2": {
+    "app": "staff",
+    "address": "/policies",
+    "signInAs": "Bob",
+    "state": "Bob has typed supplier in the command bar.",
+    "clicks": "Press Ctrl+K, type supplier.",
+    "callouts": [
+      "What you typed. Clear it with the **x** at the right.",
+      "**Policies** that match, with the document number and category under each title.",
+      "**Procedures** that match.",
+      "**See all results for ...**, which opens the full Search page."
+    ]
+  },
+  "search-3": {
+    "app": "staff",
+    "address": "/policies",
+    "signInAs": "Bob",
+    "state": "The command bar opened by Shift+C.",
+    "clicks": "Press Shift+C with the cursor not in a field.",
+    "callouts": [
+      "**New** is typed for you, selected, so typing replaces it. Only create actions match.",
+      "The **Create** group: what Bob may create.",
+      "**New policy**, the first action. Press **Enter** to start it."
+    ]
+  },
+  "search-4": {
+    "app": "admin",
+    "address": "/admin/policies/POL-EXPENSES-000001",
+    "signInAs": "Alice",
+    "state": "Alice reads a published document in the admin app and opens the command bar with nothing typed.",
+    "clicks": "Open the document in the admin app, press Ctrl+K.",
+    "callouts": [
+      "The **Search Steward** box.",
+      "**Actions**: the everyday actions for this page.",
+      "**Admin**: the admin-only tasks for this page, each marked **Admin**.",
+      "**Create**: what an admin may create, starting with **New category**. Scroll the list for the rest."
     ]
   }
 }

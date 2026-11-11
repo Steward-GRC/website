@@ -126,8 +126,8 @@ A table starts 3 by 3 with a header row. While the cursor is in it, the table to
 <Screenshot slot="editor-5" alt="An image block and a file block" />
 
 1. An **Image**, with its caption and alt text.
-2. The image's settings.
-3. A **File**, with its title, description, name and size.
+2. The image's toolbar: regular, wide and full width, and a link. The **Alt** button by the caption sets the alt text.
+3. A **File**, with its title, name and size. A description shows under the title when you add one.
 
 - **Image.** Add one with `/image`, by dragging a picture in, or by typing `/image` followed by the address of a picture that is already online. A picture you add opens the **image editor** first, to crop (free, original, 1:1, 4:3 or 16:9) and rotate in 90 degree steps; nothing is sent until you confirm. Each image has an **alt text**, the description for people who cannot see it (write one for every picture that carries meaning), and a **caption**. Its settings add a link on the picture, a width of regular, wide or full, and a figure label such as "Figure 2". PNG, JPEG, GIF and WebP are accepted.
 - **File.** A download. It shows a **title**, a **description**, and the file's name and size, with a picture for the file's type. Accepted types are PDF, Word, Excel, PowerPoint, OpenDocument, CSV, RTF, text, Markdown, image and video files, up to 10 MB. HTML, SVG, scripts, programs, archives and Office files with macros are refused.

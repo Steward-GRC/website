@@ -38,5 +38,6 @@ Everyone is also a reader. Which categories a person may write in or approve for
 - [Appendices](./appendices.md): add, rename, reorder, retire, restore.
 - [Definitions, references and contacts](./library.md): attach reusable items to a document.
 - [Reading and history](./reading-and-history.md): the reader, versions, compare, print, acknowledgement.
+- [Search and the command bar](./search.md): open it with a key, search, create, and run page actions.
 
 To try these steps in the demo, start with the [demo guide](../demo/index.md).

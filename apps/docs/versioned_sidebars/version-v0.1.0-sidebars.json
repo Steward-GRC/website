@@ -9,7 +9,8 @@
         "user/approvals",
         "user/appendices",
         "user/library",
-        "user/reading-and-history"
+        "user/reading-and-history",
+        "user/search"
       ],
       "label": "User guide",
       "type": "category"
