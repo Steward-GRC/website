@@ -99,13 +99,13 @@
     "ready": true
   },
   "editor-3": {
-    "ready": false
+    "ready": true
   },
   "editor-4": {
     "ready": true
   },
   "editor-5": {
-    "ready": false
+    "ready": true
   },
   "editor-6": {
     "ready": true
@@ -117,6 +117,18 @@
     "ready": true
   },
   "approvals-6": {
+    "ready": true
+  },
+  "search-1": {
+    "ready": true
+  },
+  "search-2": {
+    "ready": true
+  },
+  "search-3": {
+    "ready": true
+  },
+  "search-4": {
     "ready": true
   }
 }
