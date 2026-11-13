@@ -234,7 +234,7 @@ const useDocsPage = async (root, file, base, prefix) => {
 
 // Docs pages that are used, not just loaded: the home, and a page with a tab
 // group, in the default (released) version.
-export const DEFAULT_DOCS_PAGES = ["index.html", "docs/signing-in/index.html"];
+export const DEFAULT_DOCS_PAGES = ["index.html", "docs/user/editor/index.html"];
 
 export const parseArguments = (argv) => {
   const flag = (name) =>

@@ -20,34 +20,21 @@ type EntryPoint = {
 // main section of the guide.
 const entries: EntryPoint[] = [
   {
-    description: "What the demo is, what is real, and how long it takes.",
-    label: "Start here",
-    to: "/docs/",
+    description:
+      "Writing, the editor, approvals, appendices, reading and history.",
+    label: "User guide",
+    to: "/docs/user/",
   },
   {
-    description: "Open the demo and pick one of the eight test people.",
-    label: "Signing in",
-    to: "/docs/signing-in",
+    description: "Categories, templates, workflows and who can do what.",
+    label: "Admin guide",
+    to: "/docs/admin/",
   },
   {
-    description: "Write a policy or procedure, and submit it for approval.",
-    label: "Policies and procedures",
-    to: "/docs/policies-and-procedures",
-  },
-  {
-    description: "Approve, reject or comment as an approver.",
-    label: "Approvals",
-    to: "/docs/approvals",
-  },
-  {
-    description: "Read a published document, compare versions, print.",
-    label: "Reading and history",
-    to: "/docs/reading-and-history",
-  },
-  {
-    description: "Categories, templates and workflows.",
-    label: "Admin",
-    to: "/docs/admin",
+    description:
+      "Try the demo: what is real, the test people, the limits of the demo.",
+    label: "Demo",
+    to: "/docs/demo/",
   },
 ];
 
